@@ -1,5 +1,5 @@
 include:
-  - core.apt
+  - apt
 
 {% if grains['os']=="Ubuntu" %}
 
