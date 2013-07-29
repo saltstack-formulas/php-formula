@@ -3,8 +3,9 @@ include:
 
 {% if grains['os']=="Ubuntu" %}
 
-php5-curl:
+php-curl:
   pkg.installed:
+    - name: php5-curl
     - order: 180
 
 {% endif %}

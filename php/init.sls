@@ -3,8 +3,9 @@ include:
 
 {% if grains['os']=="Ubuntu" %}
 
-php5:
+php:
   pkg.installed:
+    - name: php5
     - order: 175
 
 {% endif %}
