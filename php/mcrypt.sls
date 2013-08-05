@@ -3,9 +3,9 @@ include:
 
 {% if grains['os']=="Ubuntu" %}
 
-php:
+php-mcrypt:
   pkg.installed:
-    - name: php5
-    - order: 175
+    - name: php5-mcrypt
+    - order: 180
 
 {% endif %}

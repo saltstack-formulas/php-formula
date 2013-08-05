@@ -3,9 +3,9 @@ include:
 
 {% if grains['os']=="Ubuntu" %}
 
-php:
+php-mysql:
   pkg.installed:
-    - name: php5
-    - order: 175
+    - name: php5-mysql
+    - order: 180
 
 {% endif %}
