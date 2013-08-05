@@ -1,7 +1,7 @@
 php
 ======
 DEPENDENCIES:
-  These salt-states are required:
+  These formulas are required:
 
 	1) apt
 
