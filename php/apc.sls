@@ -1,10 +1,9 @@
+{% from "php/map.jinja" import php with context %}
+
 include:
   - apt
 
-{% if grains['os']=="Ubuntu" %}
-
 php-apc:
-  pkg.installed:
-    - order: 180
-
-{% endif %}
+  pkg:
+    - installed
+    - name: {{ php.apc-pkg }}

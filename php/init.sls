@@ -1,11 +1,9 @@
+{% from "php/map.jinja import php with context %}
+
 include:
   - apt
 
-{% if grains['os']=="Ubuntu" %}
-
 php:
-  pkg.installed:
-    - name: php5
-    - order: 175
-
-{% endif %}
+  pkg:
+    - installed
+    - name: {{ php-pkg }}
