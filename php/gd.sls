@@ -1,4 +1,4 @@
-{{% from "php/map.jinja" import php with context %}
+{% from "php/map.jinja" import php with context %}
 
 include:
   - apt
