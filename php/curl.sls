@@ -4,6 +4,6 @@ include:
   - apt
 
 php-curl:
-  pkg
+  pkg:
     - installed
     - name: {{ php.curl_pkg }}
