@@ -6,4 +6,4 @@ include:
 php-apc:
   pkg:
     - installed
-    - name: {{ php.apc-pkg }}
+    - name: {{ php.apc_pkg }}

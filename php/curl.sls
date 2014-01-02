@@ -6,4 +6,4 @@ include:
 php-curl:
   pkg
     - installed
-    - name: {{ php.curl-pkg }}
+    - name: {{ php.curl_pkg }}

@@ -6,4 +6,4 @@ include:
 php-gd:
   pkg:
     - installed
-    - name: {{ php.gd-pkg }}
+    - name: {{ php.gd_pkg }}
