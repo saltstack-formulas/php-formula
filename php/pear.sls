@@ -6,4 +6,4 @@ include:
 php-pear:
   pkg:
     - installed
-    - name : {{ pear-pkg }}
+    - name : {{ php.pear-pkg }}

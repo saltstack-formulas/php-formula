@@ -6,4 +6,4 @@ include:
 php:
   pkg:
     - installed
-    - name: {{ php-pkg }}
+    - name: {{ php.php-pkg }}

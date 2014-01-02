@@ -6,4 +6,4 @@ include:
 php-mcrypt:
   pkg:
     - installed
-    - name: {{ mcrpyt-pkg }}
+    - name: {{ php.mcrpyt-pkg }}

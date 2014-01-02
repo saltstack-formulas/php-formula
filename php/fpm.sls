@@ -6,8 +6,8 @@ include:
 php-fpm:
   pkg:
     - installed
-    - name: {{ fpm-pkg }}
+    - name: {{ php.fpm-pkg }}
   service:
     - running
-    - name: {{ fpm-service }}
+    - name: {{ php.fpm-service }}
     - enable: True
