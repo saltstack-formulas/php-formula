@@ -1,0 +1,24 @@
+{% set php = salt['grains.filter_by']({
+    'Debian': {
+        'php_pkg': 'php5',
+        'apc_pkg': 'php-apc',
+        'curl_pkg': 'php5-curl',
+        'fpm_pkg': 'php5-fpm',
+        'gd_pkg': 'php5-gd',
+        'mcrypt_pkg': 'php5-mcrypt',
+        'mysql_pkg': 'php5-mysql',
+        'pear_pkg': ' php-pear',
+        'fpm_service': 'php5-fpm',
+    },
+    'RedHat': {
+        'php_pkg': 'php',
+        'apc_pkg': 'php-pecl-apc',
+        'curl_pkg': 'curl',
+        'fpm_pkg': 'php-fpm',
+        'gd_pkg': 'php-gd',
+        'mcrypt_pkg': 'php-mcrypt',
+        'mysql_pkg': 'php-mysql',
+        'pear_pkg': ' php-pear',
+        'fpm_service': 'php-fpm',
+    },
+}, merge=salt['pillar.get']('php:lookup')) %}

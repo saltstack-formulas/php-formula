@@ -1,15 +1,13 @@
+{% from "php/map.jinja" import php with context %}
+
 include:
   - apt
 
-{% if grains['os']=="Ubuntu" %}
-
 php-fpm:
-  pkg.installed:
-    - name: php5-fpm
-    - order: 175
-  service.running:
-    - name: php5-fpm
+  pkg:
+    - installed
+    - name: {{ php.fpm_pkg }}
+  service:
+    - running
+    - name: {{ php.fpm_service }}
     - enable: True
-    - order: 455
-
-{% endif %}
