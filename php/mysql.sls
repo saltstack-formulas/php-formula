@@ -6,4 +6,4 @@ include:
 php-mysql:
   pkg:
     - installed
-    - name: {{ php.mysql-pkg }}
+    - name: {{ php.mysql_pkg }}
