@@ -25,6 +25,11 @@ Installs the php package.
 
 Installs the php-apc package.
 
+``php.adodb``
+------------
+
+Installs the php-adodb package.
+
 ``php.curl``
 ------------
 
@@ -42,10 +47,42 @@ Installs the php-fpm package, starts the service, and enables it.
 
 Installs the php-gd package.
 
+
+``php.imagick``
+------------
+
+Installs the php-imagick package.
+
+``php.imap``
+------------
+
+Installs the php-imap package.
+
+``php.ldap``
+------------
+
+Installs the php-ldap package.
+
+``php.mbstring``
+---------------
+
+Installs the php-mbstring package.
+
 ``php.mcrypt``
 --------------
 
 Installs the php-mcrypt package.
+
+
+``php.memcache``
+------------
+
+Installs the php-memcache package.
+
+``php.memcached``
+------------
+
+Installs the php-memcached package.
 
 ``php.mysql``
 -------------
@@ -56,3 +93,23 @@ Installs the php-mysql package.
 ------------
 
 Installs the php-pear package.
+
+``php.pgsql``
+------------
+
+Installs the php-pgsql package.
+
+``php.soap``
+------------
+
+Installs the php-soap package.
+
+``php.suhosin``
+------------
+
+Installs the php-suhosin package.
+
+``php.xml``
+------------
+
+Installs the php-xml package.
