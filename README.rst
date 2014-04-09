@@ -28,12 +28,12 @@ Installs the php-apc package.
 ``php.adodb``
 ------------
 
-Installs the php-cli package.
+Installs the php-adodb package.
 
 ``php.cli``
 ------------
 
-Installs the php-adodb package.
+Installs the php-cli package.
 
 ``php.curl``
 ------------
