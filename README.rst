@@ -30,6 +30,11 @@ Installs the php-apc package.
 
 Installs the php-adodb package.
 
+``php.cli``
+------------
+
+Installs the php-cli package.
+
 ``php.curl``
 ------------
 
@@ -88,6 +93,11 @@ Installs the php-memcached package.
 -------------
 
 Installs the php-mysql package.
+
+``php.mysqlnd``
+------------
+
+Installs the php-mysqlnd package.
 
 ``php.pear``
 ------------
