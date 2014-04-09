@@ -89,6 +89,11 @@ Installs the php-memcached package.
 
 Installs the php-mysql package.
 
+``php.mysqlnd``
+------------
+
+Installs the php-mysqlnd package.
+
 ``php.pear``
 ------------
 
