@@ -30,6 +30,11 @@ Installs the php-apc package.
 
 Installs the php-adodb package.
 
+``php.cgi``
+------------
+
+Installs the php-cgi package.
+
 ``php.cli``
 ------------
 
