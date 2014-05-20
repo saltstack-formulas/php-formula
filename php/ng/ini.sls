@@ -1,12 +1,12 @@
-{% from "php/ng/map_ng.jinja" import php with context %}
+# php.ng.ini.sls
+#
+# Generic php.ini management state.
+{% from "php/ng/map.jinja" import php, sls_block with context %}
 
-php-ini:
+php_ini:
   file.managed:
-    - name: {{ php.lookup.php_ini }}
-    - source: salt://php/ng/files/php.ini.jinja
-    - user: root
-    - group: root
-    - mode: 644
+    {{ sls_block(php.ini.file_opts) }}
+    - source: salt://php/ng/files/php.ini
     - template: jinja
     - context:
-      config: {{ php.ini_settings }}
+      config: {{ php.ini.settings }}
