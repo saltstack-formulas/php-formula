@@ -1,6 +1,8 @@
 # Template for installing packages.
 {% from "php/ng/map.jinja" import php, sls_block with context %}
+{% set opts = php.installed.get(state, {}) %}
+
 php_install_{{ state }}:
   pkg.installed:
-  {{ sls_block(php.get(state).pkg_opts) }}
-  - name: {{ php.lookup.pkgs.get(state) }}
+    {{ sls_block(opts) }}
+    - name: {{ php.lookup.pkgs.get(state) }}
