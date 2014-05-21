@@ -13,3 +13,6 @@ extend:
       - watch:
         - file: php_fpm_ini_config
         - file: php_fpm_conf_config
+      - require:
+        - file: php_fpm_ini_config
+        - file: php_fpm_conf_config

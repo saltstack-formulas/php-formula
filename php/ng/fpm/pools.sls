@@ -3,14 +3,21 @@
 {% from 'php/ng/fpm/pools_config.sls' import pool_states with context %}
 {% from 'php/ng/fpm/service.sls' import service_function with context %}
 
+{% macro file_requisites(states) %}
+      {%- for state in states %}
+        - file: {{ state }}
+      {%- endfor -%}
+{% endmacro %}
+
 include:
   - php.ng.fpm.service
   - php.ng.fpm.pools_config
 
+
 extend:
   php_fpm_service:
-    service.{{ service_function }}:
+    service:
       - watch:
-        {%- for pool in pool_states %}
-        - file: {{ pool }}
-        {% endfor -%}
+        {{ file_requisites(pool_states) }}
+      - require:
+        {{ file_requisites(pool_states) }}
