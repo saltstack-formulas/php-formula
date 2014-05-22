@@ -1,5 +1,7 @@
 # Manages the php-fpm service.
-{% from 'php/ng/map.jinja' import php, sls_block with context %}
+{% from "php/ng/map.jinja" import php with context %}
+{% from "php/ng/macro.jinja" import sls_block %}
+
 {% set service_function = {True:'running', False:'dead'}.get(php.fpm.service.enabled) %}
 
 include:

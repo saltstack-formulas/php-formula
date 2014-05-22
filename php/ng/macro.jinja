@@ -1,0 +1,68 @@
+# Returns a generic block of values suitable for inclusion in most states.
+{% macro sls_block(dict, ind=4) %}
+    {% for key, value in dict.items() %}
+{{ '-'|indent(ind, True) }} {{ key }}: {{ value|json() }}
+    {% endfor %}
+{% endmacro %}
+
+# Serializes dicts into sequenced data
+{%- macro serialize(data) -%}
+    {%- if data is mapping -%}
+        {%- set ret = [] -%}
+        {%- for key, value in data.items() -%}
+            {%- set value = serialize(value)|load_json() -%}
+            {%- do ret.append({key: value}) -%}
+        {%- endfor -%}
+    {%- elif data is iterable and data is not string -%}
+        {%- set ret = [] -%}
+        {%- for value in data -%}
+            {%- set value = serialize(value)|load_json() -%}
+            {%- do ret.append(value) -%}
+        {%- endfor -%}
+    {%- else -%}
+        {% set ret = data %}
+    {%- endif -%}
+
+    {{ ret|json() }}
+{%- endmacro -%}
+
+{%- macro deserialize(data) -%}
+    {%- if data is mapping -%}
+        {%- set ret = odict([]) -%}
+        {%- for key, value in data.items() -%}
+            {%- do ret.update({key: deserialize(value)}) -%}
+        {%- endfor -%}
+    {%- elif data is iterable and data is not string -%}
+        {%- if is_list_skd(data)|int() == 1 -%}
+            {%- set ret = odict([]) -%}
+            {%- for item in data -%}
+                {%- for key, value in item.items() -%}
+                    {% do ret.update({key: deserialize(value)}) %}
+                {%- endfor -%}
+            {%- endfor -%}
+        {%- else -%}
+            {%- set ret = [] -%}
+            {%- for item in data -%}
+                {%- do ret.append(deserialize(item)) -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- else -%}
+        {% set ret = data %}
+    {%- endif -%}
+
+    {{ ret }}
+{%- endmacro -%}
+
+# and is not number and is mapping and item|length() == 1
+{%- macro is_list_skd(list) -%}
+    {% set ret = 0 %}
+    {%- set skds = {'counter': 0} -%}
+    {%- for item in list if item is mapping and item|length() == 1 -%}
+        {%- do skds.update({'counter': (skds.counter + 1)}) -%}
+    {%- endfor -%}
+    {%- if skds.counter == list|length() -%}
+        {% set ret = 1 %}
+    {%- endif -%}
+
+    {{ ret }}
+{%- endmacro -%}

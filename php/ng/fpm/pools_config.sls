@@ -1,5 +1,6 @@
 # Manages the php-fpm pools config files
-{% from 'php/ng/map.jinja' import php, sls_block with context %}
+{% from 'php/ng/map.jinja' import php with context %}
+{% from "php/ng/macro.jinja" import sls_block, serialize %}
 
 # Simple path concatenation.
 {% macro path_join(file, root) -%}
@@ -20,7 +21,7 @@
     - source: salt://php/ng/files/php.ini
     - template: jinja
     - context:
-      config: {{ config.settings }}
+        config: {{ serialize(config.settings) }}
 {% else %}
   file.absent:
     - name: {{ fpath }}

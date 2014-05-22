@@ -1,9 +1,3 @@
-{% macro sls_block(dict) %}
-    {% for key, value in dict.items() %}
-    - {{ key }}: {{ value|json() }}
-    {% endfor %}
-{% endmacro %}
-
 {% set php = salt['pillar.get']('php:ng', {
     'lookup': salt['grains.filter_by']({
         'Debian': {
