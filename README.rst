@@ -68,6 +68,11 @@ Installs the php-imagick package.
 
 Installs the php-imap package.
 
+``php.json``
+------------
+
+Installs the php-json package.
+
 ``php.ldap``
 ------------
 
