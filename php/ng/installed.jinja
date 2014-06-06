@@ -15,7 +15,7 @@ php_install_{{ state }}_{{ pkg }}:
 
     {%- endfor -%}
 {%- else -%}
-    {%- if pkginfo is not sequence or is string -%}
+    {%- if pkginfo is not sequence or pkginfo is string -%}
         {% set pkginfo = [pkginfo] %}
     {%- endif -%}
 
