@@ -107,3 +107,34 @@ php:
               pm.min_spare_servers: 1
               pm.max_spare_servers: 3
               'php_admin_value[memory_limit]': 300M
+
+    # php-cli settings
+    cli:
+      # settings to manage the cli's php.ini
+      ini:
+        # opts passed forward directly to file.managed
+        opts:
+          replace: False
+        # contents of the php.ini file that are merged with defaults
+        # from php.ng.ini.defaults. See php.ng.ini.defaults for ini-style
+        # syntax guidelines
+        settings:
+          PHP:
+            engine: 'Off'
+
+    # global php.ini settings
+    ini:
+      # Default php.ini contents. These follow a strict format. The top-
+      # level dict keys form ini group headings. Nested key/value
+      # pairs represent setting=value statements. If a value is a list,
+      # its contents will be joined by commas in final rendering.
+      defaults:
+        PHP:
+          engine: on
+          output_buffering: 4096
+          disable_functions:
+            - pcntl_alarm
+            - pcntl_fork
+            - pcntl_wait
+        'CLI Server':
+          cli_server_color: 'On'

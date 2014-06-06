@@ -16,12 +16,12 @@
 {{ state }}:
 {% if config.enabled %}
   file.managed:
-    {{ sls_block(config.opts) }}
+    {{ sls_block(config.get('opts', {})) }}
     - name: {{ fpath }}
     - source: salt://php/ng/files/php.ini
     - template: jinja
     - context:
-        config: {{ serialize(config.settings) }}
+        config: {{ serialize(config.get('settings', {})) }}
 {% else %}
   file.absent:
     - name: {{ fpath }}
