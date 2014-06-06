@@ -24,6 +24,7 @@
                 'adodb': 'php5-adodb',
                 'pgsql': 'php5-pgsql',
                 'ldap': 'php5-ldap',
+                'json': 'php5-json',
             },
             'fpm': {
                 'conf': '/etc/php5/fpm/php-fpm.conf',
@@ -38,7 +39,9 @@
                     ])),
                 ]),
             },
-            'apache2_mod_php_ini': '/etc/php5/apache2/php.ini',
+            'cli': {
+                'ini': '/etc/php5/cli/php.ini',
+            },
         },
         'RedHat': {
             'pkgs': {
@@ -46,7 +49,7 @@
                 'apc': 'php-pecl-apc',
                 'cgi': 'php-cgi',
                 'cli': 'php-cli',
-                'curl': 'curl',
+                'curl': ['php-common', 'curl'],
                 'fpm': 'php-fpm',
                 'gd': 'php-gd',
                 'mbstring': 'php-mbstring',
@@ -64,6 +67,7 @@
                 'adodb': 'php-adodb',
                 'pgsql': 'php-pgsql',
                 'ldap': 'php-ldap',
+                'json': 'php-common',
             },
             'fpm': {
                 'conf': '/etc/php-fpm.conf',
@@ -78,10 +82,11 @@
                     },
                 },
             },
-            'apache2_mod_php_ini': '/etc/php.ini',
+            'cli': {
+                'ini': '/etc/php.ini',
+            },
         },
     }),
-    'installed': {},
     'fpm': {
         'service': {
             'enabled': True,
@@ -102,6 +107,11 @@
             'absent_opts': {},
             'managed': {},
         },
+    },
+    'cli': {
+        'ini':
+   	        'opts': {},
+            'settings': {},
     },
     'ini': {
         'defaults': {

@@ -1,0 +1,12 @@
+# php.ini management macro.
+{% from "php/ng/macro.jinja" import sls_block, serialize %}
+
+{% macro php_ini(filename, opts={}, settings={}) %}
+  file.managed:
+    {{ sls_block(opts) }}
+    - name: {{ filename }}
+    - source: salt://php/ng/files/php.ini
+    - template: jinja
+    - context:
+      config: {{ serialize(settings) }}
+{%- endmacro -%}

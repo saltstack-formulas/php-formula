@@ -1,6 +1,4 @@
-# php.ng.fpm
-#
-# Meta-state to fully install php.
+# Meta-state to fully install php.fpm
 
 include:
   - php.ng.fpm.config
@@ -14,5 +12,4 @@ extend:
         - file: php_fpm_ini_config
         - file: php_fpm_conf_config
       - require:
-        - file: php_fpm_ini_config
-        - file: php_fpm_conf_config
+        - sls: php.ng.fpm.config

@@ -1,0 +1,39 @@
+## php.ng pillar examples
+
+php:
+  ng:
+    # this section contains mostly grain filtered data, while overrides
+    # are possible in the pillar for unique cases, if your OS is not
+    # represented, please consider adding it to the map.jinja for
+    # upstream inclusion
+    lookup:
+
+      # package definitions, these can lists, strings, or dictionaries
+      pkgs:
+        memcached: php5-memcached
+        # ensures both will be installed
+        curl: 
+          - php-common
+          - curl 
+        # a dictionary can be used in more complex cases where you want
+        # to pass forward special arguments to the pkg.installed call
+        cli:
+           php-cli:
+             fromrepo: my-specialrepo
+           php-common:
+             fromrepo: my-specialrepo
+
+      # php-fpm os-specific settings
+      fpm:
+        # the main php-fpm config file
+        conf: /etc/php5/fpm/php-fpm.conf
+        # the php-fpm php.ini
+        ini: /etc/php5/fpm/php.ini
+        # the location where pools are stored
+        pools: /etc/php5/fpm/pool.d
+        # the name of the php-fpm service
+        service: php5-fpm
+        # the default content of the php5-fpm main config file
+        defaults:
+          global:
+            pid: /var/run/php5-fpm.pid
