@@ -3,7 +3,7 @@
 {% from "php/ng/macro.jinja" import sls_block %}
 
 
-{% pkginfo = php.lookup.pkgs.get(state) %}
+{% set pkginfo = php.lookup.pkgs.get(state) %}
 
 {%- if pkginfo is mapping -%}
     {%- for pkg, opts in pkginfo.items() -%}
