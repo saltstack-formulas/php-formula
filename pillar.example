@@ -8,7 +8,8 @@ php:
     # upstream inclusion
     lookup:
 
-      # package definitions, these can lists, strings, or dictionaries
+      # package definitions, these can strings, lists of strings, or
+      # lists of dictionaries
       pkgs:
         memcached: php5-memcached
         # ensures both will be installed
@@ -17,23 +18,92 @@ php:
           - curl 
         # a dictionary can be used in more complex cases where you want
         # to pass forward special arguments to the pkg.installed call
+        # you MUST include the name argument for this to work
         cli:
-           php-cli:
+           -
+             name: php-cli
              fromrepo: my-specialrepo
-           php-common:
-             fromrepo: my-specialrepo
+           -
+             name: php-common
+             skip_verify: True
 
       # php-fpm os-specific settings
       fpm:
-        # the main php-fpm config file
-        conf: /etc/php5/fpm/php-fpm.conf
-        # the php-fpm php.ini
-        ini: /etc/php5/fpm/php.ini
-        # the location where pools are stored
-        pools: /etc/php5/fpm/pool.d
-        # the name of the php-fpm service
-        service: php5-fpm
+        conf: /location/of/php-fpm/config.conf
+        ini: /location/of/php-fpm/php.ini
+        pools: /location/of/php-fpm/pool.d
+        service: name-of-php5-fpm-service
+
         # the default content of the php5-fpm main config file
         defaults:
           global:
             pid: /var/run/php5-fpm.pid
+
+      # php-cli os-specific settings
+      cli:
+        ini: /location/of/php-cli/php.ini
+
+    # php-fpm settings
+    fpm:
+
+      # settings for the php-fpm service
+      service:
+        # if True, enables the php-fpm service, if False disables it
+        enabled: True
+        # additional arguments passed forward to
+        # service.enabled/disabled
+        opts:
+          reload: True
+
+      # settings for the relevant php-fpm configuration files
+      config:
+
+        # options to manage the php.ini file used by php-fpm
+        ini:
+          # arguments passed through to file.managed
+          opts:
+            recurse: True
+          # php.ini file contents that will be merged with the
+          # defaults in php.ng.ini.defaults. See php.ng.ini.defaults for
+          # syntax guidelines.
+          settings:
+            PHP:
+              engine: 'Off'
+
+        # options to manage the php-fpm conf file
+        conf:
+          # arguments passed through to file.managed
+          opts:
+            recurse: True
+          # php-fpm conf file contents that will be merged with
+          # php.ng.lookup.fpm.defaults. See php.ng.ini.defaults for
+          # ini-style syntax guidelines.
+          settings:
+            global:
+              pid: /var/run/php-fpm/special-pid.file
+
+      # settings for fpm-pools
+      pools:
+        # name of the pool file to be managed, this will be appended
+        # to the path specified in php.ng.lookup.fpm.pools
+        'mypool.conf':
+          # If true, the pool file will be managed, if False it will be
+          # absent
+          enabled: True
+          # arguments passed forward to file.managed or file.absent
+          opts:
+             replace: False
+
+          # pool file contents. See php.ng.ini.defaults for ini-style
+          # syntax guidelines.
+          settings:
+            myapp:
+              user: www-data
+              group: www-data
+              listen: /var/run/php5-fpm-myapp.sock
+              pm: dynamic
+              pm.max_children: 5
+              pm.start_servers: 2
+              pm.min_spare_servers: 1
+              pm.max_spare_servers: 3
+              'php_admin_value[memory_limit]': 300M

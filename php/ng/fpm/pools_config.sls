@@ -9,14 +9,14 @@
 
 {% set pool_states = [] %}
 
-{% for pool, config in php.fpm.pools.managed.items() %}
+{% for pool, config in php.fpm.pools.items() %}
 {% set state = 'php_fpm_pool_conf_' ~ loop.index0 %}
 {% set fpath = path_join(pool, php.lookup.fpm.pools) %}
 
 {{ state }}:
 {% if config.enabled %}
   file.managed:
-    {{ sls_block(php.fpm.pools.managed_opts) }}
+    {{ sls_block(config.opts) }}
     - name: {{ fpath }}
     - source: salt://php/ng/files/php.ini
     - template: jinja

@@ -5,23 +5,30 @@
 
 {% set pkginfo = php.lookup.pkgs.get(state) %}
 
-{%- if pkginfo is mapping -%}
-    {%- for pkg, opts in pkginfo.items() -%}
+{% set pkgs = [] %}
+{% set specials = [] %}
 
-php_install_{{ state }}_{{ pkg }}:
-  pkg.installed:
-    {{ sls_block(opts) }}
-    - name: {{ state }}
-
-    {%- endfor -%}
-{%- else -%}
-    {%- if pkginfo is not sequence or pkginfo is string -%}
-        {% set pkginfo = [pkginfo] %}
-    {%- endif -%}
+{% if pkginfo is iterable and pkginfo is not string %}
+    {% for pkg in pkginfo %}
+        {% if pkg is mapping %}
+            {% do specials.append(pkg) %}
+        {% else %}
+            {% do pkgs.append(pkg) %}
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% do pkgs.append(pkginfo) %}
+{% endif %}
 
 php_install_{{ state }}:
   pkg.installed:
     - name: {{ state }}
-    - pkgs: {{ php.lookup.pkgs.get(state)|json() }}
+    - pkgs: {{ pkgs|json() }}
 
-{%- endif -%}
+{% for pkg in specials %}
+
+php_install_{{ state }}_{{ pkg.get('name') }}:
+  pkg.installed:
+  {{ sls_block(pkg) }}
+
+{% endfor %}
