@@ -1,0 +1,34 @@
+# Template for installing packages.
+{% from "php/ng/map.jinja" import php with context %}
+{% from "php/ng/macro.jinja" import sls_block %}
+
+
+{% set pkginfo = php.lookup.pkgs.get(state) %}
+
+{% set pkgs = [] %}
+{% set specials = [] %}
+
+{% if pkginfo is iterable and pkginfo is not string %}
+    {% for pkg in pkginfo %}
+        {% if pkg is mapping %}
+            {% do specials.append(pkg) %}
+        {% else %}
+            {% do pkgs.append(pkg) %}
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% do pkgs.append(pkginfo) %}
+{% endif %}
+
+php_install_{{ state }}:
+  pkg.installed:
+    - name: {{ state }}
+    - pkgs: {{ pkgs|json() }}
+
+{% for pkg in specials %}
+
+php_install_{{ state }}_{{ pkg.get('name') }}:
+  pkg.installed:
+  {{ sls_block(pkg) }}
+
+{% endfor %}

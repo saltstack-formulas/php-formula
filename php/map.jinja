@@ -24,6 +24,7 @@
         'adodb_pkg': 'php5-adodb',
         'pgsql_pkg': 'php5-pgsql',
         'ldap_pkg': 'php5-ldap',
+        'php_ini': '/etc/php5/apache2/php.ini',
     },
     'RedHat': {
         'php_pkg': 'php',
@@ -50,5 +51,6 @@
         'adodb_pkg': 'php-adodb',
         'pgsql_pkg': 'php-pgsql',
         'ldap_pkg': 'php-ldap',
+        'php_ini': '/etc/php.ini',
     },
 }, merge=salt['pillar.get']('php:lookup')) %}
