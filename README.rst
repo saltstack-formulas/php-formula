@@ -57,6 +57,11 @@ Installs the php-fpm package, starts the service, and enables it.
 
 Installs the php-gd package.
 
+``php.intl``
+----------
+
+Installs the php-intl package.
+
 
 ``php.imagick``
 ---------------
@@ -238,6 +243,11 @@ Installs the php-imagick package.
 ---------------
 
 Installs the php-imap package.
+
+``php.ng.intl``
+---------------
+
+Installs the php-intl package.
 
 ``php.ng.json``
 ---------------
