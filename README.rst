@@ -58,7 +58,7 @@ Installs the php-fpm package, starts the service, and enables it.
 Installs the php-gd package.
 
 ``php.intl``
-----------
+------------
 
 Installs the php-intl package.
 
@@ -133,6 +133,11 @@ Installs the php-soap package.
 ---------------
 
 Installs the php-suhosin package.
+
+``php.mongo``
+-------------
+
+Installs the php-mongo package.
 
 ``php.xml``
 -----------
