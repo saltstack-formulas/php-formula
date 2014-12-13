@@ -16,6 +16,5 @@ php54:
 {% endif %}
 
 php:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ php.php_pkg }}
