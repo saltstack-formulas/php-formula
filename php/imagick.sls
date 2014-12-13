@@ -1,6 +1,5 @@
 {% from "php/map.jinja" import php with context %}
 
 php-imagick:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ php.imagick_pkg }}

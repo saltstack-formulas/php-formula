@@ -1,6 +1,5 @@
 {% from "php/map.jinja" import php with context %}
 
 php-pear:
-  pkg:
-    - installed
+  pkg.installed:
     - name : {{ php.pear_pkg }}

@@ -1,6 +1,5 @@
 {% from "php/map.jinja" import php with context %}
 
 php-pgsql:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ php.pgsql_pkg }}
