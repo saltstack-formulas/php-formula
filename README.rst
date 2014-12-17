@@ -119,6 +119,11 @@ Installs the php-mysqlnd package.
 
 Installs the php-pear package.
 
+``php.redis``
+------------
+
+Installs the php-redis package.
+
 ``php.pgsql``
 -------------
 
@@ -299,6 +304,11 @@ Installs the php-mysqlnd package.
 ---------------
 
 Installs the php-pear package.
+
+``php.ng.redis``
+---------------
+
+Installs the php-redis package.
 
 ``php.ng.pgsql``
 ----------------
