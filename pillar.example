@@ -15,7 +15,7 @@ php:
     # upstream inclusion
     lookup:
 
-      # package definitions, these can strings, lists of strings, or
+      # package definitions, these can be strings, lists of strings, or
       # lists of dictionaries
       pkgs:
         memcached: php5-memcached
