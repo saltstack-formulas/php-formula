@@ -40,6 +40,11 @@ Installs the php-cgi package.
 
 Installs the php-cli package.
 
+``php.composer``
+-----------
+
+Installs [composer](https://getcomposer.org) and keeps it updated.
+
 ``php.curl``
 ------------
 

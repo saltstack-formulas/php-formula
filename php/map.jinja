@@ -31,6 +31,8 @@
         'mongo_pecl': 'mongo',
         'mongo_ext': 'mongo.so',
         'ext_conf_path': '/etc/php5/mods-available',
+        'local_bin': '/usr/local/bin',
+        'temp_dir': '/tmp',
     },
     'RedHat': {
         'php_pkg': 'php',
@@ -64,5 +66,7 @@
         'mongo_pecl': 'mongo',
         'mongo_ext': 'mongo.so',
         'ext_conf_path': '/etc/php5/conf.d',
+        'local_bin': '/usr/local/bin',
+        'temp_dir': '/tmp',
     },
 }, merge=salt['pillar.get']('php:lookup')) %}
