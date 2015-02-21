@@ -21,7 +21,7 @@ get-composer:
 update-composer:
   cmd.run:
     - name: "{{ install_file }} selfupdate"
-    - unless: "WARNING_TIME=$(grep --text COMPOSER_DEV_WARNING_TIME {{ install_file }} | egrep '^\s*define' | sed -e 's,[^[:digit:]],,g'); php -r \"exit($WARNING_TIME > time() ? 0 : 1);\""
+    - unless: test $(grep --text COMPOSER_DEV_WARNING_TIME {{ install_file }} | egrep '^\s*define' | sed -e 's,[^[:digit:]],,g') \> $(php -r 'echo time();')
     - cwd: {{ php.temp_dir }}
     - require:
       - cmd: get-composer
