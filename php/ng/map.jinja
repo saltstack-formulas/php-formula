@@ -6,6 +6,7 @@
                 'apc': 'php-apc',
                 'cgi': 'php5-cgi',
                 'cli': 'php5-cli',
+                'apache2': 'libapache2-mod-php5',
                 'curl': 'php5-curl',
                 'fpm': 'php5-fpm',
                 'gd': 'php5-gd',
@@ -43,6 +44,9 @@
             },
             'cli': {
                 'ini': '/etc/php5/cli/php.ini',
+            },
+            'apache2': {
+                'ini': '/etc/php5/apache2/php.ini',
             },
         },
         'RedHat': {
@@ -111,6 +115,12 @@
     'cli': {
         'ini': {
    	        'opts': {},
+            'settings': {},
+        }
+    },
+    'apache2': {
+        'ini': {
+            'opts': {},
             'settings': {},
         }
     },
