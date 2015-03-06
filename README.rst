@@ -134,6 +134,11 @@ Installs the php-pgsql package.
 
 Installs the php-soap package.
 
+``php.sqlite``
+--------------
+
+Installs the php-sqlite package,
+
 ``php.suhosin``
 ---------------
 
@@ -319,6 +324,11 @@ Installs the php-pgsql package.
 ---------------
 
 Installs the php-soap package.
+
+``php.ng.sqlite``
+-----------------
+
+Installs the php-sqlite package,
 
 ``php.ng.suhosin``
 ------------------
