@@ -12,6 +12,13 @@ get-composer:
     - require:
       - pkg: php
 
+install-composer:
+  cmd.wait:
+    - name: mv {{ php.temp_dir }}/composer.phar {{ install_file }}
+    - cwd: {{ php.temp_dir }}
+    - watch:
+      - cmd: get-composer
+
 # Get COMPOSER_DEV_WARNING_TIME from the installed composer, and if that time has passed
 # then it's time to run `composer selfupdate`
 #
@@ -24,11 +31,4 @@ update-composer:
     - unless: test $(grep --text COMPOSER_DEV_WARNING_TIME {{ install_file }} | egrep '^\s*define' | sed -e 's,[^[:digit:]],,g') \> $(php -r 'echo time();')
     - cwd: {{ php.temp_dir }}
     - require:
-      - cmd: get-composer
-
-install-composer:
-  cmd.wait:
-    - name: install -m 0755 {{ php.temp_dir }}/composer.phar {{ install_file }}
-    - cwd: {{ php.temp_dir }}
-    - watch:
-      - cmd: get-composer
+      - cmd: install-composer
