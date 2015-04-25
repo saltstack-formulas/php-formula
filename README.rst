@@ -26,6 +26,12 @@ Installs the php package.
 Installs the php-apc package.
 Disabled by default on opensuse need server:php repo
 
+``php.apcu``
+------------
+
+Installs the php-apcu package.
+Disabled by default on opensuse need server:php repo
+
 ``php.adodb``
 -------------
 
@@ -194,6 +200,12 @@ Installs the php-adodb package.
 --------------
 
 Installs the php-apc package.
+Disabled on opensuse need server:php repo
+
+``php.ng.apcu``
+---------------
+
+Installs the php-apcu package.
 Disabled on opensuse need server:php repo
 
 ``php.ng.cgi``
