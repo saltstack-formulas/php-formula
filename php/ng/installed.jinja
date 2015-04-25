@@ -20,6 +20,22 @@
     {% do pkgs.append(pkginfo) %}
 {% endif %}
 
+{% if grains['os_family']=="Debian" and (state == 'cli' or state == 'fpm' or state == 'php') %}
+{% set use_ppa        = salt['pillar.get']('php:use_ppa', none) %}
+{% if use_ppa is not none %}
+
+{% set ppa_name        = salt['pillar.get']('php:ppa_name', 'ondrej/php5') %}
+
+php_ppa_{{ state }}:
+    pkgrepo.managed:
+        - ppa: {{ ppa_name }}
+    pkg.latest:
+        - name: {{ state }}
+        - pkgs: {{ pkgs|json() }}
+        - refresh: True
+{% endif %}
+{% endif %}
+
 php_install_{{ state }}:
   pkg.installed:
     - name: {{ state }}
