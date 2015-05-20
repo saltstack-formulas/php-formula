@@ -3,7 +3,8 @@
 
 include:
   - php
-  - php.curl
+  - php.ng.curl
+  - php.cli
 
 get-composer:
   cmd.run:
@@ -12,7 +13,8 @@ get-composer:
     - cwd: {{ php.temp_dir }}
     - require:
       - pkg: php
-      - sls: php.curl
+      - sls: php.ng.curl
+      - sls: php.cli
 
 install-composer:
   cmd.wait:
