@@ -3,6 +3,7 @@
 
 include:
   - php
+  - php.curl
 
 get-composer:
   cmd.run:
@@ -11,6 +12,7 @@ get-composer:
     - cwd: {{ php.temp_dir }}
     - require:
       - pkg: php
+      - sls: php.curl
 
 install-composer:
   cmd.wait:
