@@ -2,8 +2,7 @@
 {% set install_file = php.local_bin + '/composer' %}
 
 include:
-  - php.cli
-  - php.ng.curl
+  - php
 
 get-composer:
   cmd.run:
@@ -11,8 +10,7 @@ get-composer:
     - unless: test -f {{ install_file }}
     - cwd: {{ php.temp_dir }}
     - require:
-      - pkg: {{ php.cli_pkg }}
-      - pkg: {{ php.curl_pkg }}
+      - pkg: php
 
 install-composer:
   cmd.wait:
