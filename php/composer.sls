@@ -2,7 +2,6 @@
 {% set install_file = php.local_bin + '/composer' %}
 
 include:
-  - php
   - php.ng.curl
   - php.cli
 
