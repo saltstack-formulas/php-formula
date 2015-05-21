@@ -11,8 +11,8 @@ get-composer:
     - unless: test -f {{ install_file }}
     - cwd: {{ php.temp_dir }}
     - require:
-      - pkg: {{ php.cli_pkg }}
-      - pkg: {{ php.curl_pkg }}
+      - sls: php.cli
+      - sls: php.ng.curl
 
 install-composer:
   cmd.wait:
