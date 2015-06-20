@@ -44,8 +44,8 @@
                     ('global', odict([
                         ('pid', '/var/run/php5-fpm.pid'),
                         ('error_log', '/var/log/php5-fpm.log'),
-                        ('include', '/etc/php5/fpm/pool.d/*.conf'),
                     ])),
+                    ('include', '/etc/php5/fpm/pool.d/*.conf'),
                 ]),
             },
             'cli': {
@@ -95,8 +95,8 @@
                     'global': {
                         'pid': '/var/run/php-fpm/php-fpm.pid',
                         'error_log': '/var/log/php-fpm/error.log',
-                        'include': '/etc/php-fpm.d/*.conf',
                     },
+                    'include': '/etc/php-fpm.d/*.conf',
                 },
             },
             'cli': {
@@ -136,8 +136,42 @@
                     'global': {
                         'pid': '/var/run/php-fpm/php-fpm.pid',
                         'error_log': '/var/log/php-fpm/error.log',
-                        'include': '/etc/php-fpm.d/*.conf',
                     },
+                    'include': '/etc/php-fpm.d/*.conf',
+                },
+            },
+            'cli': {
+                'ini': '/etc/php.ini',
+            },
+        },
+        'Arch': {
+            'pkgs': {
+                'php': 'php',
+                'apcu': 'php-apcu',
+                'cgi': 'php-cgi',
+                'curl': 'curl',
+                'fpm': 'php-fpm',
+                'gd': 'php-gd',
+                'intl': 'php-intl',
+                'mcrypt': 'php-mcrypt',
+                'memcache': 'php-memcache',
+                'memcached': 'php-memcached',
+                'pear': 'php-pear',
+                'sqlite': 'php-sqlite',
+                'pgsql': 'php-pgsql',
+                'ldap': 'php-ldap',
+            },
+            'fpm': {
+                'conf': '/etc/php/php-fpm.conf',
+                'ini': '/etc/php/php.ini',
+                'pools': '/etc/php/fpm.d',
+                'service': 'php-fpm',
+                'defaults': {
+                    'global': {
+                        'pid': '/run/php-fpm/php-fpm.pid',
+                        'error_log': 'log/php-fpm.log',
+                    },
+                    'include': '/etc/php/fpm.d/*.conf',
                 },
             },
             'cli': {
