@@ -76,6 +76,8 @@ php:
           settings:
             PHP:
               engine: 'Off'
+              extension_dir: '/usr/lib/php/modules/'
+              extension: [pdo_mysql.so, iconv.so, openssl.so]
 
         # options to manage the php-fpm conf file
         conf:
@@ -108,6 +110,9 @@ php:
               user: www-data
               group: www-data
               listen: /var/run/php5-fpm-myapp.sock
+              listen.owner: www-data
+              listen.group: www-data
+              listen.mode: 0660
               pm: dynamic
               pm.max_children: 5
               pm.start_servers: 2
