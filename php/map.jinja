@@ -36,6 +36,8 @@
         'ext_conf_path': '/etc/php5/mods-available',
         'local_bin': '/usr/local/bin',
         'temp_dir': '/tmp',
+        'composer_bin': 'composer',
+        'composer_hash': 'sha256=6a1ba6495f0bdb8e7735a7a76948b61c54b4a57b56837a9e9f93b4a0ac1f83a5',
     },
     'RedHat': {
         'php_pkg': 'php',
@@ -74,6 +76,8 @@
         'ext_conf_path': '/etc/php5/conf.d',
         'local_bin': '/usr/local/bin',
         'temp_dir': '/tmp',
+        'composer_bin': 'composer',
+        'composer_hash': 'sha256=6a1ba6495f0bdb8e7735a7a76948b61c54b4a57b56837a9e9f93b4a0ac1f83a5',
     },
     'Suse': {
         'php_pkg': 'php5',
@@ -103,5 +107,7 @@
         'ext_conf_path': '/etc/php5/conf.d',
         'local_bin': '/usr/local/bin',
         'temp_dir': '/tmp',
+        'composer_bin': 'composer',
+        'composer_hash': 'sha256=6a1ba6495f0bdb8e7735a7a76948b61c54b4a57b56837a9e9f93b4a0ac1f83a5',
     },
 }, merge=salt['pillar.get']('php:lookup')) %}
