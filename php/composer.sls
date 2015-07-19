@@ -1,23 +1,24 @@
 {% from "php/map.jinja" import php with context %}
-{% set install_file = php.local_bin + '/composer' %}
+{% set install_file = php.local_bin + '/' + php.composer_bin %}
 
 include:
   - php
 
 get-composer:
-  cmd.run:
-    - name: 'CURL=`which curl`; $CURL -sS https://getcomposer.org/installer | php'
+  file.managed:
+    - name: {{ php.temp_dir }}/installer
+    - mode: 0755
     - unless: test -f {{ install_file }}
-    - cwd: {{ php.temp_dir }}
+    - source: https://getcomposer.org/installer
+    - source_hash: {{ php.composer_hash }}
     - require:
       - pkg: php
 
 install-composer:
   cmd.wait:
-    - name: mv {{ php.temp_dir }}/composer.phar {{ install_file }}
-    - cwd: {{ php.temp_dir }}
+    - name: {{ php.temp_dir }}/installer --filename={{ php.composer_bin }} --install-dir={{ php.local_bin }}
     - watch:
-      - cmd: get-composer
+      - file: get-composer
 
 # Get COMPOSER_DEV_WARNING_TIME from the installed composer, and if that time has passed
 # then it's time to run `composer selfupdate`
@@ -29,6 +30,6 @@ update-composer:
   cmd.run:
     - name: "{{ install_file }} selfupdate"
     - unless: test $(grep --text COMPOSER_DEV_WARNING_TIME {{ install_file }} | egrep '^\s*define' | sed -e 's,[^[:digit:]],,g') \> $(php -r 'echo time();')
-    - cwd: {{ php.temp_dir }}
+    - cwd: {{ php.local_bin }}
     - require:
       - cmd: install-composer
