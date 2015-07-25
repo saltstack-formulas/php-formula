@@ -11,6 +11,7 @@
                 'apache2': 'libapache2-mod-php5',
                 'curl': 'php5-curl',
                 'fpm': 'php5-fpm',
+                'hhvm': 'hhvm',
                 'gd': 'php5-gd',
                 'gmp': 'php5-gmp',
                 'geoip': 'php5-geoip',
@@ -48,6 +49,17 @@
                         ('error_log', '/var/log/php5-fpm.log'),
                     ])),
                     ('include', '/etc/php5/fpm/pool.d/*.conf'),
+                ]),
+            },
+            'hhvm': {
+                'conf': '/etc/hhvm/server.ini',
+                'ini': '/etc/hhvm/php.ini',
+                'service': 'hhvm',
+                'defaults': odict([
+                    ('global', odict([
+                        ('pid', '/var/run/hhvm.pid'),
+                        ('error_log', '/var/log/hhvm.log'),
+                    ])),
                 ]),
             },
             'cli': {
@@ -197,6 +209,22 @@
             },
         },
         'pools': {},
+    },
+    'hhvm': {
+        'service': {
+            'enabled': True,
+            'opts': {},
+         },
+         'config': {
+            'ini': {
+                'opts': {},
+                'settings': {},
+            },
+            'conf': {
+                'opts': {},
+                'settings': {},
+            },
+        },
     },
     'cli': {
         'ini': {
