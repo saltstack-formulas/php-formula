@@ -9,7 +9,7 @@ extend:
   php_hhvm_service:
     service:
       - watch:
-        - file: php_hhvm_ini_cnfig
+        - file: php_hhvm_ini_config
         - file: php_hhvm_conf_config
       - require:
         - sls: php.ng.hhvm.config

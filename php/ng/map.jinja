@@ -55,12 +55,25 @@
                 'conf': '/etc/hhvm/server.ini',
                 'ini': '/etc/hhvm/php.ini',
                 'service': 'hhvm',
-                'defaults': odict([
-                    ('global', odict([
-                        ('pid', '/var/run/hhvm.pid'),
-                        ('error_log', '/var/log/hhvm.log'),
-                    ])),
-                ]),
+                'defaults': {},
+                'server': odict([
+                    ('pid', '/var/run/hhvm.pid'),
+                    ('hhvm.server.port', '9000'),
+                    ('hhvm.server.type', 'fastcgi'),
+                    ('hhvm.server.default_document', 'index.php'),
+                    ('hhvm.log.use_log_file', 'true'),
+                    ('hhvm.log.file', '/var/log/hhvm/error.log'),
+                    ('hhvm.repo.central.path', '/var/run/hhvm/hhvm.hhbc'),
+                    ]),
+                'php': odict([
+                     ('session.save_handler', 'files'),
+                     ('session.save_path', '/var/lib/hhvm/sessions'),
+                     ('session.gc_maxlifetime', '1440'),
+                     ('hhvm.log.level', 'Warning'),
+                     ('hhvm.log.always_log_unhandled_exceptions', 'true'),
+                     ('hhvm.log.runtime_error_reporting_level', '8191'),
+                     ('hhvm.mysql.typed_results', 'false'),
+                    ]),
             },
             'cli': {
                 'ini': '/etc/php5/cli/php.ini',
@@ -216,11 +229,11 @@
             'opts': {},
          },
          'config': {
-            'ini': {
+            'server': {
                 'opts': {},
                 'settings': {},
             },
-            'conf': {
+            'php': {
                 'opts': {},
                 'settings': {},
             },

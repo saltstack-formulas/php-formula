@@ -2,15 +2,15 @@
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/ini.jinja" import php_ini %}
 
-{% set ini_settings = php.ini.defaults %}
-{% do ini_settings.update(php.hhvm.config.ini.settings) %}
+{% set server_settings = php.lookup.hhvm.server %}
+{% do server_settings.update(php.hhvm.config.server.settings) %}
 
-{% set conf_settings = php.lookup.hhvm.defaults %}
-{% do conf_settings.update(php.hhvm.config.conf.settings) %}
+{% set php_settings = php.lookup.hhvm.php %}
+{% do php_settings.update(php.hhvm.config.php.settings) %}
 
 php_hhvm_ini_config:
-  {{ php_ini(php.lookup.hhvm.ini, php.hhvm.config.ini.opts, ini_settings) }}
+  {{ php_ini(php.lookup.hhvm.conf, php.hhvm.config.server.opts, server_settings) }}
 
 php_hhvm_conf_config:
-  {{ php_ini(php.lookup.hhvm.conf, php.hhvm.config.conf.opts, conf_settings) }}
+  {{ php_ini(php.lookup.hhvm.ini, php.hhvm.config.php.opts, php_settings) }}
 
