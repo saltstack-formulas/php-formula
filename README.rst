@@ -270,6 +270,31 @@ Manages php-fpm pool config files.
 
 Manages the php-fpm service.
 
+``php.ng.hhvm``
+---------------
+
+Meta-state that combines php.ng.hhvm states
+
+``php.ng.hhvm.config``
+----------------------
+
+Manages the php-hhvm config files
+
+``php.ng.hhvm.install``
+-----------------------
+
+Installs the php-hhvm package
+
+``php.ng.hhvm.repo``
+--------------------
+
+Configures the hhvm repo for debian/ubuntu
+
+``php.ng.hhvm.service``
+-----------------------
+
+Manages the php-hhvm service.
+
 ``php.ng.gd``
 -------------
 
