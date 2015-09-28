@@ -15,9 +15,10 @@ get-composer:
       - pkg: php
 
 install-composer:
-  cmd.wait:
+  cmd.run:
     - name: {{ php.temp_dir }}/installer --filename={{ php.composer_bin }} --install-dir={{ php.local_bin }}
-    - watch:
+    - unless: test -f {{ install_file }}
+    - require:
       - file: get-composer
 
 # Get COMPOSER_DEV_WARNING_TIME from the installed composer, and if that time has passed
