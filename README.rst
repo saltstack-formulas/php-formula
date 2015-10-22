@@ -75,7 +75,6 @@ Installs the php-gd package.
 
 Installs the php-intl package.
 
-
 ``php.imagick``
 ---------------
 
@@ -106,7 +105,6 @@ Installs the php-mbstring package.
 --------------
 
 Installs the php-mcrypt package.
-
 
 ``php.memcache``
 ----------------
@@ -196,6 +194,21 @@ Installs the php package.
 
 Installs the php-adodb package.
 
+``php.ng.apache2``
+----------------
+
+Meta-state that combines `php.ng.apache2.install`_ and `php.ng.apache2.ini`_.
+
+``php.ng.apache2.ini``
+--------------
+
+Manages the apache2 php.ini file
+
+``php.ng.apache2.install``
+--------------
+
+Installs the apache2 and libapache2-mod-php5 package. Debian Only.
+
 ``php.ng.apc``
 --------------
 
@@ -219,15 +232,15 @@ Disabled on opensuse only php5-fastcgi available.
 
 Meta-state that combines `php.ng.cli.install`_ and `php.ng.cli.ini`_.
 
-``php.ng.cli.install``
-----------------------
-
-Installs the php-cli package.
-
 ``php.ng.cli.ini``
 ------------------
 
 Manages the php-cli ini file.
+
+``php.ng.cli.install``
+----------------------
+
+Installs the php-cli package.
 
 ``php.ng.curl``
 ---------------
@@ -246,29 +259,40 @@ Meta-state that combines all php.ng.fpm states.
 
 Manages the (non-pool) php-fpm config files.
 
-
 ``php.ng.fpm.install``
 ----------------------
 
 Installs the php-fpm package.
-
 
 ``php.ng.fpm.pools``
 --------------------
 
 Meta-state that combines `php.ng.fpm.service`_ and `php.ng.fpm.pools_config`_
 
-
 ``php.ng.fpm.pools_config``
 ---------------------------
 
 Manages php-fpm pool config files.
 
-
 ``php.ng.fpm.service``
 ----------------------
 
 Manages the php-fpm service.
+
+``php.ng.gd``
+-------------
+
+Installs the php-gd package.
+
+``php.ng.geoip``
+----------------------
+
+Installs the php-geoip package.
+
+``php.ng.gmp``
+----------
+
+Installs the php-gmp package. Debian Only.
 
 ``php.ng.hhvm``
 ---------------
@@ -294,12 +318,6 @@ Configures the hhvm repo for debian/ubuntu
 -----------------------
 
 Manages the php-hhvm service.
-
-``php.ng.gd``
--------------
-
-Installs the php-gd package.
-
 
 ``php.ng.imagick``
 ------------------
@@ -337,20 +355,17 @@ Installs the php-mbstring package.
 
 Installs the php-mcrypt package.
 
-
 ``php.ng.memcache``
 -------------------
 
 Installs the php-memcache package.
 Disabled on opensuse need server:php:extensions repo
 
-
 ``php.ng.memcached``
 --------------------
 
 Installs the php-memcached package.
 Disabled on opensuse need server:php:extensions repo
-
 
 ``php.ng.mysql``
 ----------------
@@ -363,22 +378,31 @@ Installs the php-mysql package.
 Installs the php-mysqlnd package.
 Disabled on opensuse no package.
 
+``php.ng.oauth``
+---------------
+
+Installs the php-oauth package.
+
 ``php.ng.pear``
 ---------------
 
 Installs the php-pear package.
+
+``php.ng.pgsql``
+----------------
+
+Installs the php-pgsql package.
+
+``php.ng.pspell``
+----------------
+
+Installs the php-pspell package.
 
 ``php.ng.redis``
 ---------------
 
 Installs the php-redis package.
 Disabled on opensuse need server:php:extensions repo
-
-
-``php.ng.pgsql``
-----------------
-
-Installs the php-pgsql package.
 
 ``php.ng.soap``
 ---------------
@@ -401,7 +425,17 @@ Installs the php-suhosin package.
 Installs the php-xcache package.
 Disabled on opensuse need server:php:extensions repo
 
+``php.ng.xdebug``
+--------------
+
+Installs the php-xdebug package.
+
 ``php.ng.xml``
 --------------
 
 Installs the php-xml package.
+
+``php.ng.xsl``
+--------------
+
+Installs the php-xsl package.
