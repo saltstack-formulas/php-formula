@@ -395,6 +395,12 @@ Installs the php-sqlite package,
 
 Installs the php-suhosin package.
 
+``php.ng.xcache``
+---------------
+
+Installs the php-xcache package.
+Disabled on opensuse need server:php:extensions repo
+
 ``php.ng.xml``
 --------------
 
