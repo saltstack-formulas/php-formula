@@ -422,6 +422,16 @@ Installs the php-suhosin package.
 ``php.ng.xcache``
 ---------------
 
+Meta-state that combines `php.ng.xcache.install`_ and `php.ng.xcache.ini`_.
+
+``php.ng.xcache.ini``
+---------------
+
+Manages the php-xcache ini file
+
+``php.ng.xcache.install``
+---------------
+
 Installs the php-xcache package.
 Disabled on opensuse need server:php:extensions repo
 
