@@ -26,6 +26,7 @@
                 'pspell': 'php5-pspell',
                 'soap': 'php-soap',
                 'sqlite': 'php5-sqlite',
+                'xcache': 'php5-xcache',
                 'xdebug': 'php5-xdebug',
                 'xsl': 'php5-xsl',
                 'xml': 'php5',
@@ -81,6 +82,10 @@
             'apache2': {
                 'ini': '/etc/php5/apache2/php.ini',
             },
+            'xcache': {
+                'ini': '/etc/php5/mods-available/xcache.ini',
+                'defaults': {},
+            },
         },
         'RedHat': {
             'pkgs': {
@@ -103,6 +108,7 @@
                 'pear': 'php-pear',
                 'soap': 'php-soap',
                 'sqlite': 'php5-sqlite',
+                'xcache': 'php-xcache',
                 'xml': 'php-xml',
                 'redis': 'php-redis',
                 'imagick': 'php-imagick',
@@ -128,6 +134,9 @@
             },
             'cli': {
                 'ini': '/etc/php.ini',
+            },
+            'xcache': {
+                'ini': '/etc/php.d/xcache.ini',
             },
         },
         'Suse': {
@@ -185,6 +194,7 @@
                 'memcached': 'php-memcached',
                 'pear': 'php-pear',
                 'sqlite': 'php-sqlite',
+                'xcache': 'php-xcache',
                 'pgsql': 'php-pgsql',
                 'ldap': 'php-ldap',
             },
@@ -203,6 +213,9 @@
             },
             'cli': {
                 'ini': '/etc/php.ini',
+            },
+            'xcache': {
+                'ini': '/etc/php/conf.d/xcache.ini',
             },
         },
     }),
@@ -247,6 +260,50 @@
     },
     'apache2': {
         'ini': {
+            'opts': {},
+            'settings': {},
+        }
+    },
+    'xcache': {
+        'ini': {
+            'defaults': {
+                'xcache-common': {
+                  'extension':  'xcache.so',
+                },
+                'xcache.admin': {
+                  'xcache.admin.enable_auth': 'On',
+                },
+                'xcache': {
+                  'xcache.shm_scheme':  '"mmap"',
+                  'xcache.size':  '60M',
+                  'xcache.count': '1',
+                  'xcache.slots': '8K',
+                  'xcache.ttl': '0',
+                  'xcache.gc_interval': '0',
+                  'xcache.var_size':  '4M',
+                  'xcache.var_count': '1',
+                  'xcache.var_slots': '8K',
+                  'xcache.var_ttl': '0',
+                  'xcache.var_maxttl':  '0',
+                  'xcache.var_gc_interval': '300',
+                  'xcache.var_namespace_mode':  '0',
+                  'xcache.var_namespace': '""',
+                  'xcache.readonly_protection': 'Off',
+                  'xcache.mmap_path': '"/dev/zero"',
+                  'xcache.coredump_directory':  '""',
+                  'xcache.coredump_type': '0',
+                  'xcache.disable_on_crash':  'Off',
+                  'xcache.experimental':  'Off',
+                  'xcache.cacher':  'On',
+                  'xcache.stat':  'On',
+                  'xcache.optimizer': 'Off',
+                },
+                'xcache.coverager': {
+                  'xcache.coverager': 'Off',
+                  'xcache.coverager_autostart': 'On',
+                  'xcache.coveragedump_directory':  '""',
+                },
+            },
             'opts': {},
             'settings': {},
         }

@@ -134,6 +134,16 @@ php:
           PHP:
             engine: 'Off'
 
+    # php-xcache settings
+    xcache:
+      ini:
+        opts: {}
+        # contents of the xcache.ini file that are merged with defaults
+        # from php.xcache.ini.defaults. See php.ng.ini.defaults for ini-style
+        settings:
+          xcache:
+            xcache.size: 90M
+
     # global php.ini settings
     ini:
       # Default php.ini contents. These follow a strict format. The top-
