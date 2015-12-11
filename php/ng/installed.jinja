@@ -26,13 +26,25 @@
 
 {% set ppa_name        = salt['pillar.get']('php:ppa_name', 'ondrej/php5') %}
 
+php_ppa_env_{{ state }}:
+    cmd.run:
+        - name: apt-add-repository -y ppa:{{ ppa_name }}
+        - env:
+            - LC_ALL: C.UTF-8
+
 php_ppa_{{ state }}:
     pkgrepo.managed:
         - ppa: {{ ppa_name }}
+        - require:
+            - cmd: php_ppa_env_{{ state }}
+        - require_in:
+            - pkg: php_install_{{ state }}
     pkg.latest:
         - name: {{ state }}
         - pkgs: {{ pkgs|json() }}
         - refresh: True
+        - onchanges:
+            - pkgrepo: php_ppa_{{ state }}
 {% endif %}
 {% endif %}
 
