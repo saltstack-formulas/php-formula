@@ -16,7 +16,7 @@ get-composer:
 
 install-composer:
   cmd.run:
-    - name: {{ php.temp_dir }}/installer --filename={{ php.composer_bin }} --install-dir={{ php.local_bin }}
+    - name: php {{ php.temp_dir }}/installer --filename={{ php.composer_bin }} --install-dir={{ php.local_bin }}
     - unless: test -f {{ install_file }}
     - require:
       - file: get-composer
