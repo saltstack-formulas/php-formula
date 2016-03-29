@@ -1,3 +1,20 @@
+{% if salt['pillar.get']('php:version')|string == '7.0' %}
+
+{% set php = salt['grains.filter_by']({
+    'Debian': {
+        'php_pkg': 'php7.0',
+        'apcu_pkg': 'php7.0-apcu',
+        'fpm_pkg': 'php7.0-fpm',
+        'json_pkg': 'php7.0-json',
+        'memcached_pkg': 'php7.0-memcached',
+        'redis_pkg': 'php7.0-redis',
+        'dev_pkg': 'php7.0-dev',
+        'php_ini': '/etc/php7.0/apache2/php.ini',
+    },
+}, merge=salt['pillar.get']('php:lookup')) %}
+
+{% else %}
+
 {% set php = salt['grains.filter_by']({
     'Debian': {
         'php_pkg': 'php5',
@@ -19,10 +36,10 @@
         'mysql_pkg': 'php5-mysql',
         'mysqlnd_pkg': 'php5-mysqlnd',
         'pear_pkg': 'php-pear',
+        'readline_pkg': ' php5-readline',
         'soap_pkg': 'php-soap',
-      	'sqlite_pkg': 'php5-sqlite',
+        'sqlite_pkg': 'php5-sqlite',
         'redis_pkg': 'php5-redis',
-        'fpm_service': 'php5-fpm',
         'xml_pkg': 'php5',
         'imagick_pkg': 'php5-imagick',
         'suhosin_pkg': 'php5-suhosin',
@@ -59,8 +76,9 @@
         'mysql_pkg': 'php-mysql',
         'mysqlnd_pkg': 'php-mysqlnd',
         'pear_pkg': 'php-pear',
+        'readline_pkg': ' php-readline',
         'soap_pkg': 'php-soap',
-      	'sqlite_pkg': 'php5-sqlite',
+        'sqlite_pkg': 'php5-sqlite',
         'redis_pkg': 'php-redis',
         'fpm_service': 'php-fpm',
         'xml_pkg': 'php-xml',
@@ -92,6 +110,7 @@
         'mcrypt_pkg': 'php5-mcrypt',
         'mysql_pkg': 'php5-mysql',
         'pear_pkg': 'php5-pear',
+        'readline_pkg': ' php5-readline',
         'soap_pkg': 'php5-soap',
         'sqlite_pkg': 'php5-sqlite',
         'fpm_service': 'php5-fpm',
@@ -112,3 +131,5 @@
         'composer_hash': 'sha256=6a1ba6495f0bdb8e7735a7a76948b61c54b4a57b56837a9e9f93b4a0ac1f83a5',
     },
 }, merge=salt['pillar.get']('php:lookup')) %}
+
+{% endif %}
