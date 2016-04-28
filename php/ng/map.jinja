@@ -1,3 +1,285 @@
+{% if salt['pillar.get']('php:ng:version')|string == '7.0' %}
+{% set php = salt['pillar.get']('php:ng', {
+    'lookup': salt['grains.filter_by']({
+        'Debian': {
+            'pkgs': {
+                'php': 'php7.0',
+                'cgi': 'php7.0-cgi',
+                'cli': 'php7.0-cli',
+                'apache2': 'libapache2-mod-php7.0',
+                'curl': 'php7.0-curl',
+                'fpm': 'php7.0-fpm',
+                'hhvm': 'hhvm',
+                'gd': 'php7.0-gd',
+                'gmp': 'php7.0-gmp',
+                'mbstring': 'php7.0-mbstring',
+                'mcrypt': 'php7.0-mcrypt',
+                'mysql': 'php7.0-mysql',
+                'pspell': 'php7.0-pspell',
+                'soap': 'phpi7.0-soap',
+                'sqlite': 'php7.0-sqlite3',
+                'xsl': 'php7.0-xsl',
+                'xml': 'php7.0-xml',
+                'imap': 'php7.0-imap',
+                'pgsql': 'php7.0-pgsql',
+                'ldap': 'php7.0-ldap',
+                'json': 'php7.0-json'
+            },
+            'fpm': {
+                'conf': '/etc/php/7.0/fpm/php-fpm.conf',
+                'ini': '/etc/php/7.0/fpm/php.ini',
+                'pools': '/etc/php/7.0/fpm/pool.d',
+                'service': 'php7.0-fpm',
+                'defaults': odict([
+                    ('global', odict([
+                        ('pid', '/var/run/php7.0-fpm.pid'),
+                        ('error_log', '/var/log/php7.0-fpm.log'),
+                    ])),
+                    ('include', '/etc/php/7.0/fpm/pool.d/*.conf'),
+                ]),
+            },
+            'hhvm': {
+                'conf': '/etc/hhvm/server.ini',
+                'ini': '/etc/hhvm/php.ini',
+                'service': 'hhvm',
+                'defaults': {},
+                'server': odict([
+                    ('pid', '/var/run/hhvm/pid'),
+                    ('hhvm.server.port', '9000'),
+                    ('hhvm.server.type', 'fastcgi'),
+                    ('hhvm.server.default_document', 'index.php'),
+                    ('hhvm.log.use_log_file', 'true'),
+                    ('hhvm.log.file', '/var/log/hhvm/error.log'),
+                    ('hhvm.repo.central.path', '/var/run/hhvm/hhvm.hhbc'),
+                    ]),
+                'php': odict([
+                     ('session.save_handler', 'files'),
+                     ('session.save_path', '/var/lib/hhvm/sessions'),
+                     ('session.gc_maxlifetime', '1440'),
+                     ('hhvm.log.level', 'Warning'),
+                     ('hhvm.log.always_log_unhandled_exceptions', 'true'),
+                     ('hhvm.log.runtime_error_reporting_level', '8191'),
+                     ('hhvm.mysql.typed_results', 'false'),
+                    ]),
+            },
+            'cli': {
+                'ini': '/etc/php/7.0/cli/php.ini',
+            },
+            'apache2': {
+                'ini': '/etc/php/7.0/apache2/php.ini',
+            },
+        },
+      }),
+      'fpm': {
+          'service': {
+              'enabled': True,
+              'opts': {},
+          },
+          'config': {
+              'ini': {
+                'opts': {},
+                'settings': {},
+              },
+              'conf': {
+                'opts': {},
+                'settings': {},
+              },
+          },
+          'pools': {},
+      },
+      'hhvm': {
+          'service': {
+              'enabled': True,
+              'opts': {},
+           },
+           'config': {
+              'server': {
+                  'opts': {},
+                  'settings': {},
+              },
+              'php': {
+                  'opts': {},
+                  'settings': {},
+              },
+          },
+      },
+      'cli': {
+          'ini': {
+              'opts': {},
+              'settings': {},
+          }
+      },
+      'apache2': {
+          'ini': {
+              'opts': {},
+              'settings': {},
+          }
+      },
+      'ini': {
+          'defaults': {
+              'PHP': {
+                  'engine': 'On',
+                  'short_open_tag': 'Off',
+                  'asp_tags': 'Off',
+                  'precision': 14,
+                  'output_buffering': 4096,
+                  'zlib.output_compression': 'Off',
+                  'implicit_flush': 'Off',
+                  'serialize_precision': 17,
+                  'disable_functions': ['pcntl_alarm','pcntl_fork','pcntl_waitpid','pcntl_wait','pcntl_wifexited','pcntl_wifstopped','pcntl_wifsignaled',
+                      'pcntl_wexitstatus','pcntl_wtermsig','pcntl_wstopsig','pcntl_signal','pcntl_signal_dispatch','pcntl_get_last_error','pcntl_strerror',
+                      'pcntl_sigprocmask','pcntl_sigwaitinfo','pcntl_sigtimedwait','pcntl_exec','pcntl_getpriority','pcntl_setpriority'],
+                  'zend.enable_gc': 'On',
+                  'expose_php': 'On',
+                  'max_execution_time': 30,
+                  'max_input_time': 60,
+                  'max_input_nesting_level': 64,
+                  'max_input_vars': 1000,
+                  'memory_limit': '128M',
+                  'error_reporting': ['E_ALL', '~E_DEPRECATED', '~E_STRICT'],
+                  'display_errors': 'Off',
+                  'display_startup_errors': 'Off',
+                  'log_errors': 'On',
+                  'log_errors_max_len': 1024,
+                  'ignore_repeated_errors': 'Off',
+                  'ignore_repeated_source': 'Off',
+                  'report_memleaks': 'On',
+                  'track_errors': 'Off',
+                  'html_errors': 'On',
+                  'variables_order': 'GPCS',
+                  'request_order': 'GP',
+                  'register_argc_argv': 'Off',
+                  'auto_globals_jit': 'On',
+                  'post_max_size': '8M',
+                  'default_mimetype': '"text/html"',
+                  'enable_dl': 'Off',
+                  'file_uploads': 'On',
+                  'upload_max_filesize': '2M',
+                  'max_file_uploads': 20,
+                  'allow_url_fopen': 'On',
+                  'allow_url_include': 'Off',
+                  'default_socket_timeout': 60
+              },
+              'CLI Server': {
+                  'cli_server.color': 'On'
+              },
+              'Date': {
+                  'date.timezone': 'America/New_York'
+              },
+              'Pdo_mysql': {
+                  'pdo_mysql.cache_size': 2000
+              },
+              'mail function': {
+                  'SMTP': 'localhost',
+                  'mail.add_x_header': 'On'
+              },
+              'SQL': {
+                  'sql.safe_mode': 'Off'
+              },
+              'ODBC': {
+                  'odbc.allow_persistent': 'On',
+                  'odbc.check_persistent': 'On',
+                  'odbc.max_persistent': '-1',
+                  'odbc.max_links': '-1',
+                  'odbc.defaultlrl': 4096,
+                  'odbc.defaultbinmode': 1
+              },
+              'Interbase': {
+                  'ibase.allow_persistent': 1,
+                  'ibase.max_persistent': -1,
+                  'ibase.max_links': -1,
+                  'ibase.timestampformat': '"%Y-%m-%d %H:%M:%S"',
+                  'ibase.dateformat': '"%Y-%m-%d"',
+                  'ibase.timeformat': '"%H:%M:%S"'
+              },
+            'MySQL': {
+                'mysql.allow_local_infile': 'On',
+                'mysql.allow_persistent': 'On',
+                'mysql.cache_size': '2000',
+                'mysql.max_persistent': -1,
+                'mysql.max_links': -1,
+                'mysql.connect_timeout': 60,
+                'mysql.trace_mode': 'Off'
+            },
+            'MySQLi': {
+                'mysqli.max_persistent': -1,
+                'mysqli.allow_persistent': 'On',
+                'mysqli.max_links': -1,
+                'mysqli.cache_size': 2000,
+                'mysqli.default_port': 3306,
+                'mysqli.reconnect': 'Off'
+            },
+            'mysqlnd': {
+                'mysqlnd.collect_statistics': 'On',
+                'mysqlnd.collect_memory_statistics': 'Off'
+            },
+            'PostgreSQL': {
+                'pgsql.allow_persistent': 'On',
+                'pgsql.auto_reset_persistent': 'Off',
+                'pgsql.max_persistent': -1,
+                'pgsql.max_links': -1,
+                'pgsql.ignore_notice': 0,
+                'pgsql.log_notice': 0
+            },
+            'Sybase-CT': {
+                'sybct.allow_persistent': 'On',
+                'sybct.max_persistent': -1,
+                'sybct.max_links': -1,
+                'sybct.min_server_severity': 10,
+                'sybct.min_client_severity': 10
+            },
+            'bcmath': {
+                'bcmath.scale': 0
+            },
+            'Session': {
+                'session.save_handler': 'files',
+                'session.use_strict_mode': 0,
+                'session.use_cookies': 1,
+                'session.use_only_cookies': 1,
+                'session.name': 'PHPSESSID',
+                'session.auto_start': 0,
+                'session.cookie_lifetime': 0,
+                'session.cookie_path': '/',
+                'session.serialize_handler': 'php',
+                'session.gc_probability': 0,
+                'session.gc_divisor': 1000,
+                'session.gc_maxlifetime': 1440,
+                'session.bug_compat_42': 'Off',
+                'session.bug_compat_warn': 'Off',
+                'session.cache_limiter': 'nocache',
+                'session.cache_expire': '180',
+                'session.use_trans_sid': 0,
+                'session.hash_function': 0,
+                'session.hash_bits_per_character': 5,
+                'url_rewriter.tags': '"a=href,area=href,frame=src,input=src,form=fakeentry"'
+            },
+            'MSSQL': {
+                'mssql.allow_persistent': 'On',
+                'mssql.max_persistent': -1,
+                'mssql.max_links': -1,
+                'mssql.min_error_severity': 10,
+                'mssql.min_message_severity': 10,
+                'mssql.compatibility_mode': 'Off',
+                'mssql.secure_connection': 'Off'
+            },
+            'Tidy': {
+                'tidy.clean_output': 'Off'
+            },
+            'soap': {
+                'soap.wsdl_cache_enabled': 1,
+                'soap.wsdl_cache_dir': '"/tmp"',
+                'soap.wsdl_cache_ttl': 86400,
+                'soap.wsdl_cache_limit': 5
+            },
+            'ldap': {
+                'ldap.max_links': -1
+            },
+        },
+    },
+}, merge=True) %}
+
+{% else %}
+
 {% set php = salt['pillar.get']('php:ng', {
     'lookup': salt['grains.filter_by']({
         'Debian': {
@@ -184,6 +466,7 @@
         'Arch': {
             'pkgs': {
                 'php': 'php',
+                'cli': 'php',
                 'apcu': 'php-apcu',
                 'cgi': 'php-cgi',
                 'curl': 'curl',
@@ -213,7 +496,7 @@
                 },
             },
             'cli': {
-                'ini': '/etc/php.ini',
+                'ini': '/etc/php/php-cli.ini',
             },
             'xcache': {
                 'ini': '/etc/php/conf.d/xcache.ini',
@@ -260,7 +543,7 @@
     },
     'cli': {
         'ini': {
-   	        'opts': {},
+            'opts': {},
             'settings': {},
         }
     },
@@ -476,3 +759,4 @@
         },
     },
 }, merge=True) %}
+{% endif %}
