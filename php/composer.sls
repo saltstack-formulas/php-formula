@@ -18,7 +18,7 @@ get-composer:
     - mode: 0755
     - unless: test -f {{ install_file }}
     - source: https://getcomposer.org/installer
-    - source_hash: {{ php.composer_hash }}
+    - source_hash: https://composer.github.io/installer.sig
     - require:
       - pkg: php
 
