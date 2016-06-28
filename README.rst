@@ -404,6 +404,11 @@ Installs the php-pspell package.
 Installs the php-redis package.
 Disabled on opensuse need server:php:extensions repo
 
+``php.ng.snmp``
+---------------
+
+Installs the php-snmp package.
+
 ``php.ng.soap``
 ---------------
 
