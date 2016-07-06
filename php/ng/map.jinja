@@ -285,494 +285,607 @@
 
 {% else %}
 
-{% set php = salt['pillar.get']('php:ng', {
-    'lookup': salt['grains.filter_by']({
-        'Debian': {
-            'pkgs': {
-                'php': 'php5',
-                'apc': 'php-apc',
-                'apcu': 'php5-apcu',
-                'cgi': 'php5-cgi',
-                'cli': 'php5-cli',
-                'oauth': 'php5-oauth',
-                'apache2': 'libapache2-mod-php5',
-                'curl': 'php5-curl',
-                'gearman': 'php5-gearman',
-                'fpm': 'php5-fpm',
-                'hhvm': 'hhvm',
-                'gd': 'php5-gd',
-                'gmp': 'php5-gmp',
-                'geoip': 'php5-geoip',
-                'intl': 'php5-intl',
-                'mbstring': 'php5',
-                'mcrypt': 'php5-mcrypt',
-                'memcache': 'php5-memcache',
-                'memcached': 'php5-memcached',
-                'mysql': 'php5-mysql',
-                'mysqlnd': 'php5-mysqlnd',
-                'pear': 'php-pear',
-                'pspell': 'php5-pspell',
-                'snmp': 'php5-snmp',
-                'soap': 'php-soap',
-                'sqlite': 'php5-sqlite',
-                'xcache': 'php5-xcache',
-                'xdebug': 'php5-xdebug',
-                'xsl': 'php5-xsl',
-                'xml': 'php5',
-                'zip': 'php5',
-                'redis': 'php5-redis',
-                'imagick': 'php5-imagick',
-                'suhosin': 'php5-suhosin',
-                'imap': 'php5-imap',
-                'adodb': 'php5-adodb',
-                'pgsql': 'php5-pgsql',
-                'ldap': 'php5-ldap',
-                'json': 'php5-json'
-            },
-            'fpm': {
-                'conf': '/etc/php5/fpm/php-fpm.conf',
-                'ini': '/etc/php5/fpm/php.ini',
-                'pools': '/etc/php5/fpm/pool.d',
-                'service': 'php5-fpm',
-                'defaults': odict([
-                    ('global', odict([
-                        ('pid', '/var/run/php5-fpm.pid'),
-                        ('error_log', '/var/log/php5-fpm.log'),
-                    ])),
-                    ('include', '/etc/php5/fpm/pool.d/*.conf'),
-                ]),
-            },
-            'hhvm': {
-                'conf': '/etc/hhvm/server.ini',
-                'ini': '/etc/hhvm/php.ini',
-                'service': 'hhvm',
-                'defaults': {},
-                'server': odict([
-                    ('pid', '/var/run/hhvm/pid'),
-                    ('hhvm.server.port', '9000'),
-                    ('hhvm.server.type', 'fastcgi'),
-                    ('hhvm.server.default_document', 'index.php'),
-                    ('hhvm.log.use_log_file', 'true'),
-                    ('hhvm.log.file', '/var/log/hhvm/error.log'),
-                    ('hhvm.repo.central.path', '/var/run/hhvm/hhvm.hhbc'),
-                    ]),
-                'php': odict([
-                     ('session.save_handler', 'files'),
-                     ('session.save_path', '/var/lib/hhvm/sessions'),
-                     ('session.gc_maxlifetime', '1440'),
-                     ('hhvm.log.level', 'Warning'),
-                     ('hhvm.log.always_log_unhandled_exceptions', 'true'),
-                     ('hhvm.log.runtime_error_reporting_level', '8191'),
-                     ('hhvm.mysql.typed_results', 'false'),
-                    ]),
+    {% if salt['grains.get']('os') == 'Ubuntu' %}
+        {% if salt['grains.get']('osrelease')|string >= '16.04' %}
+        {% set php = salt['pillar.get']('php:ng', {
+            'lookup': salt['grains.filter_by']({
+                'Ubuntu': {
+                    'pkgs': {
+                        'php': 'php',
+                        'apc': 'php',
+                        'apcu': 'php-apcu',
+                        'cgi': 'php-cgi',
+                        'cli': 'php-cli',
+                        'oauth': 'php-oauth',
+                        'apache2': 'libapache2-mod-php',
+                        'curl': 'php-curl',
+                        'fpm': 'php-fpm',
+                        'hhvm': 'hhvm',
+                        'gd': 'php-gd',
+                        'gmp': 'php-gmp',
+                        'geoip': 'php-geoip',
+                        'intl': 'php-intl',
+                        'mbstring': 'php-mbstring',
+                        'mcrypt': 'php-mcrypt',
+                        'memcache': 'php-memcache',
+                        'memcached': 'php-memcached',
+                        'mysql': 'php-mysql',
+                        'mysqlnd': 'php',
+                        'pear': 'php-pear',
+                        'pspell': 'php-pspell',
+                        'snmp': 'php-snmp',
+                        'soap': 'php-soap',
+                        'sqlite': 'php-sqlite3',
+                        'xcache': 'php',
+                        'xdebug': 'php-xdebug',
+                        'xsl': 'php7.0-xsl',
+                        'xml': 'php-xml',
+                        'zip': 'php-zip',
+                        'redis': 'php-redis',
+                        'imagick': 'php-imagick',
+                        'suhosin': 'php',
+                        'imap': 'php-imap',
+                        'adodb': 'php-adodb',
+                        'pgsql': 'php-pgsql',
+                        'ldap': 'php-ldap',
+                        'json': 'php-json'
+                    },
+                    'fpm': {
+                        'conf': '/etc/php/7.0/fpm/php-fpm.conf',
+                        'ini': '/etc/php/7.0/fpm/php.ini',
+                        'pools': '/etc/php/7.0/fpm/pool.d',
+                        'service': 'php7.0-fpm',
+                        'defaults': odict([
+                            ('global', odict([
+                                ('pid', '/var/run/php7.0-fpm.pid'),
+                                ('error_log', '/var/log/php7.0-fpm.log'),
+                            ])),
+                            ('include', '/etc/php/7.0/fpm/pool.d/*.conf'),
+                        ]),
+                    },
+                    'hhvm': {
+                        'conf': '/etc/hhvm/server.ini',
+                        'ini': '/etc/hhvm/php.ini',
+                        'service': 'hhvm',
+                        'defaults': {},
+                        'server': odict([
+                            ('pid', '/var/run/hhvm/pid'),
+                            ('hhvm.server.port', '9000'),
+                            ('hhvm.server.type', 'fastcgi'),
+                            ('hhvm.server.default_document', 'index.php'),
+                            ('hhvm.log.use_log_file', 'true'),
+                            ('hhvm.log.file', '/var/log/hhvm/error.log'),
+                            ('hhvm.repo.central.path', '/var/run/hhvm/hhvm.hhbc'),
+                            ]),
+                        'php': odict([
+                             ('session.save_handler', 'files'),
+                             ('session.save_path', '/var/lib/hhvm/sessions'),
+                             ('session.gc_maxlifetime', '1440'),
+                             ('hhvm.log.level', 'Warning'),
+                             ('hhvm.log.always_log_unhandled_exceptions', 'true'),
+                             ('hhvm.log.runtime_error_reporting_level', '8191'),
+                             ('hhvm.mysql.typed_results', 'false'),
+                            ]),
+                    },
+                    'cli': {
+                        'ini': '/etc/php/7.0/cli/php.ini',
+                    },
+                    'apache2': {
+                        'ini': '/etc/php/7.0/apache2/php.ini',
+                    },
+                    'xcache': {
+                        'ini': '/etc/php/7.0/mods-available/xcache.ini',
+                        'defaults': {},
+                        },
+                    },
+                    }, grain="os"), 
+                    }, merge=True) %}
+            {% else %}
+            {% set php = salt['pillar.get']('php:ng', {
+            'lookup': salt['grains.filter_by']({
+                'Ubuntu': {
+                    'pkgs': {
+                        'php': 'php5',
+                        'apc': 'php-apc',
+                        'apcu': 'php5-apcu',
+                        'cgi': 'php5-cgi',
+                        'cli': 'php5-cli',
+                        'oauth': 'php5-oauth',
+                        'apache2': 'libapache2-mod-php5',
+                        'curl': 'php5-curl',
+                        'gearman': 'php5-gearman',
+                        'fpm': 'php5-fpm',
+                        'hhvm': 'hhvm',
+                        'gd': 'php5-gd',
+                        'gmp': 'php5-gmp',
+                        'geoip': 'php5-geoip',
+                        'intl': 'php5-intl',
+                        'mbstring': 'php5',
+                        'mcrypt': 'php5-mcrypt',
+                        'memcache': 'php5-memcache',
+                        'memcached': 'php5-memcached',
+                        'mysql': 'php5-mysql',
+                        'mysqlnd': 'php5-mysqlnd',
+                        'pear': 'php-pear',
+                        'pspell': 'php5-pspell',
+                        'snmp': 'php5-snmp',
+                        'soap': 'php-soap',
+                        'sqlite': 'php5-sqlite',
+                        'xcache': 'php5-xcache',
+                        'xdebug': 'php5-xdebug',
+                        'xsl': 'php5-xsl',
+                        'xml': 'php5',
+                        'zip': 'php5',
+                        'redis': 'php5-redis',
+                        'imagick': 'php5-imagick',
+                        'suhosin': 'php5-suhosin',
+                        'imap': 'php5-imap',
+                        'adodb': 'php5-adodb',
+                        'pgsql': 'php5-pgsql',
+                        'ldap': 'php5-ldap',
+                        'json': 'php5-json'
+                    },
+                    'fpm': {
+                        'conf': '/etc/php5/fpm/php-fpm.conf',
+                        'ini': '/etc/php5/fpm/php.ini',
+                        'pools': '/etc/php5/fpm/pool.d',
+                        'service': 'php5-fpm',
+                        'defaults': odict([
+                            ('global', odict([
+                                ('pid', '/var/run/php5-fpm.pid'),
+                                ('error_log', '/var/log/php5-fpm.log'),
+                            ])),
+                            ('include', '/etc/php5/fpm/pool.d/*.conf'),
+                        ]),
+                    },
+                    'hhvm': {
+                        'conf': '/etc/hhvm/server.ini',
+                        'ini': '/etc/hhvm/php.ini',
+                        'service': 'hhvm',
+                        'defaults': {},
+                        'server': odict([
+                            ('pid', '/var/run/hhvm/pid'),
+                            ('hhvm.server.port', '9000'),
+                            ('hhvm.server.type', 'fastcgi'),
+                            ('hhvm.server.default_document', 'index.php'),
+                            ('hhvm.log.use_log_file', 'true'),
+                            ('hhvm.log.file', '/var/log/hhvm/error.log'),
+                            ('hhvm.repo.central.path', '/var/run/hhvm/hhvm.hhbc'),
+                            ]),
+                        'php': odict([
+                             ('session.save_handler', 'files'),
+                             ('session.save_path', '/var/lib/hhvm/sessions'),
+                             ('session.gc_maxlifetime', '1440'),
+                             ('hhvm.log.level', 'Warning'),
+                             ('hhvm.log.always_log_unhandled_exceptions', 'true'),
+                             ('hhvm.log.runtime_error_reporting_level', '8191'),
+                             ('hhvm.mysql.typed_results', 'false'),
+                            ]),
+                    },
+                    'cli': {
+                        'ini': '/etc/php5/cli/php.ini',
+                    },
+                    'apache2': {
+                        'ini': '/etc/php5/apache2/php.ini',
+                    },
+                    'xcache': {
+                        'ini': '/etc/php5/mods-available/xcache.ini',
+                        'defaults': {},
+                        },
+                    },
+                    }, grain="os"), 
+                    }, merge=True) %}
+                {% endif %}
+            {% else %}
+        {% set php = salt['pillar.get']('php:ng', {
+            'lookup': salt['grains.filter_by']({
+                'Debian': {
+                    'pkgs': {
+                        'php': 'php5',
+                        'apc': 'php-apc',
+                        'apcu': 'php5-apcu',
+                        'cgi': 'php5-cgi',
+                        'cli': 'php5-cli',
+                        'oauth': 'php5-oauth',
+                        'apache2': 'libapache2-mod-php5',
+                        'curl': 'php5-curl',
+                        'gearman': 'php5-gearman',
+                        'fpm': 'php5-fpm',
+                        'hhvm': 'hhvm',
+                        'gd': 'php5-gd',
+                        'gmp': 'php5-gmp',
+                        'geoip': 'php5-geoip',
+                        'intl': 'php5-intl',
+                        'mbstring': 'php5',
+                        'mcrypt': 'php5-mcrypt',
+                        'memcache': 'php5-memcache',
+                        'memcached': 'php5-memcached',
+                        'mysql': 'php5-mysql',
+                        'mysqlnd': 'php5-mysqlnd',
+                        'pear': 'php-pear',
+                        'pspell': 'php5-pspell',
+                        'snmp': 'php5-snmp',
+                        'soap': 'php-soap',
+                        'sqlite': 'php5-sqlite',
+                        'xcache': 'php5-xcache',
+                        'xdebug': 'php5-xdebug',
+                        'xsl': 'php5-xsl',
+                        'xml': 'php5',
+                        'zip': 'php5',
+                        'redis': 'php5-redis',
+                        'imagick': 'php5-imagick',
+                        'suhosin': 'php5-suhosin',
+                        'imap': 'php5-imap',
+                        'adodb': 'php5-adodb',
+                        'pgsql': 'php5-pgsql',
+                        'ldap': 'php5-ldap',
+                        'json': 'php5-json'
+                    },
+                    'fpm': {
+                        'conf': '/etc/php5/fpm/php-fpm.conf',
+                        'ini': '/etc/php5/fpm/php.ini',
+                        'pools': '/etc/php5/fpm/pool.d',
+                        'service': 'php5-fpm',
+                        'defaults': odict([
+                            ('global', odict([
+                                ('pid', '/var/run/php5-fpm.pid'),
+                                ('error_log', '/var/log/php5-fpm.log'),
+                            ])),
+                            ('include', '/etc/php5/fpm/pool.d/*.conf'),
+                        ]),
+                    },
+                    'hhvm': {
+                        'conf': '/etc/hhvm/server.ini',
+                        'ini': '/etc/hhvm/php.ini',
+                        'service': 'hhvm',
+                        'defaults': {},
+                        'server': odict([
+                            ('pid', '/var/run/hhvm/pid'),
+                            ('hhvm.server.port', '9000'),
+                            ('hhvm.server.type', 'fastcgi'),
+                            ('hhvm.server.default_document', 'index.php'),
+                            ('hhvm.log.use_log_file', 'true'),
+                            ('hhvm.log.file', '/var/log/hhvm/error.log'),
+                            ('hhvm.repo.central.path', '/var/run/hhvm/hhvm.hhbc'),
+                            ]),
+                        'php': odict([
+                             ('session.save_handler', 'files'),
+                             ('session.save_path', '/var/lib/hhvm/sessions'),
+                             ('session.gc_maxlifetime', '1440'),
+                             ('hhvm.log.level', 'Warning'),
+                             ('hhvm.log.always_log_unhandled_exceptions', 'true'),
+                             ('hhvm.log.runtime_error_reporting_level', '8191'),
+                             ('hhvm.mysql.typed_results', 'false'),
+                            ]),
+                    },
+                    'cli': {
+                        'ini': '/etc/php5/cli/php.ini',
+                    },
+                    'apache2': {
+                        'ini': '/etc/php5/apache2/php.ini',
+                    },
+                    'xcache': {
+                        'ini': '/etc/php5/mods-available/xcache.ini',
+                        'defaults': {},
+                    },
+                },
+                'RedHat': {
+                    'pkgs': {
+                        'php': 'php',
+                        'apc': 'php-pecl-apc',
+                        'apcu': 'php-pecl-apcu',
+                        'cgi': 'php-cgi',
+                        'cli': 'php-cli',
+                        'composer': 'composer',
+                        'oauth': 'php-oauth',
+                        'curl': ['php-common', 'curl'],
+                        'fpm': 'php-fpm',
+                        'gd': 'php-gd',
+                        'intl': 'php-intl',
+                        'mbstring': 'php-mbstring',
+                        'mcrypt': 'php-mcrypt',
+                        'memcache': 'php-pecl-memcache',
+                        'memcached': 'php-pecl-memcached',
+                        'opcache': 'php-pecl-zendopcache',
+                        'mysql': 'php-mysql',
+                        'mysqlnd': 'php-mysqlnd',
+                        'pear': 'php-pear',
+                        'snmp': 'php-snmp',
+                        'soap': 'php-soap',
+                        'sqlite': 'php5-sqlite',
+                        'xcache': 'php-xcache',
+                        'xml': 'php-xml',
+                        'zip': 'php',
+                        'redis': 'php-redis',
+                        'imagick': 'php-imagick',
+                        'suhosin': 'php-suhosin',
+                        'imap': 'php-imap',
+                        'adodb': 'php-adodb',
+                        'pgsql': 'php-pgsql',
+                        'ldap': 'php-ldap',
+                        'json': 'php-common',
+                    },
+                    'fpm': {
+                        'conf': '/etc/php-fpm.conf',
+                        'ini': '/etc/php.ini',
+                        'pools': '/etc/php-fpm.d',
+                        'service': 'php-fpm',
+                        'defaults': {
+                            'global': {
+                                'pid': '/var/run/php-fpm/php-fpm.pid',
+                                'error_log': '/var/log/php-fpm/error.log',
+                            },
+                            'include': '/etc/php-fpm.d/*.conf',
+                        },
+                    },
+                    'cli': {
+                        'ini': '/etc/php.ini',
+                    },
+                    'xcache': {
+                        'ini': '/etc/php.d/xcache.ini',
+                    },
+                },
+                'Suse': {
+                    'pkgs': {
+                        'php': 'php5',
+                        'apache2': 'apache2-mod_php5',
+                        'cli': 'php5',
+                        'oauth': 'php5-oauth',
+                        'curl': 'php5-curl',
+                        'fpm': 'php5-fpm',
+                        'gd': 'php5-gd',
+                        'intl': 'php5-intl',
+                        'mbstring': 'php5-mbstring',
+                        'mcrypt': 'php5-mcrypt',
+                        'mysql': 'php5-mysql',
+                        'pear': 'php5-pear',
+                        'snmp': 'php5-snmp',
+                        'soap': 'php5-soap',
+                        'sqlite': 'php5-sqlite',
+                        'xml': ['php5-xmlreader','php5-xmlwriter','php5-xmlrpc'],
+                        'zip': 'php5-zip',
+                        'suhosin': 'php5-suhosin',
+                        'imap': 'php5-imap',
+                        'adodb': 'php5-dba',
+                        'pgsql': 'php5-pgsql',
+                        'ldap': 'php5-ldap',
+                        'json': 'php5-json',
+                    },
+                    'fpm': {
+                        'conf': '/etc/php-fpm.conf',
+                        'ini': '/etc/php.ini',
+                        'pools': '/etc/php-fpm.d',
+                        'service': 'php-fpm',
+                        'defaults': {
+                            'global': {
+                                'pid': '/var/run/php-fpm/php-fpm.pid',
+                                'error_log': '/var/log/php-fpm/error.log',
+                            },
+                            'include': '/etc/php-fpm.d/*.conf',
+                        },
+                    },
+                    'cli': {
+                        'ini': '/etc/php.ini',
+                    },
+                },
             },
             'cli': {
-                'ini': '/etc/php5/cli/php.ini',
+                'ini': {
+                    'opts': {},
+                    'settings': {},
+                }
             },
             'apache2': {
-                'ini': '/etc/php5/apache2/php.ini',
+                'ini': {
+                    'opts': {},
+                    'settings': {},
+                }
             },
             'xcache': {
-                'ini': '/etc/php5/mods-available/xcache.ini',
-                'defaults': {},
-            },
-        },
-        'RedHat': {
-            'pkgs': {
-                'php': 'php',
-                'apc': 'php-pecl-apc',
-                'apcu': 'php-pecl-apcu',
-                'cgi': 'php-cgi',
-                'cli': 'php-cli',
-                'composer': 'composer',
-                'oauth': 'php-oauth',
-                'curl': ['php-common', 'curl'],
-                'fpm': 'php-fpm',
-                'gd': 'php-gd',
-                'intl': 'php-intl',
-                'mbstring': 'php-mbstring',
-                'mcrypt': 'php-mcrypt',
-                'memcache': 'php-pecl-memcache',
-                'memcached': 'php-pecl-memcached',
-                'opcache': 'php-pecl-zendopcache',
-                'mysql': 'php-mysql',
-                'mysqlnd': 'php-mysqlnd',
-                'pear': 'php-pear',
-                'snmp': 'php-snmp',
-                'soap': 'php-soap',
-                'sqlite': 'php5-sqlite',
-                'xcache': 'php-xcache',
-                'xml': 'php-xml',
-                'zip': 'php',
-                'redis': 'php-redis',
-                'imagick': 'php-imagick',
-                'suhosin': 'php-suhosin',
-                'imap': 'php-imap',
-                'adodb': 'php-adodb',
-                'pgsql': 'php-pgsql',
-                'ldap': 'php-ldap',
-                'json': 'php-common',
-            },
-            'fpm': {
-                'conf': '/etc/php-fpm.conf',
-                'ini': '/etc/php.ini',
-                'pools': '/etc/php-fpm.d',
-                'service': 'php-fpm',
-                'defaults': {
-                    'global': {
-                        'pid': '/var/run/php-fpm/php-fpm.pid',
-                        'error_log': '/var/log/php-fpm/error.log',
+                'ini': {
+                    'defaults': {
+                        'xcache-common': {
+                          'extension':  'xcache.so',
+                        },
+                        'xcache.admin': {
+                          'xcache.admin.enable_auth': 'On',
+                        },
+                        'xcache': {
+                          'xcache.shm_scheme':  '"mmap"',
+                          'xcache.size':  '60M',
+                          'xcache.count': '1',
+                          'xcache.slots': '8K',
+                          'xcache.ttl': '0',
+                          'xcache.gc_interval': '0',
+                          'xcache.var_size':  '4M',
+                          'xcache.var_count': '1',
+                          'xcache.var_slots': '8K',
+                          'xcache.var_ttl': '0',
+                          'xcache.var_maxttl':  '0',
+                          'xcache.var_gc_interval': '300',
+                          'xcache.var_namespace_mode':  '0',
+                          'xcache.var_namespace': '""',
+                          'xcache.readonly_protection': 'Off',
+                          'xcache.mmap_path': '"/dev/zero"',
+                          'xcache.coredump_directory':  '""',
+                          'xcache.coredump_type': '0',
+                          'xcache.disable_on_crash':  'Off',
+                          'xcache.experimental':  'Off',
+                          'xcache.cacher':  'On',
+                          'xcache.stat':  'On',
+                          'xcache.optimizer': 'Off',
+                        },
+                        'xcache.coverager': {
+                          'xcache.coverager': 'Off',
+                          'xcache.coverager_autostart': 'On',
+                          'xcache.coveragedump_directory':  '""',
+                        },
                     },
-                    'include': '/etc/php-fpm.d/*.conf',
-                },
+                    'opts': {},
+                    'settings': {},
+                }
             },
-            'cli': {
-                'ini': '/etc/php.ini',
-            },
-            'xcache': {
-                'ini': '/etc/php.d/xcache.ini',
-            },
-        },
-        'Suse': {
-            'pkgs': {
-                'php': 'php5',
-                'apache2': 'apache2-mod_php5',
-                'cli': 'php5',
-                'oauth': 'php5-oauth',
-                'curl': 'php5-curl',
-                'fpm': 'php5-fpm',
-                'gd': 'php5-gd',
-                'intl': 'php5-intl',
-                'mbstring': 'php5-mbstring',
-                'mcrypt': 'php5-mcrypt',
-                'mysql': 'php5-mysql',
-                'pear': 'php5-pear',
-                'snmp': 'php5-snmp',
-                'soap': 'php5-soap',
-                'sqlite': 'php5-sqlite',
-                'xml': ['php5-xmlreader','php5-xmlwriter','php5-xmlrpc'],
-                'zip': 'php5-zip',
-                'suhosin': 'php5-suhosin',
-                'imap': 'php5-imap',
-                'adodb': 'php5-dba',
-                'pgsql': 'php5-pgsql',
-                'ldap': 'php5-ldap',
-                'json': 'php5-json',
-            },
-            'fpm': {
-                'conf': '/etc/php-fpm.conf',
-                'ini': '/etc/php.ini',
-                'pools': '/etc/php-fpm.d',
-                'service': 'php-fpm',
-                'defaults': {
-                    'global': {
-                        'pid': '/var/run/php-fpm/php-fpm.pid',
-                        'error_log': '/var/log/php-fpm/error.log',
-                    },
-                    'include': '/etc/php-fpm.d/*.conf',
-                },
-            },
-            'cli': {
-                'ini': '/etc/php.ini',
-            },
-        },
-        'Arch': {
-            'pkgs': {
-                'php': 'php',
-                'cli': 'php',
-                'apcu': 'php-apcu',
-                'cgi': 'php-cgi',
-                'curl': 'curl',
-                'fpm': 'php-fpm',
-                'gd': 'php-gd',
-                'geoip': 'php-geoip',
-                'intl': 'php-intl',
-                'mcrypt': 'php-mcrypt',
-                'memcache': 'php-memcache',
-                'memcached': 'php-memcached',
-                'pear': 'php-pear',
-                'snmp': 'php-snmp',
-                'sqlite': 'php-sqlite',
-                'xcache': 'php-xcache',
-                'pgsql': 'php-pgsql',
-                'ldap': 'php-ldap',
-                'tidy': 'php-tidy',
-            },
-            'fpm': {
-                'conf': '/etc/php/php-fpm.conf',
-                'ini': '/etc/php/php.ini',
-                'pools': '/etc/php/fpm.d',
-                'service': 'php-fpm',
-                'defaults': {
-                    'global': {
-                        'pid': '/run/php-fpm/php-fpm.pid',
-                        'error_log': 'log/php-fpm.log',
-                    },
-                    'include': '/etc/php/fpm.d/*.conf',
-                },
-            },
-            'cli': {
-                'ini': '/etc/php/php-cli.ini',
-            },
-            'xcache': {
-                'ini': '/etc/php/conf.d/xcache.ini',
-            },
-        },
-    }),
-    'fpm': {
-        'service': {
-            'enabled': True,
-            'opts': {},
-        },
-        'config': {
             'ini': {
-              'opts': {},
-              'settings': {},
-            },
-            'conf': {
-              'opts': {},
-              'settings': {},
-            },
-        },
-        'pools': {
-          'default.conf': {
-            'enabled': False,
-            'opts': {},
-          },
-        },
-    },
-    'hhvm': {
-        'service': {
-            'enabled': True,
-            'opts': {},
-         },
-         'config': {
-            'server': {
-                'opts': {},
-                'settings': {},
-            },
-            'php': {
-                'opts': {},
-                'settings': {},
-            },
-        },
-    },
-    'cli': {
-        'ini': {
-            'opts': {},
-            'settings': {},
-        }
-    },
-    'apache2': {
-        'ini': {
-            'opts': {},
-            'settings': {},
-        }
-    },
-    'xcache': {
-        'ini': {
-            'defaults': {
-                'xcache-common': {
-                  'extension':  'xcache.so',
+                'defaults': {
+                    'PHP': {
+                        'engine': 'On',
+                        'short_open_tag': 'Off',
+                        'asp_tags': 'Off',
+                        'precision': 14,
+                        'output_buffering': 4096,
+                        'zlib.output_compression': 'Off',
+                        'implicit_flush': 'Off',
+                        'serialize_precision': 17,
+                        'disable_functions': ['pcntl_alarm','pcntl_fork','pcntl_waitpid','pcntl_wait','pcntl_wifexited','pcntl_wifstopped','pcntl_wifsignaled',
+                            'pcntl_wexitstatus','pcntl_wtermsig','pcntl_wstopsig','pcntl_signal','pcntl_signal_dispatch','pcntl_get_last_error','pcntl_strerror',
+                            'pcntl_sigprocmask','pcntl_sigwaitinfo','pcntl_sigtimedwait','pcntl_exec','pcntl_getpriority','pcntl_setpriority'],
+                        'zend.enable_gc': 'On',
+                        'expose_php': 'On',
+                        'max_execution_time': 30,
+                        'max_input_time': 60,
+                        'max_input_nesting_level': 64,
+                        'max_input_vars': 1000,
+                        'memory_limit': '128M',
+                        'error_reporting': ['E_ALL', '~E_DEPRECATED', '~E_STRICT'],
+                        'display_errors': 'Off',
+                        'display_startup_errors': 'Off',
+                        'log_errors': 'On',
+                        'log_errors_max_len': 1024,
+                        'ignore_repeated_errors': 'Off',
+                        'ignore_repeated_source': 'Off',
+                        'report_memleaks': 'On',
+                        'track_errors': 'Off',
+                        'html_errors': 'On',
+                        'variables_order': 'GPCS',
+                        'request_order': 'GP',
+                        'register_argc_argv': 'Off',
+                        'auto_globals_jit': 'On',
+                        'post_max_size': '8M',
+                        'default_mimetype': '"text/html"',
+                        'enable_dl': 'Off',
+                        'file_uploads': 'On',
+                        'upload_max_filesize': '2M',
+                        'max_file_uploads': 20,
+                        'allow_url_fopen': 'On',
+                        'allow_url_include': 'Off',
+                        'default_socket_timeout': 60
+                    },
+                    'CLI Server': {
+                        'cli_server.color': 'On'
+                    },
+                    'Date': {
+                        'date.timezone': 'America/New_York'
+                    },
+                    'Pdo_mysql': {
+                        'pdo_mysql.cache_size': 2000
+                    },
+                    'mail function': {
+                        'SMTP': 'localhost',
+                        'mail.add_x_header': 'On'
+                    },
+                    'SQL': {
+                        'sql.safe_mode': 'Off'
+                    },
+                    'ODBC': {
+                        'odbc.allow_persistent': 'On',
+                        'odbc.check_persistent': 'On',
+                        'odbc.max_persistent': '-1',
+                        'odbc.max_links': '-1',
+                        'odbc.defaultlrl': 4096,
+                        'odbc.defaultbinmode': 1
+                    },
+                    'Interbase': {
+                        'ibase.allow_persistent': 1,
+                        'ibase.max_persistent': -1,
+                        'ibase.max_links': -1,
+                        'ibase.timestampformat': '"%Y-%m-%d %H:%M:%S"',
+                        'ibase.dateformat': '"%Y-%m-%d"',
+                        'ibase.timeformat': '"%H:%M:%S"'
+                    },
+                    'MySQL': {
+                        'mysql.allow_local_infile': 'On',
+                        'mysql.allow_persistent': 'On',
+                        'mysql.cache_size': '2000',
+                        'mysql.max_persistent': -1,
+                        'mysql.max_links': -1,
+                        'mysql.connect_timeout': 60,
+                        'mysql.trace_mode': 'Off'
+                    },
+                    'MySQLi': {
+                        'mysqli.max_persistent': -1,
+                        'mysqli.allow_persistent': 'On',
+                        'mysqli.max_links': -1,
+                        'mysqli.cache_size': 2000,
+                        'mysqli.default_port': 3306,
+                        'mysqli.reconnect': 'Off'
+                    },
+                    'mysqlnd': {
+                        'mysqlnd.collect_statistics': 'On',
+                        'mysqlnd.collect_memory_statistics': 'Off'
+                    },
+                    'PostgreSQL': {
+                        'pgsql.allow_persistent': 'On',
+                        'pgsql.auto_reset_persistent': 'Off',
+                        'pgsql.max_persistent': -1,
+                        'pgsql.max_links': -1,
+                        'pgsql.ignore_notice': 0,
+                        'pgsql.log_notice': 0
+                    },
+                    'Sybase-CT': {
+                        'sybct.allow_persistent': 'On',
+                        'sybct.max_persistent': -1,
+                        'sybct.max_links': -1,
+                        'sybct.min_server_severity': 10,
+                        'sybct.min_client_severity': 10
+                    },
+                    'bcmath': {
+                        'bcmath.scale': 0
+                    },
+                    'Session': {
+                        'session.save_handler': 'files',
+                        'session.use_strict_mode': 0,
+                        'session.use_cookies': 1,
+                        'session.use_only_cookies': 1,
+                        'session.name': 'PHPSESSID',
+                        'session.auto_start': 0,
+                        'session.cookie_lifetime': 0,
+                        'session.cookie_path': '/',
+                        'session.serialize_handler': 'php',
+                        'session.gc_probability': 0,
+                        'session.gc_divisor': 1000,
+                        'session.gc_maxlifetime': 1440,
+                        'session.bug_compat_42': 'Off',
+                        'session.bug_compat_warn': 'Off',
+                        'session.cache_limiter': 'nocache',
+                        'session.cache_expire': '180',
+                        'session.use_trans_sid': 0,
+                        'session.hash_function': 0,
+                        'session.hash_bits_per_character': 5,
+                        'url_rewriter.tags': '"a=href,area=href,frame=src,input=src,form=fakeentry"'
+                    },
+                    'MSSQL': {
+                        'mssql.allow_persistent': 'On',
+                        'mssql.max_persistent': -1,
+                        'mssql.max_links': -1,
+                        'mssql.min_error_severity': 10,
+                        'mssql.min_message_severity': 10,
+                        'mssql.compatibility_mode': 'Off',
+                        'mssql.secure_connection': 'Off'
+                    },
+                    'Tidy': {
+                        'tidy.clean_output': 'Off'
+                    },
+                    'soap': {
+                        'soap.wsdl_cache_enabled': 1,
+                        'soap.wsdl_cache_dir': '"/tmp"',
+                        'soap.wsdl_cache_ttl': 86400,
+                        'soap.wsdl_cache_limit': 5
+                    },
+                    'ldap': {
+                        'ldap.max_links': -1
+                    },
                 },
-                'xcache.admin': {
-                  'xcache.admin.enable_auth': 'On',
-                },
-                'xcache': {
-                  'xcache.shm_scheme':  '"mmap"',
-                  'xcache.size':  '60M',
-                  'xcache.count': '1',
-                  'xcache.slots': '8K',
-                  'xcache.ttl': '0',
-                  'xcache.gc_interval': '0',
-                  'xcache.var_size':  '4M',
-                  'xcache.var_count': '1',
-                  'xcache.var_slots': '8K',
-                  'xcache.var_ttl': '0',
-                  'xcache.var_maxttl':  '0',
-                  'xcache.var_gc_interval': '300',
-                  'xcache.var_namespace_mode':  '0',
-                  'xcache.var_namespace': '""',
-                  'xcache.readonly_protection': 'Off',
-                  'xcache.mmap_path': '"/dev/zero"',
-                  'xcache.coredump_directory':  '""',
-                  'xcache.coredump_type': '0',
-                  'xcache.disable_on_crash':  'Off',
-                  'xcache.experimental':  'Off',
-                  'xcache.cacher':  'On',
-                  'xcache.stat':  'On',
-                  'xcache.optimizer': 'Off',
-                },
-                'xcache.coverager': {
-                  'xcache.coverager': 'Off',
-                  'xcache.coverager_autostart': 'On',
-                  'xcache.coveragedump_directory':  '""',
-                },
             },
-            'opts': {},
-            'settings': {},
-        }
-    },
-    'ini': {
-        'defaults': {
-            'PHP': {
-                'engine': 'On',
-                'short_open_tag': 'Off',
-                'asp_tags': 'Off',
-                'precision': 14,
-                'output_buffering': 4096,
-                'zlib.output_compression': 'Off',
-                'implicit_flush': 'Off',
-                'serialize_precision': 17,
-                'disable_functions': ['pcntl_alarm','pcntl_fork','pcntl_waitpid','pcntl_wait','pcntl_wifexited','pcntl_wifstopped','pcntl_wifsignaled',
-                    'pcntl_wexitstatus','pcntl_wtermsig','pcntl_wstopsig','pcntl_signal','pcntl_signal_dispatch','pcntl_get_last_error','pcntl_strerror',
-                    'pcntl_sigprocmask','pcntl_sigwaitinfo','pcntl_sigtimedwait','pcntl_exec','pcntl_getpriority','pcntl_setpriority'],
-                'zend.enable_gc': 'On',
-                'expose_php': 'On',
-                'max_execution_time': 30,
-                'max_input_time': 60,
-                'max_input_nesting_level': 64,
-                'max_input_vars': 1000,
-                'memory_limit': '128M',
-                'error_reporting': ['E_ALL', '~E_DEPRECATED', '~E_STRICT'],
-                'display_errors': 'Off',
-                'display_startup_errors': 'Off',
-                'log_errors': 'On',
-                'log_errors_max_len': 1024,
-                'ignore_repeated_errors': 'Off',
-                'ignore_repeated_source': 'Off',
-                'report_memleaks': 'On',
-                'track_errors': 'Off',
-                'html_errors': 'On',
-                'variables_order': 'GPCS',
-                'request_order': 'GP',
-                'register_argc_argv': 'Off',
-                'auto_globals_jit': 'On',
-                'post_max_size': '8M',
-                'default_mimetype': '"text/html"',
-                'enable_dl': 'Off',
-                'file_uploads': 'On',
-                'upload_max_filesize': '2M',
-                'max_file_uploads': 20,
-                'allow_url_fopen': 'On',
-                'allow_url_include': 'Off',
-                'default_socket_timeout': 60
-            },
-            'CLI Server': {
-                'cli_server.color': 'On'
-            },
-            'Date': {
-                'date.timezone': 'America/New_York'
-            },
-            'Pdo_mysql': {
-                'pdo_mysql.cache_size': 2000
-            },
-            'mail function': {
-                'SMTP': 'localhost',
-                'mail.add_x_header': 'On'
-            },
-            'SQL': {
-                'sql.safe_mode': 'Off'
-            },
-            'ODBC': {
-                'odbc.allow_persistent': 'On',
-                'odbc.check_persistent': 'On',
-                'odbc.max_persistent': '-1',
-                'odbc.max_links': '-1',
-                'odbc.defaultlrl': 4096,
-                'odbc.defaultbinmode': 1
-            },
-            'Interbase': {
-                'ibase.allow_persistent': 1,
-                'ibase.max_persistent': -1,
-                'ibase.max_links': -1,
-                'ibase.timestampformat': '"%Y-%m-%d %H:%M:%S"',
-                'ibase.dateformat': '"%Y-%m-%d"',
-                'ibase.timeformat': '"%H:%M:%S"'
-            },
-            'MySQL': {
-                'mysql.allow_local_infile': 'On',
-                'mysql.allow_persistent': 'On',
-                'mysql.cache_size': '2000',
-                'mysql.max_persistent': -1,
-                'mysql.max_links': -1,
-                'mysql.connect_timeout': 60,
-                'mysql.trace_mode': 'Off'
-            },
-            'MySQLi': {
-                'mysqli.max_persistent': -1,
-                'mysqli.allow_persistent': 'On',
-                'mysqli.max_links': -1,
-                'mysqli.cache_size': 2000,
-                'mysqli.default_port': 3306,
-                'mysqli.reconnect': 'Off'
-            },
-            'mysqlnd': {
-                'mysqlnd.collect_statistics': 'On',
-                'mysqlnd.collect_memory_statistics': 'Off'
-            },
-            'PostgreSQL': {
-                'pgsql.allow_persistent': 'On',
-                'pgsql.auto_reset_persistent': 'Off',
-                'pgsql.max_persistent': -1,
-                'pgsql.max_links': -1,
-                'pgsql.ignore_notice': 0,
-                'pgsql.log_notice': 0
-            },
-            'Sybase-CT': {
-                'sybct.allow_persistent': 'On',
-                'sybct.max_persistent': -1,
-                'sybct.max_links': -1,
-                'sybct.min_server_severity': 10,
-                'sybct.min_client_severity': 10
-            },
-            'bcmath': {
-                'bcmath.scale': 0
-            },
-            'Session': {
-                'session.save_handler': 'files',
-                'session.use_strict_mode': 0,
-                'session.use_cookies': 1,
-                'session.use_only_cookies': 1,
-                'session.name': 'PHPSESSID',
-                'session.auto_start': 0,
-                'session.cookie_lifetime': 0,
-                'session.cookie_path': '/',
-                'session.serialize_handler': 'php',
-                'session.gc_probability': 0,
-                'session.gc_divisor': 1000,
-                'session.gc_maxlifetime': 1440,
-                'session.bug_compat_42': 'Off',
-                'session.bug_compat_warn': 'Off',
-                'session.cache_limiter': 'nocache',
-                'session.cache_expire': '180',
-                'session.use_trans_sid': 0,
-                'session.hash_function': 0,
-                'session.hash_bits_per_character': 5,
-                'url_rewriter.tags': '"a=href,area=href,frame=src,input=src,form=fakeentry"'
-            },
-            'MSSQL': {
-                'mssql.allow_persistent': 'On',
-                'mssql.max_persistent': -1,
-                'mssql.max_links': -1,
-                'mssql.min_error_severity': 10,
-                'mssql.min_message_severity': 10,
-                'mssql.compatibility_mode': 'Off',
-                'mssql.secure_connection': 'Off'
-            },
-            'Tidy': {
-                'tidy.clean_output': 'Off'
-            },
-            'soap': {
-                'soap.wsdl_cache_enabled': 1,
-                'soap.wsdl_cache_dir': '"/tmp"',
-                'soap.wsdl_cache_ttl': 86400,
-                'soap.wsdl_cache_limit': 5
-            },
-            'ldap': {
-                'ldap.max_links': -1
-            },
-        },
-    },
-}, merge=True) %}
+            }, merge=True) %}
+        {% endif %}
 {% endif %}
