@@ -249,6 +249,11 @@ Installs the php5-curl package on Debian, and ensures that curl itself is
 installed for RedHat systems, this is due to the curl libs being provided by
 php-common, which will get installed with the main php package.
 
+``php.ng.gearman``
+---------------
+
+Installs the php-gearman package.
+
 ``php.ng.fpm``
 --------------
 
