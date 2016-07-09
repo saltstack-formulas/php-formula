@@ -669,6 +669,86 @@
                         'ini': '/etc/php.ini',
                     },
                 },
+                'Arch': {
+                    'pkgs': {
+                        'php': 'php',
+                        'cli': 'php',
+                        'apcu': 'php-apcu',
+                        'cgi': 'php-cgi',
+                        'curl': 'curl',
+                        'fpm': 'php-fpm',
+                        'gd': 'php-gd',
+                        'geoip': 'php-geoip',
+                        'intl': 'php-intl',
+                        'mcrypt': 'php-mcrypt',
+                        'memcache': 'php-memcache',
+                        'memcached': 'php-memcached',
+                        'pear': 'php-pear',
+                        'snmp': 'php-snmp',
+                        'sqlite': 'php-sqlite',
+                        'xcache': 'php-xcache',
+                        'pgsql': 'php-pgsql',
+                        'ldap': 'php-ldap',
+                        'tidy': 'php-tidy',
+                    },
+                    'fpm': {
+                        'conf': '/etc/php/php-fpm.conf',
+                        'ini': '/etc/php/php.ini',
+                        'pools': '/etc/php/fpm.d',
+                        'service': 'php-fpm',
+                        'defaults': {
+                            'global': {
+                                'pid': '/run/php-fpm/php-fpm.pid',
+                                'error_log': 'log/php-fpm.log',
+                            },
+                            'include': '/etc/php/fpm.d/*.conf',
+                        },
+                    },
+                    'cli': {
+                        'ini': '/etc/php/php-cli.ini',
+                    },
+                    'xcache': {
+                        'ini': '/etc/php/conf.d/xcache.ini',
+                    },
+                },
+            }),
+            'fpm': {
+                'service': {
+                    'enabled': True,
+                    'opts': {},
+                },
+                'config': {
+                    'ini': {
+                      'opts': {},
+                      'settings': {},
+                    },
+                    'conf': {
+                      'opts': {},
+                      'settings': {},
+                    },
+                },
+                'pools': {
+                  'default.conf': {
+                    'enabled': False,
+                    'opts': {},
+                  },
+                },
+            },
+            'hhvm': {
+                'service': {
+                    'enabled': True,
+                    'opts': {},
+                 },
+                 'config': {
+                    'server': {
+                        'opts': {},
+                        'settings': {},
+                    },
+                    'php': {
+                        'opts': {},
+                        'settings': {},
+                    },
+                },
             },
             'cli': {
                 'ini': {
