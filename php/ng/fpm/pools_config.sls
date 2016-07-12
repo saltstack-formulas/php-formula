@@ -11,7 +11,7 @@
 
 {% for pool, config in php.fpm.pools.iteritems() %}
 {% set state = 'php_fpm_pool_conf_' ~ loop.index0 %}
-{% set fpath = path_join(pool, php.lookup.fpm.pools) %}
+{% set fpath = path_join(config.get('filename', pool), php.lookup.fpm.pools) %}
 
 {{ state }}:
 {% if config.enabled %}
