@@ -459,3 +459,69 @@ Installs the php-xml package.
 --------------
 
 Installs the php-xsl package.
+
+``php.ng.dev``
+--------------
+
+Installs the php5-dev and build-essential package.
+
+``php.ng.gettext``
+--------------
+
+Installs the php-gettext package.
+
+``php.ng.geshi``
+--------------
+
+Installs the php-geshi package.
+
+``php.ng.mdb2``
+--------------
+
+Installs the php-mdb2 package.
+
+``php.ng.mdb2-driver-mysql``
+--------------
+
+Installs the php-mdb2-driver-mysql package.
+
+``php.ng.mdb2-driver-pgsql``
+--------------
+
+Installs the php-mdb2-driver-pgsql package.
+
+``php.ng.seclib``
+--------------
+
+Installs the php-seclib package.
+
+``php.ng.tidy``
+--------------
+
+Installs the php-tidy package.
+
+``php.ng.tcpdf``
+--------------
+
+Installs the php-tcpdf package.
+
+``php.ng.twig``
+--------------
+
+Installs the php-twig package.
+
+``php.ng.cache-lite``
+--------------
+
+Installs the php-cache-lite package.
+
+``php.ng.console-table``
+--------------
+
+Installs the php-console-table package.
+
+``php.ng.ffmpeg``
+--------------
+
+Installs the php-ffmpeg package and ffmpeg.
+
