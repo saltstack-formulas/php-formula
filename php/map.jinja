@@ -117,7 +117,6 @@
                 'ldap_pkg': 'php5-ldap',
                 'php_ini': '/etc/php5/apache2/php.ini',
                 'dev_pkg': 'php5-dev',
-                'dev_pkg': 'php5',
                 'mongo_pecl': 'mongo',
                 'mongo_ext': 'mongo.so',
                 'ext_conf_path': '/etc/php5/mods-available',
@@ -164,7 +163,6 @@
             'ldap_pkg': 'php5-ldap',
             'php_ini': '/etc/php5/apache2/php.ini',
             'dev_pkg': 'php5-dev',
-            'dev_pkg': 'php5',
             'mongo_pecl': 'mongo',
             'mongo_ext': 'mongo.so',
             'ext_conf_path': '/etc/php5/mods-available',
@@ -245,7 +243,7 @@
             'temp_dir': '/tmp',
             'composer_bin': 'composer',
         },
-        
+
     }, merge=salt['pillar.get']('php:lookup')) %}
     {% endif %}
 {% endif %}
