@@ -5,11 +5,6 @@
 {% if grains['os_family']=="Debian" %}
 {% set use_ppa        = salt['pillar.get']('php:use_ppa', none) %}
 
-{% if (grains['oscodename']=="Jessie" and salt['pillar.get']('php:version')=="7.0") or salt['pillar.get']('php:use_dotdeb') %}
-include:
-  - php.dotdeb
-{% endif %}
-
 {% if use_ppa is not none %}
 
 {% set ppa_name        = salt['pillar.get']('php:ppa_name', 'ondrej/php5') %}
