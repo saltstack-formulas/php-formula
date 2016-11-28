@@ -4,6 +4,9 @@ sudo sed -i 's/security.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
 SCRIPT
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-14.04"
+  config.vm.provider :virtualbox do |vb|
+    vb.gui = true
+  end
   config.vm.synced_folder "salt/", "/srv/salt/"
   config.vm.synced_folder "./php/", "/srv/salt/formulas/php/"
   config.vm.provision "shell", inline: $script

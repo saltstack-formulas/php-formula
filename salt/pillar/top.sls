@@ -1,3 +1,3 @@
 base:
-  'vagrant.vm':
+  '*':
     - php
