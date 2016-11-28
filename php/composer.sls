@@ -1,4 +1,5 @@
 {% from "php/map.jinja" import php with context %}
+
 {% set install_file = php.local_bin + '/' + php.composer_bin %}
 
 {% if not salt['config.get']('sudo_user') %}

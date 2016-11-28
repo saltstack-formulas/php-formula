@@ -3,7 +3,7 @@ sudo sed -i 's/us.archive.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
 sudo sed -i 's/security.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
 SCRIPT
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/ubuntu-16.04"
+  config.vm.box = "ubuntu/xenial64"
   config.vm.provider :virtualbox do |vb|
     vb.gui = true
   end

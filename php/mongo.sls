@@ -4,6 +4,7 @@
 
 include:
   - php
+  - php.xml
   - php.dev
   - php.pear
 
@@ -27,6 +28,6 @@ php-mongo-conf:
 
 php-mongo-enable:
   cmd.run:
-    - name: php5enmod mongo
+    - name: {{ php.phpenmod_command }} mongo
     - require:
       - file: php-mongo-conf
