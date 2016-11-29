@@ -1,6 +1,6 @@
 $script = <<SCRIPT
-sudo sed -i 's/us.archive.ubuntu.com/mirror.pnl.gov/g;s/archive.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
-sudo sed -i 's/security.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
+sudo sed -i 's/us.archive.ubuntu.com/mirrors.cat.pdx.edu/g;s/archive.ubuntu.com/mirrors.cat.pdx.edu/g' /etc/apt/sources.list
+sudo sed -i 's/security.ubuntu.com/mirrors.cat.pdx.edu/g' /etc/apt/sources.list
 SCRIPT
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-14.04"
