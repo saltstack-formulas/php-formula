@@ -4,7 +4,7 @@ php:
   # Use ppa instead the default repository (only Debian family)
   use_ppa: True
   # Set the ppa name (valid only if use_ppa is not none)
-  ppa_name: 'ondrej/php5'
+  ppa_name: 'ondrej/php'
   # Set the MongoDB driver version. You can specify (optionally) the driver version
   # when you add the php.mongo formula to your execution list
   mongo_version: "1.5.5"

@@ -4,20 +4,38 @@ include:
   - php
   - php.dev
 
+{% set php_version = salt['pillar.get']('php:version', '7.0')|string %}
+
+{% if salt['grains.get']('os') == "Ubuntu" %}
+  {% if php_version >= '7.0' %}
+    {% set suhosin_ext = php.suhosin7_ext %}
+    {% set suhosin_name = 'suhosin7' %}
+    {% set suhosin_repo = php.suhosin7_repo %}
+    {% set tmppath = '/tmp/suhosin7' %}
+  {% else %}
+    {% set suhosin_ext = php.suhosin5_ext %}
+    {% set suhosin_name = 'suhosin' %}
+    {% set suhosin_repo = php.suhosin5_repo %}
+    {% set tmppath = '/tmp/suhosin5' %}
+  {% endif %}
+{% else %}
+  {% set suhosin_ext = php.suhosin5_ext %}
+  {% set suhosin_name = 'suhosin' %}
+  {% set suhosin_repo = php.suhosin5_repo %}
+  {% set tmppath = '/tmp/suhosin5' %}
+{% endif %}
+
 build-pkgs:
   pkg.installed:
     - pkgs: {{ php.build_pkgs }}
 
-{% set php_version = salt['pillar.get']('php:version', '7.0')|string %}
-
-{% if php_version >= '7.0' %}
 git:
   pkg.installed: []
 
-suhosin7-repo:
+suhosin-source:
   git.latest:
-    - name: {{ php.suhosin7_repo }}
-    - target: /tmp/suhosin7
+    - name: {{ suhosin_repo }}
+    - target: {{ tmppath }}
     - require:
       - pkg: git
 
@@ -28,63 +46,29 @@ install-suhosin:
         ./configure
         make
         make install
-    - cwd: /tmp/suhosin7
+    - cwd: {{ tmppath }}
     - shell: /bin/bash
     - runas: root
     - require:
       - pkg: build-pkgs
-      - git: suhosin7-repo
+      - git: suhosin-source
 
 php-suhosin-conf:
   file.managed:
-    - name: {{ php.ext_conf_path }}/suhosin7.ini
+    - name: {{ php.ext_conf_path }}/{{ suhosin_name }}.ini
     - contents: |
-        extension={{ php.suhosin7_ext }}
+        extension={{ suhosin_ext }}
     - require:
       - pkg: {{ php.php_pkg }}
       - cmd: install-suhosin
+    - unless:
+      - test -f {{ php.ext_conf_path }}/{{ suhosin_name }}.ini
+
+{% if salt['grains.get']('os_family') == "Debian" %}
 
 php-suhosin-enable:
   cmd.run:
-    - name: {{ php.phpenmod_command }} suhosin7
-    - require:
-      - file: php-suhosin-conf
-
-{% else %}
-
-suhosin-pkg:
-  archive.extracted:
-    - name: /tmp/suhosin
-    - source: https://download.suhosin.org/suhosin-{{ php.suhosin_version }}.tar.gz
-    - source_hash: sha256=c02d76c4e7ce777910a37c18181cb67fd9e90efe0107feab3de3131b5f89bcea
-    - archive_format: tar
-
-install-suhosin:
-  cmd.run:
-    - name: |
-        phpize
-        ./configure
-        make
-        make install
-    - cwd: /tmp/suhosin/suhosin-{{ php.suhosin_version }}
-    - shell: /bin/bash
-    - runas: root
-    - require:
-      - pkg: build-pkgs
-      - archive: suhosin-pkg
-
-php-suhosin-conf:
-  file.managed:
-    - name: {{ php.ext_conf_path }}/suhosin.ini
-    - contents: |
-        extension={{ php.suhosin_ext }}
-    - require:
-      - pkg: {{ php.php_pkg }}
-      - cmd: install-suhosin
-
-php-suhosin-enable:
-  cmd.run:
-    - name: {{ php.phpenmod_command }} suhosin
+    - name: {{ php.phpenmod_command }} {{ suhosin_name }}
     - require:
       - file: php-suhosin-conf
 
