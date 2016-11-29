@@ -3,7 +3,7 @@ sudo sed -i 's/us.archive.ubuntu.com/mirror.pnl.gov/g;s/archive.ubuntu.com/mirro
 sudo sed -i 's/security.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
 SCRIPT
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-16.04"
   config.vm.provider :virtualbox do |vb|
     vb.gui = true
   end
@@ -11,12 +11,13 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./php/", "/srv/salt/formulas/php/"
   config.vm.provision "shell", inline: $script
   config.vm.provision :salt do |salt|
-  	salt.bootstrap_options = "-D"
-  	salt.colorize = true
-  	salt.log_level = "debug"
-  	salt.masterless = true
-  	salt.minion_config = "salt/minion"
-  	salt.minion_id = "salt-local"
-  	salt.install_type = "stable"
+    salt.bootstrap_options = "-D"
+    salt.colorize = true
+    salt.log_level = "debug"
+    salt.masterless = true
+    salt.minion_config = "salt/minion"
+    salt.minion_id = "salt-local"
+    salt.install_type = "stable 2016.3.4"
+    salt.verbose = true
   end
 end

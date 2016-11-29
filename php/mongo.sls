@@ -17,11 +17,11 @@ php-mongo:
 {% endif %}
     - require:
       - pkg: {{ php.pear_pkg }}
-      - pkg: openssl_dev
+      - pkg: build_pkgs
 
-openssl_dev:
+build_pkgs:
   pkg.installed:
-    - pkgs: {{ php.openssl_dev }}
+    - pkgs: {{ php.build_pkgs }}
 
 php-mongo-conf:
   file.managed:
