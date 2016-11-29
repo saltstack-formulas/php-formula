@@ -18,11 +18,20 @@ include:
     {% set suhosin_repo = php.suhosin5_repo %}
     {% set tmppath = '/tmp/suhosin5' %}
   {% endif %}
+{% elif salt['grains.get']('os_family') == "RedHat" %}
+  {% if grains['osmajorrelease'] == "7" %}
+    {% set suhosin_ext = php.suhosin5_ext %}
+    {% set suhosin_name = 'suhosin' %}
+    {% set suhosin_repo = php.suhosin5_repo %}
+    {% set tmppath = '/tmp/suhosin5' %}
+  {% else %}
+    {# RHEL version 6 contains PHP 5.3, which is not supported by Suhosin #}
+  {% endif %}
 {% else %}
-  {% set suhosin_ext = php.suhosin5_ext %}
-  {% set suhosin_name = 'suhosin' %}
-  {% set suhosin_repo = php.suhosin5_repo %}
-  {% set tmppath = '/tmp/suhosin5' %}
+    {% set suhosin_ext = php.suhosin5_ext %}
+    {% set suhosin_name = 'suhosin' %}
+    {% set suhosin_repo = php.suhosin5_repo %}
+    {% set tmppath = '/tmp/suhosin5' %}
 {% endif %}
 
 build-pkgs:
