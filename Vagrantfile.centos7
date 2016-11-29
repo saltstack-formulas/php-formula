@@ -1,15 +1,10 @@
-$script = <<SCRIPT
-sudo sed -i 's/us.archive.ubuntu.com/mirror.pnl.gov/g;s/archive.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
-sudo sed -i 's/security.ubuntu.com/mirror.pnl.gov/g' /etc/apt/sources.list
-SCRIPT
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "centos/7"
   config.vm.provider :virtualbox do |vb|
     vb.gui = true
   end
   config.vm.synced_folder "salt/", "/srv/salt/"
   config.vm.synced_folder "./php/", "/srv/salt/formulas/php/"
-  config.vm.provision "shell", inline: $script
   config.vm.provision :salt do |salt|
   	salt.bootstrap_options = "-D"
   	salt.colorize = true

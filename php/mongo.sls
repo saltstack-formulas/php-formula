@@ -11,12 +11,17 @@ include:
 php-mongo:
   pecl.installed:
     - name: {{ php.mongo_pecl }}
-    - require:
-      - pkg: {{ php.pear_pkg }}
     - defaults: True
 {% if version is not none %}
     - version: {{ version }}
 {% endif %}
+    - require:
+      - pkg: {{ php.pear_pkg }}
+      - pkg: openssl_dev
+
+openssl_dev:
+  pkg.installed:
+    - pkgs: {{ php.openssl_dev }}
 
 php-mongo-conf:
   file.managed:
@@ -26,8 +31,12 @@ php-mongo-conf:
     - require:
       - pkg: {{ php.php_pkg }}
 
+{% if salt['grains.get']('os_family') == "Debian" %}
+
 php-mongo-enable:
   cmd.run:
     - name: {{ php.phpenmod_command }} mongo
     - require:
       - file: php-mongo-conf
+
+{% endif %}
