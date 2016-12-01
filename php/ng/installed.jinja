@@ -26,21 +26,16 @@
 
   {% if use_ppa %}
     {% set ppa_name = salt['pillar.get']('php:ppa_name', 'ondrej/php') %}
+    {% set current_php = salt['alternatives.show_current']('php') %}
 
-php_ppa_env_{{ state }}:
-  cmd.run:
-    - name: apt-add-repository -y ppa:{{ ppa_name }}
+php_ppa_{{ state }}:
+  pkgrepo.managed:
+    - ppa: {{ ppa_name }}
     - env:
       - LC_ALL: C.UTF-8
     - unless:
       - test -f /etc/apt/sources.list.d/ondrej-ubuntu-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
       - test -f /etc/apt/sources.list.d/ondrej-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
-
-php_ppa_{{ state }}:
-  pkgrepo.managed:
-    - ppa: {{ ppa_name }}
-    - require:
-      - cmd: php_ppa_env_{{ state }}
     - require_in:
       - pkg: php_install_{{ state }}
   pkg.latest:
@@ -54,10 +49,11 @@ php_{{ phpng_version }}_link:
   alternatives.set:
     - name: php
     - path: /usr/bin/php{{ phpng_version }}
-    - require:
+    - require_in:
       - pkg: php_install_{{ state }}
     - onlyif:
-      - test $(update-alternatives --list php) != $(which php{{ phpng_version }})
+      - which php
+      - test {{ current_php }} != $(which php{{ phpng_version }})
 
   {% endif %}
 {% endif %}
