@@ -4,6 +4,7 @@
 
 
 {% set pkginfo = php.lookup.pkgs.get(state) %}
+{% set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
 
 {% set pkgs = [] %}
 {% set specials = [] %}
@@ -20,33 +21,45 @@
     {% do pkgs.append(pkginfo) %}
 {% endif %}
 
-{% if grains['os_family']=="Debian" and (state == 'cli' or state == 'fpm' or state == 'php') %}
-{% set use_ppa        = salt['pillar.get']('php:use_ppa', False) %}
-{% if use_ppa %}
+{% if grains['os_family'] == "Debian" and (state == 'cli' or state == 'fpm' or state == 'php') %}
+  {% set use_ppa = salt['pillar.get']('php:use_ppa', False) %}
 
-{% set ppa_name        = salt['pillar.get']('php:ppa_name', 'ondrej/php5') %}
+  {% if use_ppa %}
+    {% set ppa_name = salt['pillar.get']('php:ppa_name', 'ondrej/php') %}
 
 php_ppa_env_{{ state }}:
-    cmd.run:
-        - name: apt-add-repository -y ppa:{{ ppa_name }}
-        - env:
-            - LC_ALL: C.UTF-8
-        - unless: test -f /etc/apt/sources.list.d/{{ ppa_name|replace('/', '-', 1) }}-trusty.list
+  cmd.run:
+    - name: apt-add-repository -y ppa:{{ ppa_name }}
+    - env:
+      - LC_ALL: C.UTF-8
+    - unless:
+      - test -f /etc/apt/sources.list.d/ondrej-ubuntu-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
+      - test -f /etc/apt/sources.list.d/ondrej-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
 
 php_ppa_{{ state }}:
-    pkgrepo.managed:
-        - ppa: {{ ppa_name }}
-        - require:
-            - cmd: php_ppa_env_{{ state }}
-        - require_in:
-            - pkg: php_install_{{ state }}
-    pkg.latest:
-        - name: {{ state }}
-        - pkgs: {{ pkgs|json() }}
-        - refresh: True
-        - onchanges:
-            - pkgrepo: php_ppa_{{ state }}
-{% endif %}
+  pkgrepo.managed:
+    - ppa: {{ ppa_name }}
+    - require:
+      - cmd: php_ppa_env_{{ state }}
+    - require_in:
+      - pkg: php_install_{{ state }}
+  pkg.latest:
+    - name: {{ state }}
+    - pkgs: {{ pkgs|json() }}
+    - refresh: True
+    - onchanges:
+      - pkgrepo: php_ppa_{{ state }}
+
+php_{{ phpng_version }}_link:
+  alternatives.set:
+    - name: php
+    - path: /usr/bin/php{{ phpng_version }}
+    - require:
+      - pkg: php_install_{{ state }}
+    - onlyif:
+      - test $(update-alternatives --list php) != $(which php{{ phpng_version }})
+
+  {% endif %}
 {% endif %}
 
 php_install_{{ state }}:

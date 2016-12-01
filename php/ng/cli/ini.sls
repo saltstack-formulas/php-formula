@@ -1,5 +1,5 @@
 # Manages the php cli main ini file
-{% from 'php/ng/map.jinja' import php with context %}
+{% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/ini.jinja" import php_ini %}
 
 {% set settings = php.ini.defaults %}
