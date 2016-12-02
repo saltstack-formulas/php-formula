@@ -45,6 +45,8 @@ suhosin-source:
   git.latest:
     - name: {{ suhosin_repo }}
     - target: {{ tmppath }}
+    - unless:
+      - test -d {{ tmppath }}
     - require:
       - pkg: git
 
@@ -58,6 +60,8 @@ install-suhosin:
     - cwd: {{ tmppath }}
     - shell: /bin/bash
     - runas: root
+    - unless:
+      - test -e {{ php.ext_conf_path }}/{{ suhosin_name }}.ini
     - require:
       - pkg: build-pkgs
       - git: suhosin-source
@@ -67,11 +71,12 @@ php-suhosin-conf:
     - name: {{ php.ext_conf_path }}/{{ suhosin_name }}.ini
     - contents: |
         extension={{ suhosin_ext }}
+        suhosin.executor.include.whitelist=phar
     - require:
       - pkg: {{ php.php_pkg }}
       - cmd: install-suhosin
     - unless:
-      - test -f {{ php.ext_conf_path }}/{{ suhosin_name }}.ini
+      - test -e {{ php.ext_conf_path }}/{{ suhosin_name }}.ini
 
 {% if salt['grains.get']('os_family') == "Debian" %}
 
