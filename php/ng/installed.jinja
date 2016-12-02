@@ -1,4 +1,4 @@
-# Template for installing packages.
+{# Template for installing packages #}
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/macro.jinja" import sls_block %}
 
@@ -33,9 +33,9 @@ php_ppa_{{ state }}:
     - ppa: {{ ppa_name }}
     - env:
       - LC_ALL: C.UTF-8
-    - unless:
-      - test -f /etc/apt/sources.list.d/ondrej-ubuntu-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
-      - test -f /etc/apt/sources.list.d/ondrej-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
+    - onlyif:
+      - test ! -e /etc/apt/sources.list.d/ondrej-ubuntu-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
+      - test ! -e /etc/apt/sources.list.d/ondrej-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
     - require_in:
       - pkg: php_install_{{ state }}
   pkg.latest:
