@@ -505,11 +505,6 @@ Installs the php-tidy package.
 
 Installs the php-tcpdf package.
 
-``php.ng.twig``
---------------
-
-Installs the php-twig package.
-
 ``php.ng.cache-lite``
 --------------
 
@@ -519,9 +514,3 @@ Installs the php-cache-lite package.
 --------------
 
 Installs the php-console-table package.
-
-``php.ng.ffmpeg``
---------------
-
-Installs the php-ffmpeg package and ffmpeg.
-
