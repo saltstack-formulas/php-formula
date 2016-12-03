@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
 {% if salt['grains.get']('os') == "Ubuntu" %}
     {% set use_ppa = salt['pillar.get']('php:use_ppa', False) %}
     {% if use_ppa %}

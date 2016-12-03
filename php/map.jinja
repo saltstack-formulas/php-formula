@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
 {% if salt['grains.get']('os') == "Ubuntu" %}
     {% set use_ppa = salt['pillar.get']('php:use_ppa', False) %}
     {% if use_ppa %}
@@ -217,9 +220,12 @@
         'Debian': {
             'adodb_pkg': 'php5-adodb',
             'apc_pkg': 'php-apc',
-            'apcu_pkg': 'php5-apcu',
+            'apcu_pkg': salt['grains.filter_by']({
+                'wheezy': 'php-apc',
+                'jessie': 'php5-apcu',
+            }, grain='oscodename'),
             'bcmath_pkg': 'php5-fpm',
-            'build_pkgs': ['libssl-dev', 'libcurl4-openssl-dev'],
+            'build_pkgs': ['libssl-dev', 'libcurl4-openssl-dev', 'build-essential'],
             'cgi_pkg': 'php5-cgi',
             'cli_pkg': 'php5-cli',
             'composer_bin': 'composer',
