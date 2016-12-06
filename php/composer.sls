@@ -1,14 +1,14 @@
-{% from "php/map.jinja" import php with context %}
+{%- from "php/map.jinja" import php with context %}
 
-{% set install_file = php.local_bin + '/' + php.composer_bin %}
+{%- set install_file = php.local_bin + '/' + php.composer_bin %}
 
-{% if not salt['config.get']('sudo_user') %}
-  {% set salt_user = salt['config.get']('user', 'root') %}
-{% else %}
-  {% set salt_user = salt['config.get']('sudo_user', 'root') %}
-{% endif %}
+{%- if not salt['config.get']('sudo_user') %}
+  {%- set salt_user = salt['config.get']('user', 'root') %}
+{%- else %}
+  {%- set salt_user = salt['config.get']('sudo_user', 'root') %}
+{%- endif %}
 
-{% set salt_user_home = salt['user.info'](salt_user).get('home', '/root') %}
+{%- set salt_user_home = salt['user.info'](salt_user).get('home', '/root') %}
 
 include:
   - php

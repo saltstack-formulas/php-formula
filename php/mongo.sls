@@ -1,6 +1,6 @@
-{% from "php/map.jinja"  import php with context %}
+{%- from "php/map.jinja"  import php with context %}
 
-{% set version = salt['pillar.get']('php:mongo_version', none) %}
+{%- set version = salt['pillar.get']('php:mongo_version', none) %}
 
 include:
   - php
@@ -12,9 +12,9 @@ php-mongo:
   pecl.installed:
     - name: {{ php.mongo_pecl }}
     - defaults: True
-{% if version is not none %}
+{%- if version is not none %}
     - version: {{ version }}
-{% endif %}
+{%- endif %}
     - require:
       - pkg: {{ php.pear_pkg }}
       - pkg: build_pkgs
@@ -31,7 +31,7 @@ php-mongo-conf:
     - require:
       - pkg: {{ php.php_pkg }}
 
-{% if salt['grains.get']('os_family') == "Debian" %}
+{%- if salt['grains.get']('os_family') == "Debian" %}
 
 php-mongo-enable:
   cmd.run:
@@ -39,4 +39,4 @@ php-mongo-enable:
     - require:
       - file: php-mongo-conf
 
-{% endif %}
+{%- endif %}

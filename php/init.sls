@@ -3,14 +3,14 @@
 {%- if not 'ng' in salt['pillar.get']('php', {}) %}
 
   {%- if grains['os'] == "Ubuntu" %}
-    {%- set use_ppa = salt['pillar.get']('php:use_ppa', False) %}
+    {%- set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
 
-    {%- if use_ppa %}
-      {%- set ppa_name = salt['pillar.get']('php:ppa_name', 'ondrej/php') %}
+    {%- if use_external_repo %}
+      {%- set external_repo_name = salt['pillar.get']('php:external_repo_name', 'ondrej/php') %}
 
 php_from_ppa:
   pkgrepo.managed:
-    - ppa: {{ ppa_name }}
+    - ppa: {{ external_repo_name }}
     - env:
       - LC_ALL: "C.UTF-8"
     - require_in:
