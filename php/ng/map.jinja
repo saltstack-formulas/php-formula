@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-{% if salt['grains.get']('os') == "Ubuntu" %}
-    {% set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
-    {% if use_external_repo %}
-        {% set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
-        {% if salt['grains.get']('osrelease')|string >= '16.04' %}
-            {% set php = salt['pillar.get']('php:ng', {
+{%- if salt['grains.get']('os') == "Ubuntu" %}
+    {%- set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
+    {%- if use_external_repo %}
+        {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
+        {%- if salt['grains.get']('osrelease')|string >= '16.04' %}
+            {%- set php = salt['pillar.get']('php:ng', {
                 'lookup': salt['grains.filter_by']({
                     'Debian': {
                         'pkgs': {
@@ -323,8 +323,8 @@
                     },
                 },
             }, merge=True) %}
-        {% else %}
-            {% set php = salt['pillar.get']('php:ng', {
+        {%- else %}
+            {%- set php = salt['pillar.get']('php:ng', {
                 'lookup': salt['grains.filter_by']({
                     'Debian': {
                         'pkgs': {
@@ -641,10 +641,10 @@
                     },
                 },
             }, merge=True) %}
-        {% endif %}
-    {% else %}
-        {% if salt['grains.get']('osrelease')|string >= '16.04' %}
-            {% set php = salt['pillar.get']('php:ng', {
+        {%- endif %}
+    {%- else %}
+        {%- if salt['grains.get']('osrelease')|string >= '16.04' %}
+            {%- set php = salt['pillar.get']('php:ng', {
                 'lookup': salt['grains.filter_by']({
                     'Ubuntu': {
                         'pkgs': {
@@ -683,6 +683,7 @@
                             'pear': 'php-pear',
                             'pgsql': 'php-pgsql',
                             'php': 'php',
+                            'phpenmod_command': 'phpenmod',
                             'pspell': 'php-pspell',
                             'redis': 'php-redis',
                             'seclib': ['php-phpseclib', 'php-seclib'],
@@ -1004,8 +1005,8 @@
                     },
                 },
             }, merge=True) %}
-        {% else %}
-            {% set php = salt['pillar.get']('php:ng', {
+        {%- else %}
+            {%- set php = salt['pillar.get']('php:ng', {
                 'lookup': salt['grains.filter_by']({
                     'Ubuntu': {
                         'pkgs': {
@@ -1022,7 +1023,10 @@
                             'console-table': 'php-console-table',
                             'curl': 'php5-curl',
                             'dev': ['php5-dev','build-essential'],
-                            'ext_conf_path': '/etc/php5/mods-available',
+                            'ext_conf_path': salt['grains.filter_by']({
+                                'precise': '/etc/php5/conf.d',
+                                'default': '/etc/php5/mods-available',
+                            }, grain='oscodename'),
                             'fpm': 'php5-fpm',
                             'gd': 'php5-gd',
                             'gearman': 'php5-gearman',
@@ -1053,7 +1057,10 @@
                             'pear': 'php-pear',
                             'pgsql': 'php5-pgsql',
                             'php': 'php5',
-                            'phpenmod_command': 'php5enmod',
+                            'phpenmod_command': salt['grains.filter_by']({
+                                'precise': 'true',
+                                'default': 'php5enmod',
+                            }, grain='oscodename'),
                             'pspell': 'php5-pspell',
                             'redis': 'php5-redis',
                             'seclib': 'php-seclib',
@@ -1380,10 +1387,10 @@
                     },
                 },
             }, merge=True) %}
-        {% endif %}
-    {% endif %}
-{% else %}
-    {% set php = salt['pillar.get']('php:ng', {
+        {%- endif %}
+    {%- endif %}
+{%- else %}
+    {%- set php = salt['pillar.get']('php:ng', {
         'lookup': salt['grains.filter_by']({
             'Debian': {
                 'pkgs': {
@@ -1928,4 +1935,4 @@
             },
         },
     }, merge=True) %}
-{% endif %}
+{%- endif %}
