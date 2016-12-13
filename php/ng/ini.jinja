@@ -1,4 +1,6 @@
-# php.ini management macro.
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+{# php.ini management macro. #}
 {% from "php/ng/macro.jinja" import sls_block, serialize %}
 
 {% macro php_ini(filename, opts={}, settings={}) %}

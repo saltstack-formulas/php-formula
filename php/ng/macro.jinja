@@ -1,11 +1,13 @@
-# Returns a generic block of values suitable for inclusion in most states.
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+{# Returns a generic block of values suitable for inclusion in most states #}
 {% macro sls_block(dict, ind=4) %}
     {% for key, value in dict.items() %}
 {{ '-'|indent(ind, True) }} {{ key }}: {{ value|json() }}
     {% endfor %}
 {% endmacro %}
 
-# Serializes dicts into sequenced data
+{# Serializes dicts into sequenced data #}
 {%- macro serialize(data) -%}
     {%- if data is mapping -%}
         {%- set ret = [] -%}

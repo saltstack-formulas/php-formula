@@ -1,21 +1,27 @@
-{% from "php/map.jinja"  import php with context %}
+{%- from "php/map.jinja"  import php with context %}
 
-{% set version = salt['pillar.get']('php:mongo_version', none) %}
+{%- set version = salt['pillar.get']('php:mongo_version', none) %}
 
 include:
   - php
+  - php.xml
   - php.dev
   - php.pear
 
 php-mongo:
   pecl.installed:
     - name: {{ php.mongo_pecl }}
+    - defaults: True
+{%- if version is not none %}
+    - version: {{ version }}
+{%- endif %}
     - require:
       - pkg: {{ php.pear_pkg }}
-    - defaults: True
-{% if version is not none %}
-    - version: {{ version }}
-{% endif %}
+      - pkg: build_pkgs
+
+build_pkgs:
+  pkg.installed:
+    - pkgs: {{ php.build_pkgs }}
 
 php-mongo-conf:
   file.managed:
@@ -25,8 +31,12 @@ php-mongo-conf:
     - require:
       - pkg: {{ php.php_pkg }}
 
+{%- if salt['grains.get']('os_family') == "Debian" %}
+
 php-mongo-enable:
   cmd.run:
-    - name: php5enmod mongo
+    - name: {{ php.phpenmod_command }} mongo
     - require:
       - file: php-mongo-conf
+
+{%- endif %}
