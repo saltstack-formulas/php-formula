@@ -26,7 +26,7 @@ php_external_repo:
     - file: /etc/apt/sources.list.d/dotdeb.list
     {%- endif %}
   {%- elif os_family == 'RedHat' %}
-    {# WebTactic PHP repository requires EPEL #}
+    {# WebTatic PHP repository requires EPEL #}
     {# EPEL states below adapted from 'saltstack-formulas/epel-formula' #}
     {%- if osmajorrelease == '7' %}
       {%- set rhel_map = {
@@ -75,21 +75,24 @@ set_gpg_epel:
     - require:
       - pkg: epel_release
 
-enable_epel:
-  file.replace:
-    - name: /etc/yum.repos.d/epel.repo
-    - pattern: '^enabled=[0,1]'
-    - repl: 'enabled=1'
+webtatic_release:
+  pkg.installed:
+    - sources:
+      - webtatic-release: {{ rhel_map.webtatic_rpm }}
+    - require:
+      - file: set_gpg_epel
 
 php_external_repo:
   pkgrepo:
     - managed
-    - name: webtactic
-    - mirrorlist: https://mirror.webtatic.com/yum/el7/$basearch/mirrorlist
+    - name: webtatic
+    - humanname: 'Webtatic Repository EL{{ osmajorrelease }} - $basearch'
+    - mirrorlist: https://mirror.webtatic.com/yum/el{{ osmajorrelease }}/$basearch/mirrorlist
     - gpgcheck: 1
+    - gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-webtatic-el{{ osmajorrelease }}'
     - failovermethod: 'priority'
     - require:
-      - file: enable_epel
+      - pkg: webtatic_release
   {%- else %}
     {# External repos are only available for Debian and RedHat families #}
   {%- endif %}
