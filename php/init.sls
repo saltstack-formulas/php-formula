@@ -4,9 +4,9 @@
   {%- set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
   {%- if use_external_repo %}
 include:
-  - php.repo
+  - php.extrepo
 
-php_from_ppa:
+php_from_extrepo:
   pkg.latest:
     - name: {{ php.php_pkg }}
     - refresh: True
