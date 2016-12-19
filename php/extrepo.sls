@@ -25,7 +25,8 @@ php_external_repo:
     - key_url: https://www.dotdeb.org/dotdeb.gpg
     - file: /etc/apt/sources.list.d/dotdeb.list
     {%- endif %}
-  {%- elif os_family == 'RedHat' %}
+  {%- endif %}
+  {%- if os_family == 'RedHat' %}
     {# WebTatic PHP repository requires EPEL #}
     {# EPEL states below adapted from 'saltstack-formulas/epel-formula' #}
     {%- if osmajorrelease == '7' %}
@@ -93,7 +94,5 @@ php_external_repo:
     - failovermethod: 'priority'
     - require:
       - pkg: webtatic_release
-  {%- else %}
-    {# External repos are only available for Debian and RedHat families #}
   {%- endif %}
 {%- endif %}
