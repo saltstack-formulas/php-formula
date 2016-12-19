@@ -1,4 +1,9 @@
-{%- set php_version = salt['pillar.get']('php:version', '7.0')|string %}
+{%- if grains['os_family'] == 'Debian' %}
+  {%- set php_version = salt['pillar.get']('php:version', '7.0')|string %}
+{%- elif grains['os_family'] == 'RedHat' %}
+  # WebTatic PHP versions lack a '.' in their package definitions
+  {%- set php_version = salt['pillar.get']('php:version', '7.0')|string|replace('.','',1) %}
+{% endif %}
 Ubuntu-16.04:
   adodb_pkg: libphp-adodb
   apc_pkg: php-apcu
@@ -78,3 +83,40 @@ Ubuntu-14.04:
   sqlite_pkg: php{{ php_version }}-sqlite3
   xml_pkg: php{{ php_version }}-xml
   zip_pkg: php{{ php_version }}-zip
+
+CentOS Linux-7:
+  adodb_pkg: php-adodb
+  apcu_pkg: php{{ php_version }}w-pecl-apcu
+  bcmath_pkg: php{{ php_version }}w-bcmath
+  cli_pkg: php{{ php_version }}w-cli
+  curl_pkg: php{{ php_version }}w
+  dev_pkg: php{{ php_version }}w-devel
+  ext_conf_path: /etc/php.d
+  fpm_pkg: php{{ php_version }}w-fpm
+  gd_pkg: php{{ php_version }}w-gd
+  imagick_pkg: php{{ php_version }}w-pecl-imagick
+  imap_pkg: php{{ php_version }}w-imap
+  intl_pkg: php{{ php_version }}w-intl
+  ldap_pkg: php{{ php_version }}w-ldap
+  mail_pkg: php-pear-Mail
+  mbstring_pkg: php{{ php_version }}w-mbstring
+  mcrypt_pkg: php{{ php_version }}w-mcrypt
+  memcache_pkg: php{{ php_version }}w-pecl-memcache
+  memcached_pkg: php{{ php_version }}w-pecl-memcached
+  mongo_ext: mongodb.so
+  mongo_pecl: mongodb
+  mysql_pkg: php{{ php_version }}w-mysql
+  mysqlnd_pkg: php{{ php_version }}w-mysqlnd
+  oauth_pkg: php-pecl-oauth
+  pear_pkg: php{{ php_version }}w-pear
+  pgsql_pkg: php{{ php_version }}w-pgsql
+  php_ini: /etc/php.ini
+  php_pkg: php{{ php_version }}w
+  phpenmod_command: 'true'
+  pspell_pkg: php{{ php_version }}w-pspell
+  readline_pkg: php{{ php_version }}w
+  redis_pkg: php{{ php_version }}w-pecl-redis
+  snmp_pkg: php{{ php_version }}w-snmp
+  soap_pkg: php{{ php_version }}w-soap
+  sqlite_pkg: php{{ php_version }}w-pdo
+  xml_pkg: php{{ php_version }}w-xml
