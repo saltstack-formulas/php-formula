@@ -1,10 +1,10 @@
 ## php.ng pillar examples
 
 php:
-  # Use ppa instead the default repository (only Debian family)
-  use_ppa: True
-  # Set the ppa name (valid only if use_ppa is not none)
-  ppa_name: 'ondrej/php'
+  # Use external repository instead the default (only Ubuntu family)
+  use_external_repo: True
+  # Set the external repository name (valid only if use_external_repo is not none)
+  external_repo_name: 'ondrej/php'
   # Set the MongoDB driver version. You can specify (optionally) the driver version
   # when you add the php.mongo formula to your execution list
   mongo_version: "1.5.5"
