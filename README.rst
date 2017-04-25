@@ -166,6 +166,11 @@ Installs the php-suhosin package.
 Installs the php-mongo package.
 Disabled on opensuse need server:php:extensions repo
 
+``php.sybase``
+-----------
+
+Installs the php-sybase package for Sybase/MS-SQL. Debian / Ubuntu as RedHat has no similar package.
+
 ``php.xml``
 -----------
 
@@ -438,6 +443,11 @@ Installs the php-sqlite package,
 ------------------
 
 Installs the php-suhosin package.
+
+``php.ng.sybase``
+-------------
+
+Installs the php-sybase package.
 
 ``php.ng.xcache``
 ---------------
