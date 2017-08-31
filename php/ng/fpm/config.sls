@@ -19,3 +19,11 @@ php_fpm_ini_config:
 
 php_fpm_conf_config:
   {{ php_ini(php.lookup.fpm.conf, php.fpm.config.conf.opts, conf_settings) }}
+
+{{ php.lookup.fpm.pools }}:
+    file.directory:
+        - name: {{ php.lookup.fpm.pools }}
+        - user: root
+        - group: root
+        - file_mode: 755
+        - make_dirs: True
