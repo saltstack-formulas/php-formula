@@ -6,7 +6,6 @@
 
 
 {% set pkginfo = php.lookup.pkgs.get(state) %}
-{% set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
 
 {% set pkgs = [] %}
 {% set specials = [] %}
@@ -27,9 +26,8 @@
   {% set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
 
   {% if use_external_repo %}
-    {% set external_repo_name = salt['pillar.get']('php:external_repo_name', 'ondrej/php') %}
-    {% set current_php = salt['alternatives.show_current']('php') %}
-
+    {% if grains['os'] == 'Ubuntu' %}
+      {% set external_repo_name = salt['pillar.get']('php:external_repo_name', 'ondrej/php') %}
 php_ppa_{{ state }}:
   pkgrepo.managed:
     - ppa: {{ external_repo_name }}
@@ -47,16 +45,32 @@ php_ppa_{{ state }}:
     - onchanges:
       - pkgrepo: php_ppa_{{ state }}
 
-php_{{ phpng_version }}_link:
-  alternatives.set:
-    - name: php
-    - path: /usr/bin/php{{ phpng_version }}
+    {% else %}
+      {% set external_repo_name = salt['pillar.get']('php:external_repo_name', 'packages.sury.org/php' ) %}
+php_repo_{{ state }}:
+  pkg.installed:
+    - name: apt-transport-https
+
+php_ppa_{{ state }}:
+  pkgrepo.managed:
+    - humanname: {{ external_repo_name }}
+    - name: deb https://packages.sury.org/php/ {{ grains['oscodename'] }} main
+    - file: /etc/apt/sources.list.d/ondrej-php.list
+    - key_url: https://packages.sury.org/php/apt.gpg
+    - env:
+      - LC_ALL: C.UTF-8
+    - onlyif:
+      - test ! -e /etc/apt/sources.list.d/ondrej-php.list 
     - require_in:
       - pkg: php_install_{{ state }}
-    - onlyif:
-      - which php
-      - test {{ current_php }} != $(which php{{ phpng_version }})
+  pkg.latest:
+    - name: {{ state }}
+    - pkgs: {{ pkgs|json() }}
+    - refresh: True
+    - onchanges:
+      - pkgrepo: php_ppa_{{ state }}
 
+    {% endif %}
   {% endif %}
 {% endif %}
 
