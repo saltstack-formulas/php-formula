@@ -93,6 +93,12 @@ php:
 
       # settings for fpm-pools
       pools:
+        # defaults will apply for each pools settings and can be overwritten by pool settings
+        defaults:
+          user: nginx
+          group: nginx
+          listen: /var/run/php-fpm-default.sock
+
         # name of the pool file to be managed, this will be appended
         # to the path specified in php.ng.lookup.fpm.pools
         'mypool.conf':

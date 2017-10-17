@@ -1403,6 +1403,11 @@
     {%- endif %}
 {%- elif salt['grains.get']('os') == "Debian" %}
     {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
+    {%- if phpng_version|string == '5' %}
+      {%- set confdir = '/etc/php5' %}
+    {%- else %}
+      {%- set confdir = '/etc/php/' + phpng_version %}
+    {%- endif %}
     {%- set php = salt['pillar.get']('php:ng', {
     'lookup': salt['grains.filter_by']({
                     'Debian': {
@@ -1472,16 +1477,16 @@
                             'zip': 'php' + phpng_version + '-zip',
                         },
                         'fpm': {
-                            'conf': '/etc/php/' + phpng_version + '/fpm/php-fpm.conf',
-                            'ini': '/etc/php/' + phpng_version + '/fpm/php.ini',
-                            'pools': '/etc/php/' + phpng_version + '/fpm/pool.d',
+                            'conf': confdir + '/fpm/php-fpm.conf',
+                            'ini': confdir + '/fpm/php.ini',
+                            'pools': confdir +  '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
                                     ('error_log', '/var/log/php' + phpng_version + '-fpm.log'),
                                 ])),
-                                ('include', '/etc/php/' + phpng_version + '/fpm/pool.d/*.conf'),
+                                ('include', confdir + '/fpm/pool.d/*.conf'),
                             ]),
                         },
                         'hhvm': {
@@ -1509,10 +1514,10 @@
                             ]),
                         },
                         'cli': {
-                            'ini': '/etc/php/' + phpng_version + '/cli/php.ini',
+                            'ini': confdir + '/cli/php.ini',
                         },
                         'apache2': {
-                            'ini': '/etc/php/' + phpng_version + '/apache2/php.ini',
+                            'ini': confdir + '/apache2/php.ini',
                         },
                     },
                 }),

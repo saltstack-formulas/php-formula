@@ -10,6 +10,12 @@
 {% set pool_states = [] %}
 
 {% for pool, config in php.fpm.pools.iteritems() %}
+{% if pool == 'defaults' %}{% continue %}{% endif %}
+{% for pkey, pvalues in config.get('settings', {}).iteritems() %}
+{% set pool_defaults = php.fpm.pools.get('defaults', {}).copy() %}
+  {% do pool_defaults.update(pvalues) %}
+  {% do pvalues.update(pool_defaults) %}
+{% endfor %}
 {% set state = 'php_fpm_pool_conf_' ~ loop.index0 %}
 {% set fpath = path_join(config.get('filename', pool), php.lookup.fpm.pools) %}
 
