@@ -47,6 +47,7 @@ php_ppa_{{ state }}:
     - onchanges:
       - pkgrepo: php_ppa_{{ state }}
 
+    {% if state == 'cli' %}
 php_{{ phpng_version }}_link:
   alternatives.set:
     - name: php
@@ -56,6 +57,7 @@ php_{{ phpng_version }}_link:
     - onlyif:
       - which php
       - test {{ current_php }} != $(which php{{ phpng_version }})
+    {% endif %}
 
   {% endif %}
 {% endif %}
