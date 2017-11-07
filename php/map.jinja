@@ -166,7 +166,7 @@
                     'zip_pkg': 'php-zip',
                 }
             }, grain="os", merge=salt['pillar.get']('php:lookup')) %}
-        {%- elseif salt['grains.get']('osrelease')|string >= '16.04' %}
+        {%- elif salt['grains.get']('osrelease')|string >= '16.04' %}
             {# Ubuntu 16.04+ specific PHP definitions #}
             {%- set php = salt['grains.filter_by']({
                 'Ubuntu': {
