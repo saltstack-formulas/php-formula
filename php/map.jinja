@@ -113,7 +113,60 @@
             }, grain="os", merge=salt['pillar.get']('php:lookup')) %}
         {%- endif %}
     {%- else %}
-        {%- if salt['grains.get']('osrelease')|string >= '16.04' %}
+        {%- if salt['grains.get']('osrelease')|string >= '17.10' %}
+            {# Ubuntu 17.10+ specific PHP definitions #}
+            {%- set php = salt['grains.filter_by']({
+                'Ubuntu': {
+                    'adodb_pkg': 'libphp-adodb',
+                    'apc_pkg': 'php',
+                    'apcu_pkg': 'php-apcu',
+                    'bcmath_pkg': 'php-bcmath',
+                    'build_pkgs': ['libssl-dev', 'libcurl4-openssl-dev', 'pkg-config', 'libsslcommon2-dev'],
+                    'cgi_pkg': 'php-cgi',
+                    'cli_pkg': 'php-cli',
+                    'composer_bin': 'composer',
+                    'curl_pkg': 'php-curl',
+                    'dev_pkg': 'php-dev',
+                    'ext_conf_path': '/etc/php/7.1/mods-available',
+                    'fpm_pkg': 'php-fpm',
+                    'fpm_service': 'php7.1-fpm',
+                    'gd_pkg': 'php-gd',
+                    'imagick_pkg': 'php-imagick',
+                    'imap_pkg': 'php-imap',
+                    'intl_pkg': 'php-intl',
+                    'json_pkg': 'php-json',
+                    'ldap_pkg': 'php-ldap',
+                    'local_bin': '/usr/local/bin',
+                    'mail_pkg': 'php-mail',
+                    'mbstring_pkg': 'php-mbstring',
+                    'mcrypt_pkg': 'php-mcrypt',
+                    'memcache_pkg': 'php-memcache',
+                    'memcached_pkg': 'php-memcached',
+                    'mongo_ext': 'mongodb.so',
+                    'mongo_pecl': 'php-mongodb',
+                    'mysql_pkg': 'php-mysql',
+                    'mysqlnd_pkg': 'php',
+                    'oauth_pkg': 'php-oauth',
+                    'pear_pkg': 'php-pear',
+                    'pgsql_pkg': 'php-pgsql',
+                    'php_ini': '/etc/php/7.1/apache2/php.ini',
+                    'php_pkg': 'php',
+                    'phpenmod_command': 'phpenmod',
+                    'readline_pkg': ' php-readline',
+                    'redis_pkg': 'php-redis',
+                    'soap_pkg': 'php-soap',
+                    'sqlite_pkg': 'php-sqlite3',
+                    'suhosin5_ext': 'suhosin.so',
+                    'suhosin5_repo': 'https://github.com/sektioneins/suhosin',
+                    'suhosin7_ext': 'suhosin7.so',
+                    'suhosin7_repo': 'https://github.com/sektioneins/suhosin7',
+                    'sybase_pkg': 'php-sybase',
+                    'temp_dir': '/tmp',
+                    'xml_pkg': 'php-xml',
+                    'zip_pkg': 'php-zip',
+                }
+            }, grain="os", merge=salt['pillar.get']('php:lookup')) %}
+        {%- elif salt['grains.get']('osrelease')|string >= '16.04' %}
             {# Ubuntu 16.04+ specific PHP definitions #}
             {%- set php = salt['grains.filter_by']({
                 'Ubuntu': {
