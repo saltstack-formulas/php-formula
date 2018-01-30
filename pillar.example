@@ -171,3 +171,7 @@ php:
             - pcntl_wait
         'CLI Server':
           cli_server_color: 'On'
+
+    # When using php.ng.apache2 on FreeBSD:
+    # Set this to False if you're not using apache-formula
+    use_apache_formula: True

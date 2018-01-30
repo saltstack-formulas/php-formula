@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
+{%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
+{%- set freebsd_phpng_version = phpng_version.replace('.', '') %}
+
 {%- if salt['grains.get']('os') == "Ubuntu" %}
     {%- set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
     {%- if use_external_repo %}
-        {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
         {%- if salt['grains.get']('osrelease')|string >= '16.04' %}
             {%- set php = salt['pillar.get']('php:ng', {
                 'lookup': salt['grains.filter_by']({
@@ -1767,7 +1769,6 @@
         {%- endif %}
     {%- endif %}
 {%- elif salt['grains.get']('os') == "Debian" %}
-    {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
     {%- if phpng_version|string == '5' %}
       {%- set confdir = '/etc/php5' %}
     {%- else %}
@@ -2384,6 +2385,15 @@
                 },
                 'xcache': {
                     'ini': '/etc/php/conf.d/xcache.ini',
+                },
+            },
+            'FreeBSD': {
+                'apache2': {
+                    'module_config': '/usr/local/etc/apache24/modules.d/050_mod_php.conf',
+                    'name': 'apache24',
+                },
+                'pkgs': {
+                    'apache2': 'mod_php' + freebsd_phpng_version,
                 },
             },
         }),
