@@ -3,7 +3,7 @@
 {% from "php/ng/ini.jinja" import php_ini %}
 
 {% set settings = php.ini.defaults %}
-{% for key, value in php.cli.ini.settings.iteritems() %}
+{% for key, value in php.cli.ini.settings.items() %}
   {% if settings[key] is defined %}
     {% do settings[key].update(value) %}
   {% else %}
