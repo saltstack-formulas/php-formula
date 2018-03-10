@@ -9,9 +9,9 @@
 
 {% set pool_states = [] %}
 
-{% for pool, config in php.fpm.pools.iteritems() %}
+{% for pool, config in php.fpm.pools.items() %}
 {% if pool == 'defaults' %}{% continue %}{% endif %}
-{% for pkey, pvalues in config.get('settings', {}).iteritems() %}
+{% for pkey, pvalues in config.get('settings', {}).items() %}
 {% set pool_defaults = php.fpm.pools.get('defaults', {}).copy() %}
   {% do pool_defaults.update(pvalues) %}
   {% do pvalues.update(pool_defaults) %}
