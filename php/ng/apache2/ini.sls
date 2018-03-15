@@ -1,4 +1,4 @@
-# Manages the libapache2-mod-php5 main ini file
+# Manages the main Apache2 ini file
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/ini.jinja" import php_ini %}
 

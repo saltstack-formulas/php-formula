@@ -1,8 +1,8 @@
-# Installs libapache2-mod-php5 package and manages the associated php.ini on os Debian
-{% if grains['os_family'] == "Debian" %}
-
 include:
+{% if grains['os_family'] in ["Debian", "FreeBSD"] %}
   - php.ng.apache2.install
+{% endif %} #END: os = Debian|FreeBSD
+{% if grains['os_family'] == "Debian" %}
   - php.ng.apache2.ini
 
 extend:
@@ -10,5 +10,4 @@ extend:
     file:
       - require:
         - sls: php.ng.apache2.install
-
 {% endif %} #END: os = debian

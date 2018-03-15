@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
+{%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
+{%- set freebsd_phpng_version = phpng_version.replace('.', '') %}
+
 {%- if salt['grains.get']('os') == "Ubuntu" %}
     {%- set use_external_repo = salt['pillar.get']('php:use_external_repo', False) %}
     {%- if use_external_repo %}
-        {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
         {%- if salt['grains.get']('osrelease')|string >= '16.04' %}
             {%- set php = salt['pillar.get']('php:ng', {
                 'lookup': salt['grains.filter_by']({
@@ -664,6 +666,7 @@
                             'cgi': 'php-cgi',
                             'cli': 'php-cli',
                             'console-table': 'php-console-table',
+                            'composer_bin': 'composer',
                             'curl': 'php-curl',
                             'dev': 'php7.1-dev',
                             'fpm': 'php-fpm',
@@ -677,6 +680,7 @@
                             'intl': 'php-intl',
                             'json': 'php-json',
                             'ldap': 'php-ldap',
+                            'local_bin': '/usr/local/bin',
                             'mbstring': 'php-mbstring',
                             'mcrypt': 'php-mcrypt',
                             'memcache': 'php-memcache',
@@ -702,6 +706,7 @@
                             'suhosin': 'php',
                             'sybase': 'php-sybase',
                             'tcpdf': 'php-tcpdf',
+                            'temp_dir': '/tmp',
                             'tidy': 'php7.1-tidy',
                             'xcache': 'php',
                             'xdebug': 'php-xdebug',
@@ -1028,6 +1033,7 @@
                             'cgi': 'php-cgi',
                             'cli': 'php-cli',
                             'console-table': 'php-console-table',
+                            'composer_bin': 'composer',
                             'curl': 'php-curl',
                             'dev': 'php7.0-dev',
                             'fpm': 'php-fpm',
@@ -1041,6 +1047,7 @@
                             'intl': 'php-intl',
                             'json': 'php-json',
                             'ldap': 'php-ldap',
+                            'local_bin': '/usr/local/bin',
                             'mbstring': 'php-mbstring',
                             'mcrypt': 'php-mcrypt',
                             'memcache': 'php-memcache',
@@ -1066,6 +1073,7 @@
                             'suhosin': 'php',
                             'sybase': 'php-sybase',
                             'tcpdf': 'php-tcpdf',
+                            'temp_dir': '/tmp',
                             'tidy': 'php7.0-tidy',
                             'xcache': 'php',
                             'xdebug': 'php-xdebug',
@@ -1767,7 +1775,6 @@
         {%- endif %}
     {%- endif %}
 {%- elif salt['grains.get']('os') == "Debian" %}
-    {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
     {%- if phpng_version|string == '5' %}
       {%- set confdir = '/etc/php5' %}
     {%- else %}
@@ -2384,6 +2391,29 @@
                 },
                 'xcache': {
                     'ini': '/etc/php/conf.d/xcache.ini',
+                },
+            },
+            'FreeBSD': {
+                'apache2': {
+                    'ini': '/usr/local/etc/php.ini',
+                    'module_config': '/usr/local/etc/apache24/modules.d/050_mod_php.conf',
+                    'name': 'apache24',
+                },
+                'cli': {
+                    'ini': '/usr/local/etc/php.ini'
+                },
+                'pkgs': {
+                    'apache2': 'mod_php' + freebsd_phpng_version,
+                    'composer_bin': 'composer',
+                    'filter': 'php' + freebsd_phpng_version + '-filter',
+                    'hash': 'php' + freebsd_phpng_version + '-hash',
+                    'json': 'php' + freebsd_phpng_version + '-json',
+                    'local_bin': '/usr/local/bin',
+                    'mbstring': 'php' + freebsd_phpng_version + '-mbstring',
+                    'openssl': 'php' + freebsd_phpng_version + '-openssl',
+                    'php': 'php' + freebsd_phpng_version,
+                    'phar': 'php' + freebsd_phpng_version + '-phar',
+                    'temp_dir': '/tmp',
                 },
             },
         }),
