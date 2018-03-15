@@ -2389,8 +2389,12 @@
             },
             'FreeBSD': {
                 'apache2': {
+                    'ini': '/usr/local/etc/php.ini',
                     'module_config': '/usr/local/etc/apache24/modules.d/050_mod_php.conf',
                     'name': 'apache24',
+                },
+                'cli': {
+                    'ini': '/usr/local/etc/php.ini'
                 },
                 'pkgs': {
                     'apache2': 'mod_php' + freebsd_phpng_version,
