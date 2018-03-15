@@ -12,6 +12,14 @@
 
 include:
   - php.ng
+{% if grains['os_family'] == 'FreeBSD' %}
+  - php.ng.filter
+  - php.ng.hash
+  - php.ng.json
+  - php.ng.mbstring
+  - php.ng.openssl
+  - php.ng.phar
+{% endif %}
 
 get-composer:
   file.managed:
