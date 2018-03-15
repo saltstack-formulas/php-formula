@@ -49,7 +49,7 @@ Disabled on opensuse not available, only fastcgi
 Installs the php-cli package.
 
 ``php.composer``
------------
+----------------
 
 Installs [composer](https://getcomposer.org) and keeps it updated.
 
@@ -246,6 +246,11 @@ Manages the php-cli ini file.
 ----------------------
 
 Installs the php-cli package.
+
+``php.ng.composer``
+-------------------
+
+Installs [composer](https://getcomposer.org) and keeps it updated.
 
 ``php.ng.curl``
 ---------------
