@@ -559,3 +559,8 @@ Installs the php-openssl package.
 ---------------
 
 Installs the php-phar package.
+
+``php.ng.ctype``
+----------------
+
+Installs the php-ctype package.
