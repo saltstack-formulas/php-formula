@@ -539,3 +539,23 @@ Installs the php-cache-lite package.
 --------------
 
 Installs the php-console-table package.
+
+``php.ng.filter``
+-----------------
+
+Installs the php-filter package.
+
+``php.ng.hash``
+---------------
+
+Installs the php-hash package.
+
+``php.ng.openssl``
+------------------
+
+Installs the php-openssl package.
+
+``php.ng.phar``
+---------------
+
+Installs the php-phar package.
