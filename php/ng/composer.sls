@@ -49,7 +49,7 @@ install-composer:
 update-composer:
   cmd.run:
     - name: "{{ install_file }} selfupdate"
-    - unless: test $(date -d "60 days $({{ install_file }} --version | cut -d ' ' -f 4,5)" "+%s") \> $(date "+%s")
+    - unless: test $(date -d "60 days $({{ install_file }} --version | cut -d ' ' -f 4,5)" "+%s") -gt $(date "+%s")
     - cwd: {{ php.lookup.pkgs.local_bin }}
     - env:
       - HOME: {{ salt_user_home }}
