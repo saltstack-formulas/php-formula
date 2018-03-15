@@ -49,7 +49,11 @@ install-composer:
 update-composer:
   cmd.run:
     - name: "{{ install_file }} selfupdate"
+{% if grains['os_family'] == 'FreeBSD' %}
+    - unless: test $(date -v+60d -j -f "%Y-%m-%d %H:%M:%S" "$({{ install_file }} --version | cut -d ' ' -f 4,5)" "+%s") -gt $(date "+%s")
+{% else %}
     - unless: test $(date -d "60 days $({{ install_file }} --version | cut -d ' ' -f 4,5)" "+%s") -gt $(date "+%s")
+{% endif %}
     - cwd: {{ php.lookup.pkgs.local_bin }}
     - env:
       - HOME: {{ salt_user_home }}
