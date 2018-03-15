@@ -417,5 +417,10 @@
             'xml_pkg': ['php5-xmlreader','php5-xmlwriter','php5-xmlrpc'],
             'zip_pkg': 'php5-zip',
         },
+        'FreeBSD': {
+            'local_bin': '/usr/local/bin',
+            'composer_bin': 'composer',
+            'temp_dir': '/tmp',
+        },
     }, merge=salt['pillar.get']('php:lookup')) %}
 {%- endif %}
