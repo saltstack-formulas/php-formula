@@ -564,3 +564,8 @@ Installs the php-phar package.
 ----------------
 
 Installs the php-ctype package.
+
+``php.ng.session``
+------------------
+
+Installs the php-session package.
