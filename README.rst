@@ -569,3 +569,8 @@ Installs the php-ctype package.
 ------------------
 
 Installs the php-session package.
+
+``php.ng.posix``
+----------------
+
+Installs the php-posix package.
