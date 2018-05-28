@@ -52,7 +52,7 @@ php_fpm_ini_config:
 {% set fpm_conf = php.lookup.multi_fpm.defaults.conf ~ '/php-fpm.conf' %}
 
 {% set conf_settings = php.lookup.fpm.defaults %}
-{% do conf_settings.update(php.multi_fpm.defaults.settings) %}
+{% do conf_settings.update(php.lookup.multi_fpm.defaults.settings) %}
 
 php_fpm_conf_config:
   {{ php_ini(php.lookup.fpm.conf, php.fpm.config.conf.opts, conf_settings) }}
