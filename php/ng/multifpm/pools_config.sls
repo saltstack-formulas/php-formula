@@ -1,5 +1,11 @@
 # Manages the php-fpm pools config files
 {% set environment = salt['pillar.get']('environment') -%}
+
+# Hack to set env as prod. Remove this below 3 lines when we remove prod as environment variable
+{% if environment == 'production' %}
+{% set environment = 'prod' -%}
+{% endif %}
+
 {% from 'php/ng/map.jinja' import php with context %}
 {% from "php/ng/macro.jinja" import sls_block, serialize %}
 
