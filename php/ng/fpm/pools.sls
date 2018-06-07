@@ -13,10 +13,12 @@ include:
   - php.ng.fpm.service
   - php.ng.fpm.pools_config
 
+{% if pool_states %}
 extend:
   php_fpm_service:
     service:
       - watch:
-        {{ file_requisites(pool_states) }}
+{{ file_requisites(pool_states) }}
       - require:
-        {{ file_requisites(pool_states) }}
+{{ file_requisites(pool_states) }}
+{% endif %}
