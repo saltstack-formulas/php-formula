@@ -1,5 +1,4 @@
 # Manages the php-fpm pools config files
-
 {% set environment = salt['pillar.get']('environment') -%}
 
 # Hack to set env as prod. Remove this below 3 lines when we remove prod as environment variable
@@ -17,9 +16,9 @@
 
 {% set pool_states = [] %}
 
-{% for pool, config in php.fpm.pools.items() %}
+{% for pool, config in php.fpm.pools.iteritems() %}
 {% if pool == 'defaults' %}{% continue %}{% endif %}
-{% for pkey, pvalues in config.get('settings', {}).items() %}
+{% for pkey, pvalues in config.get('settings', {}).iteritems() %}
 {% set pool_defaults = php.fpm.pools.get('defaults', {}).copy() %}
   {% do pool_defaults.update(pvalues) %}
   {% do pvalues.update(pool_defaults) %}
