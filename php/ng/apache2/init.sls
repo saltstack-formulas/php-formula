@@ -1,5 +1,5 @@
-include:
 {% if grains['os_family'] in ["Debian", "FreeBSD"] %}
+include:
   - php.ng.apache2.install
 {% endif %} #END: os = Debian|FreeBSD
 {% if grains['os_family'] == "Debian" %}
