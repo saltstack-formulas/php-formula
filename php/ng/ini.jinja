@@ -10,5 +10,5 @@
     - source: salt://php/ng/files/php.ini
     - template: jinja
     - context:
-      config: {{ serialize(settings) }}
+        config: {{ serialize(settings) }}
 {%- endmacro -%}
