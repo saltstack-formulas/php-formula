@@ -109,6 +109,15 @@ php_install_{{ state }}:
     - enablerepo: {{ enable_php_repo }}
 {% endif %}
 
+{% set service = salt['pillar.get']('php:lookup:fpm:service', 'php-fpm') %}
+{% if salt['service.status'](service, False) %}
+{{ service }}_restart_{{ state }}:
+  service.running:
+    - name: {{ service }}
+    - watch:
+      - pkg: php_install_{{ state }}
+{% endif %}
+
 {% for pkg in specials %}
 
 php_install_{{ state }}_{{ pkg.get('name') | replace("/", "-") }}:
