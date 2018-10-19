@@ -81,7 +81,7 @@ php_install_{{ state }}:
 
 {% for pkg in specials %}
 
-php_install_{{ state }}_{{ pkg.get('name') }}:
+php_install_{{ state }}_{{ pkg.get('name') | replace("/", "-") }}:
   pkg.installed:
   {{ sls_block(pkg) }}
 
