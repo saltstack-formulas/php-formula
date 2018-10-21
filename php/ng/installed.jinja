@@ -72,6 +72,18 @@ php_ppa_{{ state }}:
 
     {% endif %}
   {% endif %}
+{% elif grains['os_family'] == "RedHat" and (state == 'cli' or state == 'fpm' or state == 'php') %}
+  {% set use_scl_repo = salt['pillar.get']('php:use_scl_repo', False) %}
+  {% set scl_php_version = salt['pillar.get']('php:scl_php_version', 71) %}
+  {% if use_scl_repo and grains['os'] == 'CentOS' %}
+php_centos_scl_enable_{{ state }}:
+  pkg.installed:
+    - name: centos-release-scl
+  {% elif use_scl_repo and grains['os'] == 'RedHat' %}
+php_redhat_scl_enable_{{ state }}:
+  cmd.run:
+    - name: yum-config-manager --enable rhel-server-rhscl-{{ grains['osmajorrelease'] }}-rpms
+  {% endif %}
 {% endif %}
 
 php_install_{{ state }}:

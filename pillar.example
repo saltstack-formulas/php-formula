@@ -5,6 +5,12 @@ php:
   use_external_repo: True
   # Set the external repository name (valid only if use_external_repo is not none)
   external_repo_name: 'ondrej/php'
+  # Use Software Collections Repository offering PHP 5.4, 5.5, 5.6, 7.0 and 7.1
+  # https://www.softwarecollections.org/en/ for more information.
+  # SCL is only supported on RHEL and CentOS and only active when using php.ng
+  use_scl_repo: True
+  # Which PHP version from the SCL repos to use
+  scl_php_version: 71
   # Set the MongoDB driver version. You can specify (optionally) the driver version
   # when you add the php.mongo formula to your execution list
   mongo_version: "1.5.5"
