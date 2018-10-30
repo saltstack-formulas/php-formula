@@ -2738,7 +2738,7 @@
                     'net-smtp': 'php-pear-Net-SMTP',
                     'net4': 'php-pear-Net-IPv4',
                     'oauth': 'php-pecl-oauth',
-                    'opcache': 'php-pecl-zendopcache',
+                    'opcache': rh_prefix + 'php-opcache' if salt['pillar.get']('php:use_scl_repo', False) else 'php-pecl-zendopcache',
                     'pear': rh_prefix + 'php-pear',
                     'pgsql': rh_prefix + 'php-pgsql',
                     'php': rh_prefix + 'php',
