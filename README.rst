@@ -20,6 +20,11 @@ Available states
 
 Installs the php package.
 
+``php.adodb``
+-------------
+
+Installs the php-adodb package.
+
 ``php.apc``
 -----------
 
@@ -32,10 +37,10 @@ Disabled by default on opensuse need server:php repo
 Installs the php-apcu package.
 Disabled by default on opensuse need server:php repo
 
-``php.adodb``
--------------
+``php.bcmath``
+------------
 
-Installs the php-adodb package.
+Installs the php-bcmath package.
 
 ``php.cgi``
 -----------
@@ -60,6 +65,11 @@ Installs the php5-curl package on Debian, and ensures that curl itself is
 installed for RedHat systems, this is due to the curl libs being provided by
 php-common, which will get installed with the main php package.
 
+``php.dev``
+----------
+
+Installs the php-dev package.
+
 ``php.fpm``
 -----------
 
@@ -69,11 +79,6 @@ Installs the php-fpm package, starts the service, and enables it.
 ----------
 
 Installs the php-gd package.
-
-``php.intl``
-------------
-
-Installs the php-intl package.
 
 ``php.imagick``
 ---------------
@@ -86,6 +91,11 @@ Disabled on opensuse not available.
 
 Installs the php-imap package.
 
+``php.intl``
+------------
+
+Installs the php-intl package.
+
 ``php.json``
 ------------
 
@@ -95,6 +105,11 @@ Installs the php-json package.
 ------------
 
 Installs the php-ldap package.
+
+``php.mail``
+------------
+
+Installs the php-mail package.
 
 ``php.mbstring``
 ----------------
@@ -118,6 +133,12 @@ Disabled on opensuse need server:php:extensions repo
 Installs the php-memcached package.
 Disabled on opensuse need server:php:extensions repo
 
+``php.mongo``
+-------------
+
+Installs the php-mongo package.
+Disabled on opensuse need server:php:extensions repo
+
 ``php.mysql``
 -------------
 
@@ -129,21 +150,31 @@ Installs the php-mysql package.
 Installs the php-mysqlnd package.
 Disabled on opensuse no package.
 
+``php.oauth``
+------------
+
+Installs the php-oauth package.
+
 ``php.pear``
 ------------
 
 Installs the php-pear package.
+
+``php.pgsql``
+-------------
+
+Installs the php-pgsql package.
+
+``php.readline``
+-------------
+
+Installs the php-readline package.
 
 ``php.redis``
 ------------
 
 Installs the php-redis package.
 Disabled on opensuse need server:php:extensions repo
-
-``php.pgsql``
--------------
-
-Installs the php-pgsql package.
 
 ``php.soap``
 ------------
@@ -160,12 +191,6 @@ Installs the php-sqlite package,
 
 Installs the php-suhosin package.
 
-``php.mongo``
--------------
-
-Installs the php-mongo package.
-Disabled on opensuse need server:php:extensions repo
-
 ``php.sybase``
 -----------
 
@@ -175,6 +200,11 @@ Installs the php-sybase package for Sybase/MS-SQL. Debian / Ubuntu as RedHat has
 -----------
 
 Installs the php-xml package.
+
+``php.zip``
+-----------
+
+Installs the php-zip package.
 
 Next-generation, alternate approach
 ===================================
@@ -226,6 +256,21 @@ Disabled on opensuse need server:php repo
 Installs the php-apcu package.
 Disabled on opensuse need server:php repo
 
+``php.ng.auth-sasl``
+---------------
+
+Installs the php-auth-sasl package.
+
+``php.ng.bcmath``
+---------------
+
+Installs the php-bcmath package.
+
+``php.ng.cache-lite``
+---------------
+
+Installs the php-cache-lite package.
+
 ``php.ng.cgi``
 --------------
 
@@ -252,6 +297,16 @@ Installs the php-cli package.
 
 Installs [composer](https://getcomposer.org) and keeps it updated.
 
+``php.ng.console-table``
+---------------
+
+Installs the php-console-table package.
+
+``php.ng.ctype``
+----------------
+
+Installs the php-ctype package.
+
 ``php.ng.curl``
 ---------------
 
@@ -259,10 +314,15 @@ Installs the php5-curl package on Debian, and ensures that curl itself is
 installed for RedHat systems, this is due to the curl libs being provided by
 php-common, which will get installed with the main php package.
 
-``php.ng.gearman``
----------------
+``php.ng.dev``
+--------------
 
-Installs the php-gearman package.
+Installs the php5-dev and build-essential package.
+
+``php.ng.filter``
+-----------------
+
+Installs the php-filter package.
 
 ``php.ng.fpm``
 --------------
@@ -299,15 +359,40 @@ Manages the php-fpm service.
 
 Installs the php-gd package.
 
+``php.ng.gearman``
+---------------
+
+Installs the php-gearman package.
+
 ``php.ng.geoip``
 ----------------------
 
 Installs the php-geoip package.
 
+``php.ng.geshi``
+--------------
+
+Installs the php-geshi package.
+
+``php.ng.gettext``
+--------------
+
+Installs the php-gettext package.
+
 ``php.ng.gmp``
 ----------
 
 Installs the php-gmp package. Debian Only.
+
+``php.ng.hash``
+---------------
+
+Installs the php-hash package.
+
+``php.ng.http``
+---------------
+
+Installs the php-http package.
 
 ``php.ng.hhvm``
 ---------------
@@ -360,6 +445,11 @@ Installs the php-json package.
 
 Installs the php-ldap package.
 
+``php.ng.mail``
+---------------
+
+Installs the php-mail package.
+
 ``php.ng.mbstring``
 -------------------
 
@@ -369,6 +459,21 @@ Installs the php-mbstring package.
 -----------------
 
 Installs the php-mcrypt package.
+
+``php.ng.mdb2``
+--------------
+
+Installs the php-mdb2 package.
+
+``php.ng.mdb2-driver-mysql``
+--------------
+
+Installs the php-mdb2-driver-mysql package.
+
+``php.ng.mdb2-driver-pgsql``
+--------------
+
+Installs the php-mdb2-driver-pgsql package.
 
 ``php.ng.memcache``
 -------------------
@@ -403,10 +508,35 @@ Installs the php-mysql package.
 Installs the php-mysqlnd package.
 Disabled on opensuse no package.
 
+``php.ng.net-smtp``
+---------------
+
+Installs the php-net-smtp package.
+
+``php.ng.net4``
+---------------
+
+Installs the php-net4 package.
+
+``php.ng.net6``
+---------------
+
+Installs the php-net6 package.
+
 ``php.ng.oauth``
 ---------------
 
 Installs the php-oauth package.
+
+``php.ng.opcache``
+---------------
+
+Installs the php-opcache package.
+
+``php.ng.openssl``
+------------------
+
+Installs the php-openssl package.
 
 ``php.ng.pear``
 ---------------
@@ -418,16 +548,41 @@ Installs the php-pear package.
 
 Installs the php-pgsql package.
 
+``php.ng.phar``
+---------------
+
+Installs the php-phar package.
+
+``php.ng.posix``
+----------------
+
+Installs the php-posix package.
+
 ``php.ng.pspell``
 ----------------
 
 Installs the php-pspell package.
+
+``php.ng.readline``
+----------------
+
+Installs the php-readline package.
 
 ``php.ng.redis``
 ---------------
 
 Installs the php-redis package.
 Disabled on opensuse need server:php:extensions repo
+
+``php.ng.seclib``
+--------------
+
+Installs the php-seclib package.
+
+``php.ng.session``
+------------------
+
+Installs the php-session package.
 
 ``php.ng.snmp``
 ---------------
@@ -444,15 +599,40 @@ Installs the php-soap package.
 
 Installs the php-sqlite package,
 
+``php.ng.ssh2``
+-----------------
+
+Installs the php-ssh2 package,
+
 ``php.ng.suhosin``
 ------------------
 
 Installs the php-suhosin package.
 
+``php.ng.svn``
+------------------
+
+Installs the php-svn package.
+
 ``php.ng.sybase``
 -------------
 
 Installs the php-sybase package.
+
+``php.ng.tcpdf``
+-------------
+
+Installs the php-tcpdf package.
+
+``php.ng.tidy``
+--------------
+
+Installs the php-tidy package.
+
+``php.ng.uuid``
+--------------
+
+Installs the php-uuid package.
 
 ``php.ng.xcache``
 ---------------
@@ -485,92 +665,7 @@ Installs the php-xml package.
 
 Installs the php-xsl package.
 
-``php.ng.dev``
---------------
-
-Installs the php5-dev and build-essential package.
-
-``php.ng.gettext``
---------------
-
-Installs the php-gettext package.
-
-``php.ng.geshi``
---------------
-
-Installs the php-geshi package.
-
-``php.ng.mdb2``
---------------
-
-Installs the php-mdb2 package.
-
-``php.ng.mdb2-driver-mysql``
---------------
-
-Installs the php-mdb2-driver-mysql package.
-
-``php.ng.mdb2-driver-pgsql``
---------------
-
-Installs the php-mdb2-driver-pgsql package.
-
-``php.ng.seclib``
---------------
-
-Installs the php-seclib package.
-
-``php.ng.tidy``
---------------
-
-Installs the php-tidy package.
-
-``php.ng.tcpdf``
---------------
-
-Installs the php-tcpdf package.
-
-``php.ng.cache-lite``
---------------
-
-Installs the php-cache-lite package.
-
-``php.ng.console-table``
---------------
-
-Installs the php-console-table package.
-
-``php.ng.filter``
------------------
-
-Installs the php-filter package.
-
-``php.ng.hash``
----------------
-
-Installs the php-hash package.
-
-``php.ng.openssl``
-------------------
-
-Installs the php-openssl package.
-
-``php.ng.phar``
----------------
-
-Installs the php-phar package.
-
-``php.ng.ctype``
+``php.ng.zip``
 ----------------
 
-Installs the php-ctype package.
-
-``php.ng.session``
-------------------
-
-Installs the php-session package.
-
-``php.ng.posix``
-----------------
-
-Installs the php-posix package.
+Installs the php-zip package.
