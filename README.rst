@@ -70,6 +70,11 @@ php-common, which will get installed with the main php package.
 
 Installs the php-dev package.
 
+``php.fileinfo``
+-----------
+
+Installs the php-fileinfo package and enables it.
+
 ``php.fpm``
 -----------
 
@@ -195,6 +200,11 @@ Installs the php-suhosin package.
 -----------
 
 Installs the php-sybase package for Sybase/MS-SQL. Debian / Ubuntu as RedHat has no similar package.
+
+``php.tokenizer``
+-----------
+
+Installs the php-tokenizer package and enables it.
 
 ``php.xml``
 -----------
