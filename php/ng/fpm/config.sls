@@ -23,7 +23,7 @@ php_fpm_conf_config:
 {{ php.lookup.fpm.pools }}:
     file.directory:
         - name: {{ php.lookup.fpm.pools }}
-        - user: root
-        - group: root
+        - user: {{ php.lookup.fpm.user }}
+        - group: {{ php.lookup.fpm.group }}
         - file_mode: 755
         - make_dirs: True

@@ -125,6 +125,8 @@
                     },
                 }),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -450,6 +452,8 @@
                     },
                 }),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -773,6 +777,8 @@
                     },
                 }, grain="os"),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -1143,6 +1149,8 @@
                     },
                 }, grain="os"),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -1513,6 +1521,8 @@
                     },
                 }, grain="os"),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -1902,6 +1912,8 @@
                     },
                 }, grain="os"),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -2282,6 +2294,8 @@
                     },
                 }),
                 'fpm': {
+                    'user': 'root',
+                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -2581,6 +2595,8 @@
                     'ini': '/etc/php5/fpm/php.ini',
                     'pools': '/etc/php5/fpm/pool.d',
                     'service': 'php5-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': odict([
                         ('global', odict([
                             ('pid', '/var/run/php5-fpm.pid'),
@@ -2684,6 +2700,8 @@
                     'ini': '/etc/php/fpm-php' + phpng_version + '/php.ini',
                     'pools': '/etc/php/fpm-php' + phpng_version + '/fpm.d',
                     'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': odict([
                         ('global', odict([
                             ('pid', '/var/run/php-fpm-php' + phpng_version + '.pid'),
@@ -2768,6 +2786,8 @@
                     'ini': '/etc/' + path_suffix + 'php.ini',
                     'pools': '/etc/' + path_suffix + 'php-fpm.d',
                     'service': rh_prefix + 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': {
                         'global': {
                             'pid': '/var/' + path_suffix + 'run/php-fpm/php-fpm.pid',
@@ -2814,6 +2834,8 @@
                     'ini': '/etc/php.ini',
                     'pools': '/etc/php-fpm.d',
                     'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': {
                         'global': {
                             'pid': '/var/run/php-fpm/php-fpm.pid',
@@ -2859,6 +2881,8 @@
                     'ini': '/etc/php/php.ini',
                     'pools': '/etc/php/fpm.d',
                     'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': {
                         'global': {
                             'pid': '/run/php-fpm/php-fpm.pid',
@@ -2908,6 +2932,21 @@
                     'tokenizer': 'php' + freebsd_phpng_version + '-tokenizer',
                     'xml': 'php' + freebsd_phpng_version + '-xml',
                     'zip': 'php' + freebsd_phpng_version + '-zip',
+                },
+                'fpm': {
+                    'conf': '/usr/local/etc/php-fpm.conf',
+                    'ini': '/usr/local/etc/php.ini',
+                    'pools': '/usr/local/etc/fpm.d',
+                    'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'wheel',
+                    'defaults': {
+                        'global': {
+                            'pid': 'run/php-fpm.pid',
+                            'error_log': 'log/php-fpm.log',
+                        },
+                        'include': '/usr/local/etc/php-fpm.d/*.conf',
+                    },
                 },
             },
         }),
