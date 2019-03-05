@@ -84,6 +84,8 @@
                             'ini': '/etc/php/' + phpng_version + '/fpm/php.ini',
                             'pools': '/etc/php/' + phpng_version + '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
@@ -125,8 +127,6 @@
                     },
                 }),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -411,6 +411,8 @@
                             'ini': '/etc/php/' + phpng_version + '/fpm/php.ini',
                             'pools': '/etc/php/' + phpng_version + '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
@@ -452,8 +454,6 @@
                     },
                 }),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -732,6 +732,8 @@
                             'ini': '/etc/php/7.2/fpm/php.ini',
                             'pools': '/etc/php/7.2/fpm/pool.d',
                             'service': 'php7.2-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php7.2-fpm.pid'),
@@ -777,8 +779,6 @@
                     },
                 }, grain="os"),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -1104,6 +1104,8 @@
                             'ini': '/etc/php/7.1/fpm/php.ini',
                             'pools': '/etc/php/7.1/fpm/pool.d',
                             'service': 'php7.1-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php7.1-fpm.pid'),
@@ -1149,8 +1151,6 @@
                     },
                 }, grain="os"),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -1476,6 +1476,8 @@
                             'ini': '/etc/php/7.0/fpm/php.ini',
                             'pools': '/etc/php/7.0/fpm/pool.d',
                             'service': 'php7.0-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php7.0-fpm.pid'),
@@ -1521,8 +1523,6 @@
                     },
                 }, grain="os"),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -1867,6 +1867,8 @@
                             'ini': '/etc/php5/fpm/php.ini',
                             'pools': '/etc/php5/fpm/pool.d',
                             'service': 'php5-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php5-fpm.pid'),
@@ -1912,8 +1914,6 @@
                     },
                 }, grain="os"),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
@@ -2253,6 +2253,8 @@
                             'ini': confdir + '/fpm/php.ini',
                             'pools': confdir +  '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
@@ -2294,8 +2296,6 @@
                     },
                 }),
                 'fpm': {
-                    'user': 'root',
-                    'group': 'root',
                     'service': {
                         'enabled': True,
                         'opts': {},
