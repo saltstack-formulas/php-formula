@@ -84,6 +84,8 @@
                             'ini': '/etc/php/' + phpng_version + '/fpm/php.ini',
                             'pools': '/etc/php/' + phpng_version + '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
@@ -409,6 +411,8 @@
                             'ini': '/etc/php/' + phpng_version + '/fpm/php.ini',
                             'pools': '/etc/php/' + phpng_version + '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
@@ -728,6 +732,8 @@
                             'ini': '/etc/php/7.2/fpm/php.ini',
                             'pools': '/etc/php/7.2/fpm/pool.d',
                             'service': 'php7.2-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php7.2-fpm.pid'),
@@ -1098,6 +1104,8 @@
                             'ini': '/etc/php/7.1/fpm/php.ini',
                             'pools': '/etc/php/7.1/fpm/pool.d',
                             'service': 'php7.1-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php7.1-fpm.pid'),
@@ -1468,6 +1476,8 @@
                             'ini': '/etc/php/7.0/fpm/php.ini',
                             'pools': '/etc/php/7.0/fpm/pool.d',
                             'service': 'php7.0-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php7.0-fpm.pid'),
@@ -1857,6 +1867,8 @@
                             'ini': '/etc/php5/fpm/php.ini',
                             'pools': '/etc/php5/fpm/pool.d',
                             'service': 'php5-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php5-fpm.pid'),
@@ -2241,6 +2253,8 @@
                             'ini': confdir + '/fpm/php.ini',
                             'pools': confdir +  '/fpm/pool.d',
                             'service': 'php' + phpng_version + '-fpm',
+                            'user': 'root',
+                            'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
                                     ('pid', '/var/run/php' + phpng_version + '-fpm.pid'),
@@ -2581,6 +2595,8 @@
                     'ini': '/etc/php5/fpm/php.ini',
                     'pools': '/etc/php5/fpm/pool.d',
                     'service': 'php5-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': odict([
                         ('global', odict([
                             ('pid', '/var/run/php5-fpm.pid'),
@@ -2684,6 +2700,8 @@
                     'ini': '/etc/php/fpm-php' + phpng_version + '/php.ini',
                     'pools': '/etc/php/fpm-php' + phpng_version + '/fpm.d',
                     'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': odict([
                         ('global', odict([
                             ('pid', '/var/run/php-fpm-php' + phpng_version + '.pid'),
@@ -2768,6 +2786,8 @@
                     'ini': '/etc/' + path_suffix + 'php.ini',
                     'pools': '/etc/' + path_suffix + 'php-fpm.d',
                     'service': rh_prefix + 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': {
                         'global': {
                             'pid': '/var/' + path_suffix + 'run/php-fpm/php-fpm.pid',
@@ -2814,6 +2834,8 @@
                     'ini': '/etc/php.ini',
                     'pools': '/etc/php-fpm.d',
                     'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': {
                         'global': {
                             'pid': '/var/run/php-fpm/php-fpm.pid',
@@ -2859,6 +2881,8 @@
                     'ini': '/etc/php/php.ini',
                     'pools': '/etc/php/fpm.d',
                     'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'root',
                     'defaults': {
                         'global': {
                             'pid': '/run/php-fpm/php-fpm.pid',
@@ -2891,6 +2915,7 @@
                     'curl': 'php' + freebsd_phpng_version + '-curl',
                     'filter': 'php' + freebsd_phpng_version + '-filter',
                     'fileinfo': 'php' + freebsd_phpng_version + '-fileinfo',
+                    'fpm': 'php' + freebsd_phpng_version,
                     'gd': 'php' + freebsd_phpng_version + '-gd',
                     'hash': 'php' + freebsd_phpng_version + '-hash',
                     'json': 'php' + freebsd_phpng_version + '-json',
@@ -2908,6 +2933,21 @@
                     'tokenizer': 'php' + freebsd_phpng_version + '-tokenizer',
                     'xml': 'php' + freebsd_phpng_version + '-xml',
                     'zip': 'php' + freebsd_phpng_version + '-zip',
+                },
+                'fpm': {
+                    'conf': '/usr/local/etc/php-fpm.conf',
+                    'ini': '/usr/local/etc/php.ini',
+                    'pools': '/usr/local/etc/php-fpm.d',
+                    'service': 'php-fpm',
+                    'user': 'root',
+                    'group': 'wheel',
+                    'defaults': {
+                        'global': {
+                            'pid': 'run/php-fpm.pid',
+                            'error_log': 'log/php-fpm.log',
+                        },
+                        'include': '/usr/local/etc/php-fpm.d/*.conf',
+                    },
                 },
             },
         }),
