@@ -429,16 +429,16 @@ Configures the hhvm repo for debian/ubuntu
 
 Manages the php-hhvm service.
 
+``php.ng.igbinary``
+------------------
+
+Installs the php-igbinary package.
+
 ``php.ng.imagick``
 ------------------
 
 Installs the php-imagick package.
 Disabled on opensuse no package.
-
-``php.ng.igbinary``
-------------------
-
-Installs the php-igbinary package.
 
 ``php.ng.imap``
 ---------------
