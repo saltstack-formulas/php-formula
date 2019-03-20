@@ -435,6 +435,11 @@ Manages the php-hhvm service.
 Installs the php-imagick package.
 Disabled on opensuse no package.
 
+``php.ng.igbinary``
+------------------
+
+Installs the php-igbinary package.
+
 ``php.ng.imap``
 ---------------
 
@@ -506,6 +511,11 @@ Installs the php-mongo package.
 --------------------
 
 Installs the php-mongodb package.
+
+``php.ng.msgpack``
+--------------------
+
+Installs the php-msgpack package.
 
 ``php.ng.mysql``
 ----------------
