@@ -95,11 +95,6 @@ php_install_{{ state }}:
     - enablerepo: {{ enable_php_repo }}
 {% endif %}
 
-php_install_{{ state }}:
-  pkg.installed:
-    - name: {{ state }}
-    - pkgs: {{ pkgs|json() }}
-
 {% for pkg in specials %}
 
 php_install_{{ state }}_{{ pkg.get('name') | replace("/", "-") }}:
