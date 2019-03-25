@@ -79,6 +79,15 @@ php_ppa_{{ state }}:
   {% if use_scl_repo and grains['os'] == 'CentOS' %}
 php_centos_scl_enable_{{ state }}:
   pkg.installed:
+    - name: centos-release-scl
+  {% elif use_scl_repo and grains['os'] == 'RedHat' %}
+php_redhat_scl_enable_{{ state }}:
+  cmd.run:
+    - name: yum-config-manager --enable rhel-server-rhscl-{{ grains['osmajorrelease'] }}-rpms
+  {% endif %}
+{% endif %}
+
+php_install_{{ state }}:
   pkg.installed:
     - name: {{ state }}
     - pkgs: {{ pkgs|json() }}
