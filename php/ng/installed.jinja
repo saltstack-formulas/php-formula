@@ -31,7 +31,7 @@
 php_ppa_{{ state }}:
   pkgrepo.managed:
     - ppa: {{ external_repo_name }}
-    - env:
+    - __env__:
       - LC_ALL: C.UTF-8
     - onlyif:
       - test ! -e /etc/apt/sources.list.d/ondrej-ubuntu-php-{{ grains['oscodename'] }}.list {# Trusty and Xenial use different naming schemas #}
@@ -57,7 +57,7 @@ php_ppa_{{ state }}:
     - name: deb https://packages.sury.org/php/ {{ grains['oscodename'] }} main
     - file: /etc/apt/sources.list.d/ondrej-php.list
     - key_url: https://packages.sury.org/php/apt.gpg
-    - env:
+    - __env__:
       - LC_ALL: C.UTF-8
     - onlyif:
       - test ! -e /etc/apt/sources.list.d/ondrej-php.list 
