@@ -11,6 +11,39 @@
   {% endif %}
 {% endfor %}
 
+
+{% if salt['pillar.get']('php:ng:version') is iterable %}
+  {% for version in salt['pillar.get']('php:ng:version') %}
+    {% set conf_settings = odict(php.lookup.fpm.defaults) %}
+    {% set first_version = salt['pillar.get']('php:ng:version')[0]|string %}
+    {% set ini = php.lookup.fpm.ini|replace(first_version, version) %}
+    {% set conf = php.lookup.fpm.conf|replace(first_version, version) %}
+    {% set pools = php.lookup.fpm.pools|replace(first_version, version) %}
+
+    {% for key, value in conf_settings.items() %}
+      {% if value is string %}
+        {% do conf_settings.update({key: value.replace(first_version, version)}) %}
+      {% endif %}
+    {% endfor %}
+    {% do conf_settings.global.update({'pid': '/var/run/php' + version + '-fpm.pid' }) %}
+    {% do conf_settings.global.update({'error_log': '/var/log/php' + version + '-fpm.log' }) %}
+
+php_fpm_ini_config_{{ version }}:
+  {{ php_ini(ini, php.fpm.config.ini.opts, ini_settings) }}
+
+php_fpm_conf_config_{{ version }}:
+  {{ php_ini(conf, php.fpm.config.conf.opts, odict(conf_settings)) }}
+
+{{ pools }}:
+    file.directory:
+        - name: {{ pools }}
+        - user: {{ php.lookup.fpm.user }}
+        - group: {{ php.lookup.fpm.group }}
+        - file_mode: 755
+        - make_dirs: True
+  {% endfor %}
+{% else %}
+
 {% set conf_settings = php.lookup.fpm.defaults %}
 {% do conf_settings.update(php.fpm.config.conf.settings) %}
 
@@ -27,3 +60,4 @@ php_fpm_conf_config:
         - group: {{ php.lookup.fpm.group }}
         - file_mode: 755
         - make_dirs: True
+{% endif %}

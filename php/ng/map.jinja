@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-{%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
+{%- if salt['pillar.get']('php:ng:version') is iterable %}
+    {%- set phpng_version = salt['pillar.get']('php:ng:version')[0]|string %}
+{% else %}
+    {%- set phpng_version = salt['pillar.get']('php:ng:version', '7.0')|string %}
+{% endif %}
 {%- set freebsd_phpng_version = phpng_version.replace('.', '') %}
 
 {%- if salt['grains.get']('os') == "Ubuntu" %}

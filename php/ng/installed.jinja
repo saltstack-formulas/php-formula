@@ -16,10 +16,24 @@
             {% do specials.append(pkg) %}
         {% else %}
             {% do pkgs.append(pkg) %}
+            {% if salt['pillar.get']('php:ng:version') is iterable %}
+              {% set first_version = salt['pillar.get']('php:ng:version')[0]|string %}
+              {% for other_version in salt['pillar.get']('php:ng:version') %}
+                {% set other_version_str = other_version|string %}
+                {% do pkgs.append(pkg.replace(first_version, other_version_str)) %}
+              {% endfor %}
+            {% endif %}
         {% endif %}
     {% endfor %}
 {% else %}
     {% do pkgs.append(pkginfo) %}
+    {% if salt['pillar.get']('php:ng:version') is iterable %}
+      {% set first_version = salt['pillar.get']('php:ng:version')[0]|string %}
+      {% for other_version in salt['pillar.get']('php:ng:version') %}
+        {% set other_version_str = other_version|string %}
+        {% do pkgs.append(pkginfo.replace(first_version, other_version_str)) %}
+      {% endfor %}
+    {% endif %}
 {% endif %}
 
 {% if grains['os_family'] == "Debian" and (state == 'cli' or state == 'fpm' or state == 'php') %}
@@ -60,7 +74,7 @@ php_ppa_{{ state }}:
     - __env__:
       - LC_ALL: C.UTF-8
     - onlyif:
-      - test ! -e /etc/apt/sources.list.d/ondrej-php.list 
+      - test ! -e /etc/apt/sources.list.d/ondrej-php.list
     - require_in:
       - pkg: php_install_{{ state }}
   pkg.latest:
