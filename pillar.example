@@ -20,7 +20,7 @@ php:
     # represented, please consider adding it to the map.jinja for
     # upstream inclusion
     lookup:
-
+      enable_php_repo: centos-sclo-rh-testing
       # package definitions, these can be strings, lists of strings, or
       # lists of dictionaries
       pkgs:
