@@ -178,6 +178,15 @@ php:
         'CLI Server':
           cli_server_color: 'On'
 
+    # List of modules to install via php.ng.modules
+    modules:
+      # Calls `php.ng.<name>` if available, or try to install the matching
+      # packages that can be set via from php:ng:lookup:pkgs
+      - cli
+      - fpm
+      - curl
+      - mysql
+
     # When using php.ng.apache2 on FreeBSD:
     # Set this to False if you're not using apache-formula
     use_apache_formula: True
