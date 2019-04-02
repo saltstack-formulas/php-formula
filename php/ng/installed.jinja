@@ -91,7 +91,7 @@ php_install_{{ state }}:
   pkg.installed:
     - name: {{ state }}
     - pkgs: {{ pkgs|json() }}
-{% if enable_php_repo %}
+{% if enable_php_repo is defined and enable_php_repo %}
     - enablerepo: {{ enable_php_repo }}
 {% endif %}
 
