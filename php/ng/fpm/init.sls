@@ -5,12 +5,13 @@ include:
   - php.ng.fpm.service
   - php.ng.fpm.pools
 
+{% set pillar_php_ng_version = salt['pillar.get']('php:ng:version', '7.0') %}
 extend:
   php_fpm_service:
     service:
       - watch:
-    {% if salt['pillar.get']('php:ng:version') is iterable %}
-      {% for version in salt['pillar.get']('php:ng:version') %}
+    {% if pillar_php_ng_version is iterable and pillar_php_ng_version is not string %}
+      {% for version in pillar_php_ng_version %}
         - file: php_fpm_ini_config_{{ version }}
         - file: php_fpm_conf_config_{{ version }}
       {% endfor %}
@@ -20,8 +21,8 @@ extend:
     {% endif %}
       - require:
         - sls: php.ng.fpm.config
-  {% if salt['pillar.get']('php:ng:version') is iterable %}
-    {% for version in salt['pillar.get']('php:ng:version') %}
+  {% if pillar_php_ng_version is iterable and pillar_php_ng_version is not string %}
+    {% for version in pillar_php_ng_version %}
   php_fpm_ini_config_{{ version }}:
     file:
       - require:

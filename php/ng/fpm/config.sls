@@ -11,11 +11,11 @@
   {% endif %}
 {% endfor %}
 
-
-{% if salt['pillar.get']('php:ng:version') is iterable %}
-  {% for version in salt['pillar.get']('php:ng:version') %}
+{% set pillar_php_ng_version = salt['pillar.get']('php:ng:version', '7.0') %}
+{% if pillar_php_ng_version is iterable and pillar_php_ng_version is not string %}
+  {% for version in pillar_php_ng_version %}
     {% set conf_settings = odict(php.lookup.fpm.defaults) %}
-    {% set first_version = salt['pillar.get']('php:ng:version')[0]|string %}
+    {% set first_version = pillar_php_ng_version[0]|string %}
     {% set ini = php.lookup.fpm.ini|replace(first_version, version) %}
     {% set conf = php.lookup.fpm.conf|replace(first_version, version) %}
     {% set pools = php.lookup.fpm.pools|replace(first_version, version) %}
