@@ -502,6 +502,13 @@ Disabled on opensuse need server:php:extensions repo
 Installs the php-memcached package.
 Disabled on opensuse need server:php:extensions repo
 
+``php.ng.module``
+--------------------
+
+Calls ``php.ng.<name>`` for each entry in ``php:ng:modules`` if available, or
+try to install the matching packages that can be set via from
+``php:ng:lookup:pkgs``
+
 ``php.ng.mongo``
 --------------------
 
