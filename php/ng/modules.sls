@@ -8,7 +8,7 @@
 {% set install = [] %}
 
 {% for module in modules %}
-{%   set state = base_name + module %}
+{%   set state = base_name ~ module %}
 {%   if state in existing_states %}
 {%     do includes.append(state) %}
 {%   else %}
