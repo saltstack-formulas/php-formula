@@ -22,6 +22,9 @@ php:
     #   - "7.3"
     #   - "7.2"
 
+    # set the version for the Debian alternatives system, when using a list of versions, otherwise php:ng:version is used.
+    alternatives_version: "7.3"
+
     # this section contains mostly grain filtered data, while overrides
     # are possible in the pillar for unique cases, if your OS is not
     # represented, please consider adding it to the map.jinja for
