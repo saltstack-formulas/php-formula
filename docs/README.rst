@@ -306,6 +306,11 @@ Installs the php-auth-sasl package.
 
 Installs the php-bcmath package.
 
+``php.ng.bz2``
+^^^^^^^^^^^^^^
+
+Installs the php-bz2 package.
+
 ``php.ng.cache-lite``
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -353,6 +358,11 @@ Installs the php-ctype package.
 Installs the php5-curl package on Debian, and ensures that curl itself is
 installed for RedHat systems, this is due to the curl libs being provided by
 php-common, which will get installed with the main php package.
+
+``php.ng.dba``
+^^^^^^^^^^^^^^
+
+Installs the php-dba package.
 
 ``php.ng.dev``
 ^^^^^^^^^^^^^^
@@ -531,6 +541,13 @@ Disabled on opensuse need server:php:extensions repo
 
 Installs the php-memcached package.
 Disabled on opensuse need server:php:extensions repo
+
+``php.ng.modules``
+^^^^^^^^^^^^^^^^^^
+
+Calls ``php.ng.<name>`` for each entry in ``php:ng:modules`` if available, or
+try to install the matching packages that can be set via from
+``php:ng:lookup:pkgs``
 
 ``php.ng.mongo``
 ^^^^^^^^^^^^^^^^
