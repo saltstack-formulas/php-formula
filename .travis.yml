@@ -26,9 +26,7 @@ services:
 #       Ref: https://github.com/saltstack-formulas/template-formula/issues/121
 env:
   matrix:
-    # Disable tests on Salt develop for now
-    # See: https://travis-ci.com/saltstack-formulas/php-formula/jobs/211316835
-    # - INSTANCE: default-debian-9-develop-py3
+    - INSTANCE: default-debian-9-develop-py3
     # - INSTANCE: default-ubuntu-1804-develop-py3
     # - INSTANCE: default-centos-7-develop-py3
     # - INSTANCE: default-fedora-29-develop-py3
