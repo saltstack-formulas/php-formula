@@ -18,24 +18,36 @@ platforms:
       provision_command:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
+    provisioner:
+      pillars_from_files:
+        php.sls: test/salt/pillar/debian.sls
   - name: ubuntu-1804-develop-py3
     driver:
       image: netmanagers/salt-develop-py3:ubuntu-18.04
       provision_command:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
+    provisioner:
+      pillars_from_files:
+        php.sls: test/salt/pillar/debian.sls
   - name: centos-7-develop-py3
     driver:
       image: netmanagers/salt-develop-py3:centos-7
       provision_command:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
+    provisioner:
+      pillars_from_files:
+        php.sls: test/salt/pillar/redhat.sls
   - name: fedora-29-develop-py3
     driver:
       image: netmanagers/salt-develop-py3:fedora-29
       provision_command:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
+    provisioner:
+      pillars_from_files:
+        php.sls: test/salt/pillar/redhat.sls
   - name: opensuse-leap-15-develop-py3
     driver:
       image: netmanagers/salt-develop-py3:opensuse-leap-15
@@ -43,6 +55,9 @@ platforms:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
       run_command: /usr/lib/systemd/systemd
+    provisioner:
+      pillars_from_files:
+        php.sls: test/salt/pillar/suse.sls
 
   ## SALT 2019.2
   - name: debian-9-2019-2-py3
