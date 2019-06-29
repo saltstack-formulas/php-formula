@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`0.36.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.35.1...v0.36.0>`_ (2019-06-29)
+--------------------------------------------------------------------------------------------------------
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** update with modules, bz2 & dba (\ `5e04187 <https://github.com/saltstack-formulas/php-formula/commit/5e04187>`_\ )
+
+Features
+^^^^^^^^
+
+
+* add 'bz2' and 'dba' module support (\ `758ae88 <https://github.com/saltstack-formulas/php-formula/commit/758ae88>`_\ )
+
 `0.35.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.35.0...v0.35.1>`_ (2019-06-28)
 --------------------------------------------------------------------------------------------------------
 
