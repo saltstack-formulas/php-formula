@@ -1,6 +1,6 @@
-name: php
-title: Php Formula
-maintainer: Nicolas Rodriguez
+name: default
+title: php formula
+maintainer: SaltStack Formulas
 license: Apache-2.0
 summary: Verify that the php formula is setup and configured correctly
 supports:
@@ -10,3 +10,5 @@ supports:
   - platform-name: fedora
   - platform-name: opensuse
   - platform-name: suse
+  - platform-name: freebsd
+  - platform-name: amazon
