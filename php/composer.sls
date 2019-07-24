@@ -11,6 +11,7 @@
 {%- set salt_user_home = salt['user.info'](salt_user).get('home', '/root') %}
 
 include:
+  - php.deprecated
   - php
 
 get-composer:

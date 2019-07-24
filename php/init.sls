@@ -1,5 +1,8 @@
 {%- from "php/map.jinja" import php with context %}
 
+include:
+  - php.deprecated
+
 {%- if not 'ng' in salt['pillar.get']('php', {}) %}
 
   {%- if grains['os'] == "Ubuntu" %}
