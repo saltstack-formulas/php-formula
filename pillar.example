@@ -1,6 +1,10 @@
 ## php.ng pillar examples
 
 php:
+  # Use the following values to mute deprecation warnings
+  warning_messages:                                                          #
+    v1.0.0:                                                                  #
+      mute_critical: True                                                    #
   # Use external repository instead the default (only Ubuntu family)
   use_external_repo: True
   # Set the external repository name (valid only if use_external_repo is not none)

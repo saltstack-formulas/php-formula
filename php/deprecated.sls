@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
+{#- Evaluating as `False` by default, using this method since `defaults.yaml` not available in this repo #}
+{%- if not salt['config.get']('php').get('warning_messages', {}).get('v1.0.0', {}).get('mute_critical', False) %}
 php-deprecated-in-v1.0.0-test-succeed:
   test.succeed_without_changes:
     - name: |
@@ -25,5 +27,15 @@ php-deprecated-in-v1.0.0-test-succeed:
         # To migrate from the old `php`, the first step is to convert to `php.ng`,     #
         # before `v1.0.0` is released.                                                 #
         #                                                                              #
+        # To prevent this message being displayed again, set the pillar/config value:  #
+        #                                                                              #
+        # ```                                                                          #
+        # php:                                                                         #
+        #   warning_messages:                                                          #
+        #     v1.0.0:                                                                  #
+        #       mute_critical: True                                                    #
+        # ```                                                                          #
+        #                                                                              #
         ################################################################################
     # - failhard: True
+{%- endif %}
