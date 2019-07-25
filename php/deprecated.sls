@@ -1,30 +1,29 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-php-deprecated-in-v1.0.0-test-fail:
+php-deprecated-in-v1.0.0-test-succeed:
   test.succeed_without_changes:
     - name: |
+
+
         ################################################################################
         #                                                                              #
-        #                   WARNING: BREAKING CHANGES SINCE `v1.0.0`                   #
+        #            WARNING: BREAKING CHANGES IN UPCOMING VERSION `v1.0.0`            #
         #                                                                              #
         ################################################################################
         #                                                                              #
-        # Prior to `v1.0.0`, this formula provided two methods for managing php; the   #
-        # old method under `php` and the new method under `php.ng`. The old method     #
-        # has now been removed and `php.ng` has been promoted to be `PHP` in its       #
-        # place.                                                                       #
+        # This formula currently provides two methods for managing PHP; the old method #
+        # under `php` and the new method under `php.ng`. In upcoming `v1.0.0`, the old #
+        # method will be removed and `php.ng` will be promoted to `php` in its place.  #
         #                                                                              #
-        # If you are not in a position to migrate, please pin your repo to the final   #
-        # release tag before `v1.0.0`, i.e. `v0.37.1`.                                 #
+        # If you are not in a position to migrate, you will need to pin your repo to   #
+        # the final release tag before `v1.0.0`, which is expected to be `v0.37.1`.    #
         #                                                                              #
-        # To migrate from `php.ng`, simply modify your pillar to promote the entire    #
-        # section under `php:ng` so that it is under `php` instead. So with the        #
-        # editor of your choice, highlight the entire section and then unindent one    #
-        # level. Finish by removing the `ng:` line.                                    #
+        # If you are currently using `php.ng`, there is nothing to do until `v1.0.0`   #
+        # is released.                                                                 #
         #                                                                              #
-        # To migrate from the old `php`, first convert to `php.ng` under `v0.37.0`     #
-        # and then follow the steps laid out in the paragraph directly above.          #
+        # To migrate from the old `php`, the first step is to convert to `php.ng`,     #
+        # before `v1.0.0` is released.                                                 #
         #                                                                              #
         ################################################################################
     # - failhard: True
