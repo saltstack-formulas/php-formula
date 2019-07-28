@@ -1,6 +1,7 @@
 # Meta-state to fully install php.hhvm
 
 include:
+  - php.ng.deprecated
   - php.ng.hhvm.repo
   - php.ng.hhvm.config
   - php.ng.hhvm.service

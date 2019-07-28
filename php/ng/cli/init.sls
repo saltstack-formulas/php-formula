@@ -1,6 +1,7 @@
 # Installs php-cli and manages the associated php.ini
 
 include:
+  - php.ng.deprecated
   - php.ng.cli.install
   - php.ng.cli.ini
 

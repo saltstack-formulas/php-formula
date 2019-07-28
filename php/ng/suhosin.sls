@@ -1,6 +1,7 @@
 {% from "php/ng/map.jinja" import php with context %}
 
 include:
+  - php.ng.deprecated
   - php.ng
   - php.ng.dev
 

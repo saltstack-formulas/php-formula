@@ -2,6 +2,9 @@
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/ini.jinja" import php_ini %}
 
+include:
+  - php.ng.deprecated
+
 {% set server_settings = php.lookup.hhvm.server %}
 {% do server_settings.update(php.hhvm.config.server.settings) %}
 
