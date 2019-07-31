@@ -16,6 +16,31 @@ php-formula
 
 Formula to set up and configure php
 
+.. list-table::
+   :name: banner-breaking-changes-v1.0.0
+   :header-rows: 1
+   :widths: 1
+
+   * - WARNING: BREAKING CHANGES IN UPCOMING ``v1.0.0``
+   * - This formula currently provides two methods for managing PHP; the old method
+       under ``php`` and the new method under ``php.ng``.
+       In upcoming `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_,
+       the old method will be removed and ``php.ng`` will be promoted to ``php`` in its place.
+
+       If you are not in a position to migrate, you will need to pin your repo to
+       the final release tag before
+       `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_,
+       which is expected to be
+       `v0.37.1 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.37.1>`_.
+
+       If you are currently using ``php.ng``, there is nothing to do until
+       `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_
+       is released.
+
+       To migrate from the old ``php``, the first step is to convert to ``php.ng``,
+       before `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_
+       is released.
+
 .. contents:: **Table of Contents**
 
 General notes
