@@ -2,6 +2,9 @@
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/ini.jinja" import php_ini %}
 
+include:
+  - php.ng.deprecated
+
 {% set settings = php.ini.defaults %}
 {% for key, value in php.cli.ini.settings.items() %}
   {% if settings[key] is defined %}

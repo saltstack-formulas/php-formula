@@ -1,6 +1,7 @@
 # Meta-state to fully install php.fpm
 
 include:
+  - php.ng.deprecated
   - php.ng.fpm.config
   - php.ng.fpm.service
   - php.ng.fpm.pools

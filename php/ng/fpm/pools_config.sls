@@ -2,6 +2,9 @@
 {% from 'php/ng/map.jinja' import php with context %}
 {% from "php/ng/macro.jinja" import sls_block, serialize %}
 
+include:
+  - php.ng.deprecated
+
 # Simple path concatenation.
 {% macro path_join(file, root) -%}
   {{ root ~ '/' ~ file }}

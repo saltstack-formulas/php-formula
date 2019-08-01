@@ -5,6 +5,7 @@
 {% set service_function = {True:'running', False:'dead'}.get(php.fpm.service.enabled) %}
 
 include:
+  - php.ng.deprecated
   - php.ng.fpm.install
 
 php_fpm_service:

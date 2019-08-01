@@ -4,6 +4,8 @@
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/macro.jinja" import sls_block %}
 
+include:
+  - php.ng.deprecated
 
 {% set pkginfo = php.lookup.pkgs.get(state) %}
 
@@ -60,7 +62,7 @@ php_ppa_{{ state }}:
     - __env__:
       - LC_ALL: C.UTF-8
     - onlyif:
-      - test ! -e /etc/apt/sources.list.d/ondrej-php.list 
+      - test ! -e /etc/apt/sources.list.d/ondrej-php.list
     - require_in:
       - pkg: php_install_{{ state }}
   pkg.latest:

@@ -3,6 +3,7 @@
 {%- set version = salt['pillar.get']('php:mongo_version', none) %}
 
 include:
+  - php.deprecated
   - php
   - php.xml
   - php.dev

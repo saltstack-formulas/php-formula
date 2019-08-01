@@ -1,5 +1,8 @@
 {% from "php/ng/map.jinja" import php with context %}
 
+include:
+  - php.ng.deprecated
+
 {% set state = 'apache2' %}
 {% include "php/ng/installed.jinja" %}
 

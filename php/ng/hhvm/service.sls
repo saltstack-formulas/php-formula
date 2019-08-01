@@ -5,6 +5,7 @@
 {% set service_function = {True:'running', False:'dead'}.get(php.hhvm.service.enabled) %}
 
 include:
+  - php.ng.deprecated
   - php.ng.hhvm.install
 
 php_hhvm_service:
@@ -15,5 +16,5 @@ php_hhvm_service:
   - require:
     - sls: php.ng.hhvm.install
   - watch:
-    - pkg: php_install_hhvm 
+    - pkg: php_install_hhvm
 

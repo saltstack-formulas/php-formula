@@ -11,6 +11,7 @@
 {% set salt_user_home = salt['user.info'](salt_user).get('home', '/root') %}
 
 include:
+  - php.ng.deprecated
   - php.ng
 {% if grains['os_family'] == 'FreeBSD' %}
   - php.ng.filter

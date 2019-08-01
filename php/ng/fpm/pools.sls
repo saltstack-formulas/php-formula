@@ -10,6 +10,7 @@
 {% endmacro %}
 
 include:
+  - php.ng.deprecated
   - php.ng.fpm.service
   - php.ng.fpm.pools_config
 
