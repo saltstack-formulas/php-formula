@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.38.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.37.1...v0.38.0>`_ (2019-08-01)
+--------------------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **map:** add xmlrpc package for xml module, as it was done for SUSE (\ `a09ef92 <https://github.com/saltstack-formulas/php-formula/commit/a09ef92>`_\ )
+
 `0.37.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.37.0...v0.37.1>`_ (2019-08-01)
 --------------------------------------------------------------------------------------------------------
 
