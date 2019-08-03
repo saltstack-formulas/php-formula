@@ -28,3 +28,16 @@ sed -i -e '1,4s/-/=/g' CHANGELOG.rst
 
 # Return back to the main directory
 cd ..
+
+
+###############################################################################
+# (C) Update last version before `v1.0.0` with `${nextRelease.version}`
+###############################################################################
+# Only apply this while the version number is below `v1.0.0`!
+V_REPR=v${1}
+MAJOR=$(echo ${V_REPR} | cut -c-2)
+if [ ${MAJOR} = "v0" ]; then
+    sed -i -e "s@^\(\s\+\`\).*\(\s<https://github.com/saltstack-formulas/php-formula/releases/tag/\).*\(>\`_\.\)@\1${V_REPR}\2${V_REPR}\3@" docs/README.rst
+    sed -i -e "s@^\(\s\+# the final release tag before \`v1.0.0\`, which is expected to be \`\).*\(\`.\s\+#\)@\1${V_REPR}\2@" php/deprecated.sls
+    sed -i -e "s@^\(\s\+# the final release tag before \`v1.0.0\`, which is expected to be \`\).*\(\`.\s\+#\)@\1${V_REPR}\2@" php/ng/deprecated.sls
+fi
