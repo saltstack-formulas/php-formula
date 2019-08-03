@@ -19,7 +19,7 @@ php-deprecated-in-v1.0.0-test-succeed:
         # method will be removed and `php.ng` will be promoted to `php` in its place.  #
         #                                                                              #
         # If you are not in a position to migrate, you will need to pin your repo to   #
-        # the final release tag before `v1.0.0`, which is expected to be `v0.37.1`.    #
+        # the final release tag before `v1.0.0`, which is expected to be `v0.38.1`.    #
         #                                                                              #
         # If you are currently using `php.ng`, there is nothing to do until `v1.0.0`   #
         # is released.                                                                 #

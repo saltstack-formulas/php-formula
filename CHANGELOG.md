@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.1](https://github.com/saltstack-formulas/php-formula/compare/v0.38.0...v0.38.1) (2019-08-03)
+
+
+### Bug Fixes
+
+* update deprecation version number in `semantic-release` run ([a87fb91](https://github.com/saltstack-formulas/php-formula/commit/a87fb91)), closes [/github.com/saltstack-formulas/php-formula/pull/175#issuecomment-517492613](https://github.com//github.com/saltstack-formulas/php-formula/pull/175/issues/issuecomment-517492613) [/github.com/saltstack-formulas/php-formula/pull/185#issuecomment-517603898](https://github.com//github.com/saltstack-formulas/php-formula/pull/185/issues/issuecomment-517603898)
+
 # [0.38.0](https://github.com/saltstack-formulas/php-formula/compare/v0.37.1...v0.38.0) (2019-08-01)
 
 
