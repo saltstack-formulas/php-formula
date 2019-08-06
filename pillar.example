@@ -1,19 +1,22 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 ## php.ng pillar examples
 
 php:
   # Use the following values to mute deprecation warnings
-  warning_messages:                                                          #
-    v1.0.0:                                                                  #
-      mute_critical: True                                                    #
-      mute_upcoming: True                                                    #
+  warning_messages:
+    v1.0.0:
+      mute_critical: true
+      mute_upcoming: true
   # Use external repository instead the default (only Ubuntu family)
-  use_external_repo: True
+  use_external_repo: true
   # Set the external repository name (valid only if use_external_repo is not none)
   external_repo_name: 'ondrej/php'
   # Use Software Collections Repository offering PHP 5.4, 5.5, 5.6, 7.0 and 7.1
   # https://www.softwarecollections.org/en/ for more information.
   # SCL is only supported on RHEL and CentOS and only active when using php.ng
-  use_scl_repo: True
+  use_scl_repo: true
   # Which PHP version from the SCL repos to use
   scl_php_version: 71
   # Set the MongoDB driver version. You can specify (optionally) the driver version
@@ -49,12 +52,12 @@ php:
         # to pass forward special arguments to the pkg.installed call
         # you MUST include the name argument for this to work
         cli:
-           -
-             name: php-cli
-             fromrepo: my-specialrepo
-           -
-             name: php-common
-             skip_verify: True
+          -
+            name: php-cli
+            fromrepo: my-specialrepo
+          -
+            name: php-common
+            skip_verify: true
 
       # php-fpm os-specific settings
       fpm:
@@ -77,12 +80,12 @@ php:
 
       # settings for the php-fpm service
       service:
-        # if True, enables the php-fpm service, if False disables it
-        enabled: True
+        # if true, enables the php-fpm service, if false disables it
+        enabled: true
         # additional arguments passed forward to
         # service.enabled/disabled
         opts:
-          reload: True
+          reload: true
 
       # settings for the relevant php-fpm configuration files
       config:
@@ -91,7 +94,7 @@ php:
         ini:
           # arguments passed through to file.managed
           opts:
-            recurse: True
+            recurse: true
           # php.ini file contents that will be merged with the
           # defaults in php.ng.ini.defaults. See php.ng.ini.defaults for
           # syntax guidelines.
@@ -105,7 +108,7 @@ php:
         conf:
           # arguments passed through to file.managed
           opts:
-            recurse: True
+            recurse: true
           # php-fpm conf file contents that will be merged with
           # php.ng.lookup.fpm.defaults. See php.ng.ini.defaults for
           # ini-style syntax guidelines.
@@ -115,7 +118,8 @@ php:
 
       # settings for fpm-pools
       pools:
-        # defaults will apply for each pools settings and can be overwritten by pool settings
+        # defaults will apply for each pools settings and can be overwritten
+        # by pool settings
         defaults:
           user: nginx
           group: nginx
@@ -124,9 +128,9 @@ php:
         # name of the pool file to be managed, this will be appended
         # to the path specified in php.ng.lookup.fpm.pools
         'mypool.conf':
-          # If true, the pool file will be managed, if False it will be
+          # If true, the pool file will be managed, if false it will be
           # absent
-          enabled: True
+          enabled: true
 
           # Overwrite the filename for ext_pillar that doesn't allow
           # dots in fields names.
@@ -134,7 +138,7 @@ php:
 
           # arguments passed forward to file.managed or file.absent
           opts:
-             replace: False
+            replace: false
 
           # pool file contents. See php.ng.ini.defaults for ini-style
           # syntax guidelines.
@@ -159,7 +163,7 @@ php:
       ini:
         # opts passed forward directly to file.managed
         opts:
-          replace: False
+          replace: false
         # contents of the php.ini file that are merged with defaults
         # from php.ng.ini.defaults. See php.ng.ini.defaults for ini-style
         # syntax guidelines
@@ -185,7 +189,7 @@ php:
       # its contents will be joined by commas in final rendering.
       defaults:
         PHP:
-          engine: on
+          engine: 'On'
           output_buffering: 4096
           disable_functions:
             - pcntl_alarm
@@ -204,5 +208,5 @@ php:
       - mysql
 
     # When using php.ng.apache2 on FreeBSD:
-    # Set this to False if you're not using apache-formula
-    use_apache_formula: True
+    # Set this to false if you're not using apache-formula
+    use_apache_formula: true
