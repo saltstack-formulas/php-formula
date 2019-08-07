@@ -1,2 +1,2 @@
-{% set state = 'http' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated

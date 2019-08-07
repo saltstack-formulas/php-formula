@@ -1,2 +1,2 @@
-{% set state = 'sqlite' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated

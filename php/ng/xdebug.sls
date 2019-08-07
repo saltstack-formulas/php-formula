@@ -1,2 +1,2 @@
-{% set state = 'xdebug' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated
