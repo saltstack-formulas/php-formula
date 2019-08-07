@@ -2,6 +2,35 @@
 Changelog
 =========
 
+`0.39.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.38.1...v0.39.0>`_ (2019-08-07)
+--------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **php/ng:** don't iterate on string, make sure list is not string (\ `dbb542c <https://github.com/saltstack-formulas/php-formula/commit/dbb542c>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **pillar.example:** add example for alternatives with multiversion (\ `23a6ec1 <https://github.com/saltstack-formulas/php-formula/commit/23a6ec1>`_\ )
+* **pillar.example:** example of versions (\ `a98aa7e <https://github.com/saltstack-formulas/php-formula/commit/a98aa7e>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **php/ng:** support for php cli multiversion (\ `bb4a077 <https://github.com/saltstack-formulas/php-formula/commit/bb4a077>`_\ )
+* **php/ng:** support the use of a list of php versions (\ `b303239 <https://github.com/saltstack-formulas/php-formula/commit/b303239>`_\ ), closes `#138 <https://github.com/saltstack-formulas/php-formula/issues/138>`_
+
+Styles
+^^^^^^
+
+
+* **pillar.example:** add line break (\ `38fe58f <https://github.com/saltstack-formulas/php-formula/commit/38fe58f>`_\ )
+
 `0.38.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.38.0...v0.38.1>`_ (2019-08-03)
 --------------------------------------------------------------------------------------------------------
 
