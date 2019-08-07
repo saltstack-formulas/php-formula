@@ -20,6 +20,17 @@ php:
   # when you add the php.mongo formula to your execution list
   mongo_version: "1.5.5"
   ng:
+    # set the version of php to be used
+    version: "7.3"
+    # can be a list of versions :
+    # version:
+    #   - "7.3"
+    #   - "7.2"
+
+    # set the version for the Debian alternatives system, when using a list of versions,
+    # php:ng:version is used otherwise.
+    alternatives_version: "7.3"
+
     # this section contains mostly grain filtered data, while overrides
     # are possible in the pillar for unique cases, if your OS is not
     # represented, please consider adding it to the map.jinja for
