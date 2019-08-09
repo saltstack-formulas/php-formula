@@ -4,9 +4,6 @@
 {% from "php/ng/map.jinja" import php with context %}
 {% from "php/ng/macro.jinja" import sls_block %}
 
-include:
-  - php.ng.deprecated
-
 {% set pkginfo = php.lookup.pkgs.get(state) %}
 
 {% set pkgs = [] %}
