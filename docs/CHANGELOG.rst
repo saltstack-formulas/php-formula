@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.39.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.39.0...v0.39.1>`_ (2019-08-12)
+--------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **installed.jinja:** remove ``include`` to prevent conflicting IDs (\ `cb11784 <https://github.com/saltstack-formulas/php-formula/commit/cb11784>`_\ ), closes `#188 <https://github.com/saltstack-formulas/php-formula/issues/188>`_
+
 `0.39.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.38.1...v0.39.0>`_ (2019-08-07)
 --------------------------------------------------------------------------------------------------------
 
