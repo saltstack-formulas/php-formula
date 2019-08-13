@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.2](https://github.com/saltstack-formulas/php-formula/compare/v0.39.1...v0.39.2) (2019-08-13)
+
+
+### Bug Fixes
+
+* **tests:** fix package name for debian ([4f75eac](https://github.com/saltstack-formulas/php-formula/commit/4f75eac))
+
 ## [0.39.1](https://github.com/saltstack-formulas/php-formula/compare/v0.39.0...v0.39.1) (2019-08-12)
 
 
