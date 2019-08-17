@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.40.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.40.0...v0.40.1>`_ (2019-08-17)
+--------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **map:** fix missing value for php.lookup.fpm.user in multi-php mode (\ `f91d942 <https://github.com/saltstack-formulas/php-formula/commit/f91d942>`_\ )
+
 `0.40.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.39.2...v0.40.0>`_ (2019-08-17)
 --------------------------------------------------------------------------------------------------------
 

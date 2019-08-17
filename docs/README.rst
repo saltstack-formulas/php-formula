@@ -31,7 +31,7 @@ Formula to set up and configure php
        the final release tag before
        `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_,
        which is expected to be
-       `v0.40.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.40.0>`_.
+       `v0.40.1 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.40.1>`_.
 
        If you are currently using ``php.ng``, there is nothing to do until
        `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_
