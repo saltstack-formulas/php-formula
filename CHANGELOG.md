@@ -1,5 +1,12 @@
 # Changelog
 
+# [0.40.0](https://github.com/saltstack-formulas/php-formula/compare/v0.39.2...v0.40.0) (2019-08-17)
+
+
+### Features
+
+* **yamllint:** include for this repo and apply rules throughout ([571cc4b](https://github.com/saltstack-formulas/php-formula/commit/571cc4b))
+
 ## [0.39.2](https://github.com/saltstack-formulas/php-formula/compare/v0.39.1...v0.39.2) (2019-08-13)
 
 
