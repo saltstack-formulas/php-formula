@@ -3,7 +3,13 @@
 {% from "php/ng/ini.jinja" import php_ini %}
 
 {% set settings = php.ini.defaults %}
-{% do settings.update(php.apache2.ini.settings) %}
+{% for key, value in php.apache2.ini.settings.items() %}
+  {% if settings[key] is defined %}
+    {% do settings[key].update(value) %}
+  {% else %}
+    {% do settings.update({key: value}) %}
+  {% endif %}
+{% endfor %}
 
 include:
   - php.ng.deprecated
