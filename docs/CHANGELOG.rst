@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.41.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.40.1...v0.41.0>`_ (2019-08-26)
+--------------------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **ng:** promote NG formula (\ `f1b71d0 <https://github.com/saltstack-formulas/php-formula/commit/f1b71d0>`_\ )
+
 `0.40.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.40.0...v0.40.1>`_ (2019-08-17)
 --------------------------------------------------------------------------------------------------------
 
