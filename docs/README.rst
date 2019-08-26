@@ -33,7 +33,7 @@ Formula to set up and configure php
        release tag before
        `v1.0.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v1.0.0>`_,
        i.e.
-       `v0.41.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.41.0>`_.
+       `v0.41.1 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.41.1>`_.
 
        To migrate from ``php.ng``, simply modify your pillar to promote the
        entire section under ``php:ng`` so that it is under ``php`` instead.
@@ -41,7 +41,7 @@ Formula to set up and configure php
        unindent one level.  Finish by removing the ``ng:`` line.
 
        To migrate from the old ``php``, first convert to ``php.ng`` under
-       `v0.41.0 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.41.0>`_.
+       `v0.41.1 <https://github.com/saltstack-formulas/php-formula/releases/tag/v0.41.1>`_.
        and then follow the steps laid out in the paragraph directly above.
 
 .. contents:: **Table of Contents**

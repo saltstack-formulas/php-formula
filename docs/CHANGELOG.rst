@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.41.1 <https://github.com/saltstack-formulas/php-formula/compare/v0.41.0...v0.41.1>`_ (2019-08-26)
+--------------------------------------------------------------------------------------------------------
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** remove duplicate contents (local) (\ `f16796a <https://github.com/saltstack-formulas/php-formula/commit/f16796a>`_\ )
+
 `0.41.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.40.1...v0.41.0>`_ (2019-08-26)
 --------------------------------------------------------------------------------------------------------
 
