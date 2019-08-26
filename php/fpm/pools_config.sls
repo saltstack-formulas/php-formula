@@ -18,10 +18,10 @@
 {% endfor %}
 {% set state = 'php_fpm_pool_conf_' ~ loop.index0 %}
 
-{% set pillar_php_ng_version = salt['pillar.get']('php:ng:version', '7.0') %}
-{% if pillar_php_ng_version is iterable and pillar_php_ng_version is not string %}
+{% set pillar_php_version = salt['pillar.get']('php:version', '7.0') %}
+{% if pillar_php_version is iterable and pillar_php_version is not string %}
   {% set first_fpath = path_join(config.get('filename', pool), php.lookup.fpm.pools) %}
-  {% set first_version = pillar_php_ng_version[0]|string %}
+  {% set first_version = pillar_php_version[0]|string %}
   {% set fpath = first_fpath.replace(first_version, config.get('phpversion', '7.0')) %}
 {% else %}
   {% set fpath = path_join(config.get('filename', pool), php.lookup.fpm.pools) %}

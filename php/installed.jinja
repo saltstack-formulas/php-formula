@@ -9,16 +9,16 @@
 {% set pkgs = [] %}
 {% set specials = [] %}
 
-{% set pillar_php_ng_version = salt['pillar.get']('php:ng:version', '7.0') %}
+{% set pillar_php_version = salt['pillar.get']('php:version', '7.0') %}
 {% if pkginfo is iterable and pkginfo is not string %}
     {% for pkg in pkginfo %}
         {% if pkg is mapping %}
             {% do specials.append(pkg) %}
         {% else %}
             {% do pkgs.append(pkg) %}
-            {% if pillar_php_ng_version is iterable and pillar_php_ng_version is not string %}
-              {% set first_version = pillar_php_ng_version[0]|string %}
-              {% for other_version in pillar_php_ng_version %}
+            {% if pillar_php_version is iterable and pillar_php_version is not string %}
+              {% set first_version = pillar_php_version[0]|string %}
+              {% for other_version in pillar_php_version %}
                 {% set other_version_str = other_version|string %}
                 {% do pkgs.append(pkg.replace(first_version, other_version_str)) %}
               {% endfor %}
@@ -27,9 +27,9 @@
     {% endfor %}
 {% else %}
     {% do pkgs.append(pkginfo) %}
-    {% if pillar_php_ng_version is iterable and pillar_php_ng_version is not string %}
-      {% set first_version = pillar_php_ng_version[0]|string %}
-      {% for other_version in pillar_php_ng_version %}
+    {% if pillar_php_version is iterable and pillar_php_version is not string %}
+      {% set first_version = pillar_php_version[0]|string %}
+      {% for other_version in pillar_php_version %}
         {% set other_version_str = other_version|string %}
         {% do pkgs.append(pkginfo.replace(first_version, other_version_str)) %}
       {% endfor %}
