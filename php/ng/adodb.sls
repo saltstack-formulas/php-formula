@@ -1,2 +1,2 @@
-{% set state = 'adodb' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated

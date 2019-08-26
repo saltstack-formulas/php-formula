@@ -1,2 +1,2 @@
-{% set state = 'auth-sasl' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated
