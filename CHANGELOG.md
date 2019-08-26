@@ -1,5 +1,19 @@
 # Changelog
 
+# [1.0.0](https://github.com/saltstack-formulas/php-formula/compare/v0.41.1...v1.0.0) (2019-08-26)
+
+
+### Features
+
+* **ng:** promote NG formula ([57b37dd](https://github.com/saltstack-formulas/php-formula/commit/57b37dd)), closes [#183](https://github.com/saltstack-formulas/php-formula/issues/183)
+
+
+### BREAKING CHANGES
+
+* **ng:** all previous `php` based configurations must be reviewed;
+`php.ng` usage must be promoted to `php` and any uses of the original
+`php` will have to be converted.
+
 ## [0.41.1](https://github.com/saltstack-formulas/php-formula/compare/v0.41.0...v0.41.1) (2019-08-26)
 
 
