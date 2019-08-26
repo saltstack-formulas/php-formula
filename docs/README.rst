@@ -70,9 +70,6 @@ Please see :ref:`How to contribute <CONTRIBUTING>` for more details.
 Available states
 ----------------
 
-.. contents::
-    :local:
-
 Please provide feedback by filing issues,
 discussing in ``#salt`` in Freenode and the mailing list as normal.
 
