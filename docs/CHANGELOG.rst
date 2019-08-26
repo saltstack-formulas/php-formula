@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`1.0.1 <https://github.com/saltstack-formulas/php-formula/compare/v1.0.0...v1.0.1>`_ (2019-08-26)
+-----------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **pillar:** fix pillar.get still looking under 'ng' namespace (\ `378b5b1 <https://github.com/saltstack-formulas/php-formula/commit/378b5b1>`_\ )
+
 `1.0.0 <https://github.com/saltstack-formulas/php-formula/compare/v0.41.1...v1.0.0>`_ (2019-08-26)
 ------------------------------------------------------------------------------------------------------
 
