@@ -27,3 +27,9 @@
 
     {{ ret|json() }}
 {%- endmacro -%}
+
+{% macro file_requisites(states) %}
+      {%- for state in states %}
+        - file: {{ state }}
+      {%- endfor -%}
+{% endmacro %}
