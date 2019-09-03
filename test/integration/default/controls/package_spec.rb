@@ -1,8 +1,6 @@
 control 'Php package' do
   title 'should be installed'
 
-
-
   def test_debian
     describe package('php-imagick') do
       it { should be_installed }
