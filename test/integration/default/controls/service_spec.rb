@@ -21,17 +21,9 @@ control 'Php service' do
   end
 
   def test_redhat
-    describe service('php') do
-      it { should be_enabled }
-      it { should be_running }
-    end
   end
 
   def test_suse
-    describe service('php5') do
-      it { should be_enabled }
-      it { should be_running }
-    end
   end
 
   case os[:family]
