@@ -148,7 +148,12 @@ suites:
       state_top:
         base:
           '*':
-            - php
+            - php.repo
+            - php.fpm.install
+            - php.fpm.config
+            - php.fpm.pools
+            - php.modules
+            - php.fpm.service
       pillars:
         top.sls:
           base:
