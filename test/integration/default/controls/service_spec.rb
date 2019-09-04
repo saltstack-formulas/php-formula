@@ -13,13 +13,6 @@ control 'Php service' do
     end
   end
 
-  def test_ubuntu
-    describe service(pkg_name) do
-      it { should be_enabled }
-      it { should be_running }
-    end
-  end
-
   def test_redhat
   end
 
@@ -28,12 +21,7 @@ control 'Php service' do
 
   case os[:family]
   when 'debian'
-    case os[:name]
-    when 'ubuntu'
-      test_ubuntu
-    when 'debian'
-      test_debian
-    end
+    test_debian
   when 'redhat', 'fedora'
     test_redhat
   when 'suse'

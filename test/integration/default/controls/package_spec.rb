@@ -25,12 +25,6 @@ control 'Php package' do
     end
   end
 
-  def test_ubuntu
-    describe package(pkg_name) do
-      it { should be_installed }
-    end
-  end
-
   def test_redhat
     describe package('php') do
       it { should be_installed }
@@ -45,12 +39,7 @@ control 'Php package' do
 
   case os[:family]
   when 'debian'
-    case os[:name]
-    when 'ubuntu'
-      test_ubuntu
-    when 'debian'
-      test_debian
-    end
+    test_debian
   when 'redhat', 'fedora'
     test_redhat
   when 'suse'

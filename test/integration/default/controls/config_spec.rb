@@ -21,9 +21,6 @@ control 'Php configuration' do
     end
   end
 
-  def test_ubuntu
-  end
-
   def test_redhat
   end
 
@@ -32,12 +29,7 @@ control 'Php configuration' do
 
   case os[:family]
   when 'debian'
-    case os[:name]
-    when 'ubuntu'
-      test_ubuntu
-    when 'debian'
-      test_debian
-    end
+    test_debian
   when 'redhat', 'fedora'
     test_redhat
   when 'suse'
