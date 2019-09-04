@@ -93,5 +93,6 @@ php:
     - mysql
     - readline
     - redis
+    - xdebug
     - xml
     - zip
