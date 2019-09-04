@@ -2,20 +2,12 @@
 # vim: ft=yaml
 ---
 php:
-{% if salt['grains.get']('os') == 'Ubuntu' %}
-  use_external_repo: true
-  repo:
-    humanname: php-sury ppa
-    name: "deb http://ppa.launchpad.net/ondrej/php/ubuntu {{ salt['grains.get']('oscodename') }} main"
-    file: /etc/apt/sources.list.d/php-sury.list
-    key_url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x14aa40ec0831756756d7f66c4f4ea0aae5267a6c
-{% else %}
   repo:
     humanname: php-sury repo
+    # yamllint disable-line rule:line-length
     name: "deb https://packages.sury.org/php/ {{ salt['grains.get']('oscodename') }} main"
     file: /etc/apt/sources.list.d/php-sury.list
     key_url: https://packages.sury.org/php/apt.gpg
-{% endif %}
 
   version:
     - '5.6'
