@@ -2,6 +2,51 @@
 Changelog
 =========
 
+`1.1.0 <https://github.com/saltstack-formulas/php-formula/compare/v1.0.1...v1.1.0>`_ (2019-09-05)
+-----------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **fpm:** be sure to restart all Php instances in case of multi-versions (\ `d4772f9 <https://github.com/saltstack-formulas/php-formula/commit/d4772f9>`_\ )
+* **tests:** don't test services on Suse and RedHat (\ `23214bf <https://github.com/saltstack-formulas/php-formula/commit/23214bf>`_\ )
+* **xdebug:** fix xdebug package name (\ `496ec28 <https://github.com/saltstack-formulas/php-formula/commit/496ec28>`_\ )
+* **yamllint:** use separate suite for ``ubuntu`` (\ `6cba4af <https://github.com/saltstack-formulas/php-formula/commit/6cba4af>`_\ ), closes `#174 <https://github.com/saltstack-formulas/php-formula/issues/174>`_
+
+Code Refactoring
+^^^^^^^^^^^^^^^^
+
+
+* **macro:** extract file_requisites macro (\ `d26c4f8 <https://github.com/saltstack-formulas/php-formula/commit/d26c4f8>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen:** add test pillars for Debian and call some states (\ `d4fc842 <https://github.com/saltstack-formulas/php-formula/commit/d4fc842>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **repo:** add repo pattern so we can set distro repo during tests (\ `3c9efc7 <https://github.com/saltstack-formulas/php-formula/commit/3c9efc7>`_\ )
+
+Styles
+^^^^^^
+
+
+* **spec:** remove empty lines (\ `dc12a0b <https://github.com/saltstack-formulas/php-formula/commit/dc12a0b>`_\ )
+
+Tests
+^^^^^
+
+
+* **config:** add tests on Php config (\ `6555cf0 <https://github.com/saltstack-formulas/php-formula/commit/6555cf0>`_\ )
+* **package:** fix package spec in case of multi Php versions (\ `59f648c <https://github.com/saltstack-formulas/php-formula/commit/59f648c>`_\ )
+* **service:** add tests on Php services (\ `baeac04 <https://github.com/saltstack-formulas/php-formula/commit/baeac04>`_\ )
+* **ubuntu:** fix tests on Ubuntu distro (\ `b13bed2 <https://github.com/saltstack-formulas/php-formula/commit/b13bed2>`_\ )
+
 `1.0.1 <https://github.com/saltstack-formulas/php-formula/compare/v1.0.0...v1.0.1>`_ (2019-08-26)
 -----------------------------------------------------------------------------------------------------
 
