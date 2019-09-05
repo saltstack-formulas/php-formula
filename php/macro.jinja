@@ -27,3 +27,17 @@
 
     {{ ret|json() }}
 {%- endmacro -%}
+
+{% macro file_requisites(states) %}
+      {%- for state in states %}
+        - file: {{ state }}
+      {%- endfor -%}
+{% endmacro %}
+
+{%- macro format_kwargs(kwarg) -%}
+  {%- filter indent(4) %}
+    {%- for k, v in kwarg|dictsort() %}
+- {{ k }}: {{ v }}
+    {%- endfor %}
+  {%- endfilter %}
+{%- endmacro %}
