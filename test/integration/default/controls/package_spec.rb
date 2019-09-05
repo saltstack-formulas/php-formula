@@ -36,7 +36,7 @@ control 'Php package' do
   end
 
   def test_suse
-    describe package('php5') do
+    describe package('php7') do
       it { should be_installed }
     end
   end
