@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`1.1.1 <https://github.com/saltstack-formulas/php-formula/compare/v1.1.0...v1.1.1>`_ (2019-09-05)
+-----------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen+travis:** replace EOL pre-salted images (\ `c9eea17 <https://github.com/saltstack-formulas/php-formula/commit/c9eea17>`_\ )
+
+Tests
+^^^^^
+
+
+* **suse:** update version to ``7.0`` for ``opensuse-leap-15`` (\ `fd67570 <https://github.com/saltstack-formulas/php-formula/commit/fd67570>`_\ )
+
 `1.1.0 <https://github.com/saltstack-formulas/php-formula/compare/v1.0.1...v1.1.0>`_ (2019-09-05)
 -----------------------------------------------------------------------------------------------------
 
