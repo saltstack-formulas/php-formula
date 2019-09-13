@@ -1,8 +1,10 @@
-# Manages the php-fpm pools config files
-{% from 'php/map.jinja' import php with context %}
-{% from "php/macro.jinja" import sls_block, serialize %}
+{#- Manages the php-fpm pools config files #}
+{%- set tplroot = tpldir.split('/')[0] %}
+{%- from tplroot ~ "/map.jinja" import php with context %}
+{%- from tplroot ~ "/macro.jinja" import sls_block, serialize %}
+{%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
 
-# Simple path concatenation.
+{#- Simple path concatenation. #}
 {% macro path_join(file, root) -%}
   {{ root ~ '/' ~ file }}
 {%- endmacro %}
@@ -32,7 +34,9 @@
   file.managed:
     {{ sls_block(config.get('opts', {})) }}
     - name: {{ fpath }}
-    - source: salt://php/files/php.ini
+    - source: {{ files_switch(['php.ini'],
+                              'php_fpm_pool_conf'
+              ) }}
     - template: jinja
     - context:
         config: {{ serialize(config.get('settings', {})) }}

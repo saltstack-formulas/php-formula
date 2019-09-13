@@ -209,3 +209,48 @@ php:
   # When using php.apache2 on FreeBSD:
   # Set this to false if you're not using apache-formula
   use_apache_formula: true
+
+  tofs:
+    # The files_switch key serves as a selector for alternative
+    # directories under the formula files directory. See TOFS pattern
+    # doc for more info.
+    # Note: Any value not evaluated by `config.get` will be used literally.
+    # This can be used to set custom paths, as many levels deep as required.
+    # files_switch:
+    #   - any/path/can/be/used/here
+    #   - id
+    #   - role
+    #   - osfinger
+    #   - os
+    #   - os_family
+    # All aspects of path/file resolution are customisable using the options below.
+    # This is unnecessary in most cases; there are sensible defaults.
+    # path_prefix: template_alt
+    # dirs:
+    #   files: files_alt
+    #   default: default_alt
+    source_files:
+      php_apache2_ini:
+        - alt_php.ini
+      php_apache2_module_config:
+        - alt_mod_php.conf.jinja
+      php_cli_ini:      # Used if there is only one version declared
+        - alt_php.ini
+      php_cli_ini_7.2:  # Used if several versions are declared
+        - alt_php.ini
+      php_fpm_conf_config:
+        - alt_php.ini
+      php_fpm_conf_config_7.3:
+        - alt_php.ini
+      php_fpm_ini_config:
+        - alt_php.ini
+      php_fpm_ini_config_7.0:
+        - alt_php.ini
+      php_fpm_pool_conf:
+        - alt_php.ini
+      php_hhvm_conf_config:
+        - alt_php.ini
+      php_hhvm_ini_config:
+        - alt_php.ini
+      php_xcache_ini:
+        - alt_php.ini
