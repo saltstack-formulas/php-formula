@@ -1,5 +1,18 @@
 # Changelog
 
+# [1.2.0](https://github.com/saltstack-formulas/php-formula/compare/v1.1.1...v1.2.0) (2019-09-13)
+
+
+### Continuous Integration
+
+* use `dist: bionic` & apply `opensuse-leap-15` SCP error workaround ([76a2f76](https://github.com/saltstack-formulas/php-formula/commit/76a2f76))
+* **yamllint:** add rule `empty-values` & use new `yaml-files` setting ([6f6d4bc](https://github.com/saltstack-formulas/php-formula/commit/6f6d4bc))
+
+
+### Features
+
+* **tofs:** implementation for all file.managed ([8e79a35](https://github.com/saltstack-formulas/php-formula/commit/8e79a35))
+
 ## [1.1.1](https://github.com/saltstack-formulas/php-formula/compare/v1.1.0...v1.1.1) (2019-09-05)
 
 
