@@ -148,7 +148,7 @@ php:
             listen: /var/run/php5-fpm-myapp.sock
             listen.owner: www-data
             listen.group: www-data
-            listen.mode: 0660
+            listen.mode: '0660'
             pm: dynamic
             pm.max_children: 5
             pm.start_servers: 2
