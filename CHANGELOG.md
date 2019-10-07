@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.1](https://github.com/saltstack-formulas/php-formula/compare/v1.2.0...v1.2.1) (2019-10-07)
+
+
+### Bug Fixes
+
+* **pillar.example:** fix `yamllint` error ([1b1747a](https://github.com/saltstack-formulas/php-formula/commit/1b1747a)), closes [/travis-ci.org/myii/php-formula/builds/594703019#L208-L210](https://github.com//travis-ci.org/myii/php-formula/builds/594703019/issues/L208-L210)
+
+
+### Continuous Integration
+
+* **kitchen:** change `log_level` to `debug` instead of `info` ([b86237e](https://github.com/saltstack-formulas/php-formula/commit/b86237e))
+* **kitchen:** install required packages to bootstrapped `opensuse` [skip ci] ([20be85a](https://github.com/saltstack-formulas/php-formula/commit/20be85a))
+* **kitchen:** use bootstrapped `opensuse` images until `2019.2.2` [skip ci] ([f70ebd2](https://github.com/saltstack-formulas/php-formula/commit/f70ebd2))
+* **platform:** add `arch-base-latest` (commented out for now) [skip ci] ([55d5df1](https://github.com/saltstack-formulas/php-formula/commit/55d5df1))
+
 # [1.2.0](https://github.com/saltstack-formulas/php-formula/compare/v1.1.1...v1.2.0) (2019-09-13)
 
 
