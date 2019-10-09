@@ -24,7 +24,7 @@ include:
 get-composer:
   file.managed:
     - name: {{ php.lookup.pkgs.temp_dir }}/installer
-    - mode: 0755
+    - mode: '0755'
     - unless: test -f {{ install_file }}
     - source: https://getcomposer.org/installer
     - source_hash: https://composer.github.io/installer.sig
