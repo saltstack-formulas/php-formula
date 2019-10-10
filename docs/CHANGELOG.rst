@@ -2,6 +2,23 @@
 Changelog
 =========
 
+`1.2.2 <https://github.com/saltstack-formulas/php-formula/compare/v1.2.1...v1.2.2>`_ (2019-10-10)
+-----------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **composer.sls:** fix ``salt-lint`` errors (\ ` <https://github.com/saltstack-formulas/php-formula/commit/4e48a7a>`_\ )
+* **map.jinja:** fix ``salt-lint`` errors (\ ` <https://github.com/saltstack-formulas/php-formula/commit/01f5ede>`_\ )
+* **repo.sls:** fix ``salt-lint`` errors (\ ` <https://github.com/saltstack-formulas/php-formula/commit/b4d994c>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* merge travis matrix, add ``salt-lint`` & ``rubocop`` to ``lint`` job (\ ` <https://github.com/saltstack-formulas/php-formula/commit/a5a8a95>`_\ )
+
 `1.2.1 <https://github.com/saltstack-formulas/php-formula/compare/v1.2.0...v1.2.1>`_ (2019-10-07)
 -----------------------------------------------------------------------------------------------------
 
