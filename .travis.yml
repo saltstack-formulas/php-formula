@@ -61,7 +61,7 @@ jobs:
     ## Define the rest of the matrix based on Kitchen testing
     # Make sure the instances listed below match up with
     # the `platforms` defined in `kitchen.yml`
-    - env: INSTANCE=debian-debian-10-develop-py3
+    - env: INSTANCE=debian-debian-10-master-py3
     # - env: INSTANCE=ubuntu-ubuntu-1804-develop-py3
     # - env: INSTANCE=redhat-centos-7-develop-py3
     # - env: INSTANCE=redhat-fedora-30-develop-py3
