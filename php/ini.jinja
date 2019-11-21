@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+{#- php.ini management macro. #}
+{%- set tplroot = tpldir.split('/')[0] %}
+{%- from tplroot ~ "/macro.jinja" import sls_block, serialize %}
+{%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
+
+{% macro php_ini(filename, tofs_lookup, opts={}, settings={}) %}
+  file.managed:
+    {{ sls_block(opts) }}
+    - name: {{ filename }}
+    - source: {{ files_switch(['php.ini'],
+                              tofs_lookup
+              ) }}
+    - template: jinja
+    - context:
+        config: {{ serialize(odict(settings)) }}
+{%- endmacro -%}

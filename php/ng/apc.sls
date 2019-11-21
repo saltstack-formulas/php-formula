@@ -1,2 +1,2 @@
-{% set state = 'apc' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated

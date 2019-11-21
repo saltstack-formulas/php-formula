@@ -1,2 +1,2 @@
-{% set state = 'openssl' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated

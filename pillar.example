@@ -1,183 +1,256 @@
-## php.ng pillar examples
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+## php pillar examples
 
 php:
+  # Use the following values to mute deprecation warnings
+  warning_messages:
+    v1.0.0:
+      mute_critical: true
+      mute_upcoming: true
   # Use external repository instead the default (only Ubuntu family)
-  use_external_repo: True
+  use_external_repo: true
   # Set the external repository name (valid only if use_external_repo is not none)
   external_repo_name: 'ondrej/php'
   # Use Software Collections Repository offering PHP 5.4, 5.5, 5.6, 7.0 and 7.1
   # https://www.softwarecollections.org/en/ for more information.
-  # SCL is only supported on RHEL and CentOS and only active when using php.ng
-  use_scl_repo: True
+  # SCL is only supported on RHEL and CentOS
+  use_scl_repo: true
   # Which PHP version from the SCL repos to use
   scl_php_version: 71
   # Set the MongoDB driver version. You can specify (optionally) the driver version
   # when you add the php.mongo formula to your execution list
   mongo_version: "1.5.5"
-  ng:
-    # this section contains mostly grain filtered data, while overrides
-    # are possible in the pillar for unique cases, if your OS is not
-    # represented, please consider adding it to the map.jinja for
-    # upstream inclusion
-    lookup:
+  # set the version of php to be used
+  version: "7.3"
+  # can be a list of versions :
+  # version:
+  #   - "7.3"
+  #   - "7.2"
 
-      # package definitions, these can be strings, lists of strings, or
-      # lists of dictionaries
-      pkgs:
-        memcached: php5-memcached
-        # ensures both will be installed
-        curl:
-          - php-common
-          - curl
-        # a dictionary can be used in more complex cases where you want
-        # to pass forward special arguments to the pkg.installed call
-        # you MUST include the name argument for this to work
-        cli:
-           -
-             name: php-cli
-             fromrepo: my-specialrepo
-           -
-             name: php-common
-             skip_verify: True
+  # set the version for the Debian alternatives system, when using a list of versions,
+  # php:version is used otherwise.
+  alternatives_version: "7.3"
 
-      # php-fpm os-specific settings
-      fpm:
-        conf: /location/of/php-fpm/config.conf
-        ini: /location/of/php-fpm/php.ini
-        pools: /location/of/php-fpm/pool.d
-        service: name-of-php5-fpm-service
-
-        # the default content of the php5-fpm main config file
-        defaults:
-          global:
-            pid: /var/run/php5-fpm.pid
-
-      # php-cli os-specific settings
+  # this section contains mostly grain filtered data, while overrides
+  # are possible in the pillar for unique cases, if your OS is not
+  # represented, please consider adding it to the map.jinja for
+  # upstream inclusion
+  lookup:
+    enable_php_repo: centos-sclo-rh-testing
+    # package definitions, these can be strings, lists of strings, or
+    # lists of dictionaries
+    pkgs:
+      memcached: php5-memcached
+      # ensures both will be installed
+      curl:
+        - php-common
+        - curl
+      # a dictionary can be used in more complex cases where you want
+      # to pass forward special arguments to the pkg.installed call
+      # you MUST include the name argument for this to work
       cli:
-        ini: /location/of/php-cli/php.ini
+        -
+          name: php-cli
+          fromrepo: my-specialrepo
+        -
+          name: php-common
+          skip_verify: true
 
-    # php-fpm settings
+    # php-fpm os-specific settings
     fpm:
+      conf: /location/of/php-fpm/config.conf
+      ini: /location/of/php-fpm/php.ini
+      pools: /location/of/php-fpm/pool.d
+      service: name-of-php5-fpm-service
 
-      # settings for the php-fpm service
-      service:
-        # if True, enables the php-fpm service, if False disables it
-        enabled: True
-        # additional arguments passed forward to
-        # service.enabled/disabled
-        opts:
-          reload: True
+      # the default content of the php5-fpm main config file
+      defaults:
+        global:
+          pid: /var/run/php5-fpm.pid
 
-      # settings for the relevant php-fpm configuration files
-      config:
-
-        # options to manage the php.ini file used by php-fpm
-        ini:
-          # arguments passed through to file.managed
-          opts:
-            recurse: True
-          # php.ini file contents that will be merged with the
-          # defaults in php.ng.ini.defaults. See php.ng.ini.defaults for
-          # syntax guidelines.
-          settings:
-            PHP:
-              engine: 'Off'
-              extension_dir: '/usr/lib/php/modules/'
-              extension: [pdo_mysql.so, iconv.so, openssl.so]
-
-        # options to manage the php-fpm conf file
-        conf:
-          # arguments passed through to file.managed
-          opts:
-            recurse: True
-          # php-fpm conf file contents that will be merged with
-          # php.ng.lookup.fpm.defaults. See php.ng.ini.defaults for
-          # ini-style syntax guidelines.
-          settings:
-            global:
-              pid: /var/run/php-fpm/special-pid.file
-
-      # settings for fpm-pools
-      pools:
-        # defaults will apply for each pools settings and can be overwritten by pool settings
-        defaults:
-          user: nginx
-          group: nginx
-          listen: /var/run/php-fpm-default.sock
-
-        # name of the pool file to be managed, this will be appended
-        # to the path specified in php.ng.lookup.fpm.pools
-        'mypool.conf':
-          # If true, the pool file will be managed, if False it will be
-          # absent
-          enabled: True
-
-          # Overwrite the filename for ext_pillar that doesn't allow
-          # dots in fields names.
-          filname: my_other_name.conf
-
-          # arguments passed forward to file.managed or file.absent
-          opts:
-             replace: False
-
-          # pool file contents. See php.ng.ini.defaults for ini-style
-          # syntax guidelines.
-          settings:
-            myapp:
-              user: www-data
-              group: www-data
-              listen: /var/run/php5-fpm-myapp.sock
-              listen.owner: www-data
-              listen.group: www-data
-              listen.mode: 0660
-              pm: dynamic
-              pm.max_children: 5
-              pm.start_servers: 2
-              pm.min_spare_servers: 1
-              pm.max_spare_servers: 3
-              'php_admin_value[memory_limit]': 300M
-
-    # php-cli settings
+    # php-cli os-specific settings
     cli:
-      # settings to manage the cli's php.ini
+      ini: /location/of/php-cli/php.ini
+
+  # php-fpm settings
+  fpm:
+
+    # settings for the php-fpm service
+    service:
+      # if true, enables the php-fpm service, if false disables it
+      enabled: true
+      # additional arguments passed forward to
+      # service.enabled/disabled
+      opts:
+        reload: true
+
+    # settings for the relevant php-fpm configuration files
+    config:
+
+      # options to manage the php.ini file used by php-fpm
       ini:
-        # opts passed forward directly to file.managed
+        # arguments passed through to file.managed
         opts:
-          replace: False
-        # contents of the php.ini file that are merged with defaults
-        # from php.ng.ini.defaults. See php.ng.ini.defaults for ini-style
-        # syntax guidelines
+          recurse: true
+        # php.ini file contents that will be merged with the
+        # defaults in php.ini.defaults. See php.ini.defaults for
+        # syntax guidelines.
         settings:
           PHP:
             engine: 'Off'
+            extension_dir: '/usr/lib/php/modules/'
+            extension: [pdo_mysql.so, iconv.so, openssl.so]
 
-    # php-xcache settings
-    xcache:
-      ini:
-        opts: {}
-        # contents of the xcache.ini file that are merged with defaults
-        # from php.xcache.ini.defaults. See php.ng.ini.defaults for ini-style
+      # options to manage the php-fpm conf file
+      conf:
+        # arguments passed through to file.managed
+        opts:
+          recurse: true
+        # php-fpm conf file contents that will be merged with
+        # php.lookup.fpm.defaults. See php.ini.defaults for
+        # ini-style syntax guidelines.
         settings:
-          xcache:
-            xcache.size: 90M
+          global:
+            pid: /var/run/php-fpm/special-pid.file
 
-    # global php.ini settings
-    ini:
-      # Default php.ini contents. These follow a strict format. The top-
-      # level dict keys form ini group headings. Nested key/value
-      # pairs represent setting=value statements. If a value is a list,
-      # its contents will be joined by commas in final rendering.
+    # settings for fpm-pools
+    pools:
+      # defaults will apply for each pools settings and can be overwritten
+      # by pool settings
       defaults:
-        PHP:
-          engine: on
-          output_buffering: 4096
-          disable_functions:
-            - pcntl_alarm
-            - pcntl_fork
-            - pcntl_wait
-        'CLI Server':
-          cli_server_color: 'On'
+        user: nginx
+        group: nginx
+        listen: /var/run/php-fpm-default.sock
 
-    # When using php.ng.apache2 on FreeBSD:
-    # Set this to False if you're not using apache-formula
-    use_apache_formula: True
+      # name of the pool file to be managed, this will be appended
+      # to the path specified in php.lookup.fpm.pools
+      'mypool.conf':
+        # If true, the pool file will be managed, if false it will be
+        # absent
+        enabled: true
+
+        # Overwrite the filename for ext_pillar that doesn't allow
+        # dots in fields names.
+        filname: my_other_name.conf
+
+        # arguments passed forward to file.managed or file.absent
+        opts:
+          replace: false
+
+        # pool file contents. See php.ini.defaults for ini-style
+        # syntax guidelines.
+        settings:
+          myapp:
+            user: www-data
+            group: www-data
+            listen: /var/run/php5-fpm-myapp.sock
+            listen.owner: www-data
+            listen.group: www-data
+            listen.mode: '0660'
+            pm: dynamic
+            pm.max_children: 5
+            pm.start_servers: 2
+            pm.min_spare_servers: 1
+            pm.max_spare_servers: 3
+            'php_admin_value[memory_limit]': 300M
+
+  # php-cli settings
+  cli:
+    # settings to manage the cli's php.ini
+    ini:
+      # opts passed forward directly to file.managed
+      opts:
+        replace: false
+      # contents of the php.ini file that are merged with defaults
+      # from php.ini.defaults. See php.ini.defaults for ini-style
+      # syntax guidelines
+      settings:
+        PHP:
+          engine: 'Off'
+
+  # php-xcache settings
+  xcache:
+    ini:
+      opts: {}
+      # contents of the xcache.ini file that are merged with defaults
+      # from php.xcache.ini.defaults. See php.ini.defaults for ini-style
+      settings:
+        xcache:
+          xcache.size: 90M
+
+  # global php.ini settings
+  ini:
+    # Default php.ini contents. These follow a strict format. The top-
+    # level dict keys form ini group headings. Nested key/value
+    # pairs represent setting=value statements. If a value is a list,
+    # its contents will be joined by commas in final rendering.
+    defaults:
+      PHP:
+        engine: 'On'
+        output_buffering: 4096
+        disable_functions:
+          - pcntl_alarm
+          - pcntl_fork
+          - pcntl_wait
+      'CLI Server':
+        cli_server_color: 'On'
+
+  # List of modules to install via php.modules
+  modules:
+    # Calls `php.<name>` if available, or try to install the matching
+    # packages that can be set via from php:lookup:pkgs
+    - cli
+    - fpm
+    - curl
+    - mysql
+
+  # When using php.apache2 on FreeBSD:
+  # Set this to false if you're not using apache-formula
+  use_apache_formula: true
+
+  tofs:
+    # The files_switch key serves as a selector for alternative
+    # directories under the formula files directory. See TOFS pattern
+    # doc for more info.
+    # Note: Any value not evaluated by `config.get` will be used literally.
+    # This can be used to set custom paths, as many levels deep as required.
+    # files_switch:
+    #   - any/path/can/be/used/here
+    #   - id
+    #   - role
+    #   - osfinger
+    #   - os
+    #   - os_family
+    # All aspects of path/file resolution are customisable using the options below.
+    # This is unnecessary in most cases; there are sensible defaults.
+    # path_prefix: template_alt
+    # dirs:
+    #   files: files_alt
+    #   default: default_alt
+    source_files:
+      php_apache2_ini:
+        - alt_php.ini
+      php_apache2_module_config:
+        - alt_mod_php.conf.jinja
+      php_cli_ini:      # Used if there is only one version declared
+        - alt_php.ini
+      php_cli_ini_7.2:  # Used if several versions are declared
+        - alt_php.ini
+      php_fpm_conf_config:
+        - alt_php.ini
+      php_fpm_conf_config_7.3:
+        - alt_php.ini
+      php_fpm_ini_config:
+        - alt_php.ini
+      php_fpm_ini_config_7.0:
+        - alt_php.ini
+      php_fpm_pool_conf:
+        - alt_php.ini
+      php_hhvm_conf_config:
+        - alt_php.ini
+      php_hhvm_ini_config:
+        - alt_php.ini
+      php_xcache_ini:
+        - alt_php.ini

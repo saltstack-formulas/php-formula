@@ -1,0 +1,119 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+## Machine config
+os: 'linux'
+arch: 'amd64'
+dist: 'bionic'
+version: '~> 1.0'
+
+## Language and cache config
+language: 'ruby'
+cache: 'bundler'
+
+## Services config
+services:
+  - docker
+
+## Script to run for the test stage
+script:
+  - bin/kitchen verify "${INSTANCE}"
+
+## Stages and jobs matrix
+stages:
+  - test
+  - name: 'release'
+    if: 'branch = master AND type != pull_request'
+jobs:
+  allow_failures:
+    - env: Lint_rubocop
+  fast_finish: true
+  include:
+    ## Define the test stage that runs the linters (and testing matrix, if applicable)
+
+    # Run all of the linters in a single job (except `rubocop`)
+    - language: 'node_js'
+      node_js: 'lts/*'
+      env: 'Lint'
+      name: 'Lint: salt-lint, yamllint & commitlint'
+      before_install: 'skip'
+      script:
+        # Install and run `salt-lint`
+        - pip install --user salt-lint
+        - git ls-files | grep '\.sls$\|\.jinja$\|\.j2$\|\.tmpl$\|\.tst$'
+                       | xargs salt-lint
+        # Install and run `yamllint`
+        # Need at least `v1.17.0` for the `yaml-files` setting
+        - pip install --user yamllint>=1.17.0
+        - yamllint -s .
+        # Install and run `commitlint`
+        - npm i -D @commitlint/config-conventional
+                   @commitlint/travis-cli
+        - commitlint-travis
+    # Run the `rubocop` linter in a separate job that is allowed to fail
+    # Once these lint errors are fixed, this can be merged into a single job
+    - language: node_js
+      node_js: lts/*
+      env: Lint_rubocop
+      name: 'Lint: rubocop'
+      before_install: skip
+      script:
+        # Install and run `rubocop`
+        - gem install rubocop
+        - rubocop -d
+
+    ## Define the rest of the matrix based on Kitchen testing
+    # Make sure the instances listed below match up with
+    # the `platforms` defined in `kitchen.yml`
+    - env: INSTANCE=debian-debian-10-master-py3
+    # - env: INSTANCE=ubuntu-ubuntu-1804-master-py3
+    # - env: INSTANCE=redhat-centos-8-master-py3
+    # - env: INSTANCE=redhat-fedora-31-master-py3
+    # - env: INSTANCE=suse-opensuse-leap-151-master-py3
+    # - env: INSTANCE=redhat-amazonlinux-2-master-py2
+    # - env: INSTANCE=debian-debian-10-2019-2-py3
+    # - env: INSTANCE=debian-debian-9-2019-2-py3
+    - env: INSTANCE=ubuntu-ubuntu-1804-2019-2-py3
+    # - env: INSTANCE=redhat-centos-8-2019-2-py3
+    # - env: INSTANCE=redhat-fedora-31-2019-2-py3
+    # - env: INSTANCE=suse-opensuse-leap-151-2019-2-py3
+    # - env: INSTANCE=redhat-centos-7-2019-2-py2
+    - env: INSTANCE=redhat-amazonlinux-2-2019-2-py2
+    - env: INSTANCE=redhat-fedora-30-2018-3-py3
+    # - env: INSTANCE=debian-debian-9-2018-3-py2
+    # - env: INSTANCE=ubuntu-ubuntu-1604-2018-3-py2
+    # - env: INSTANCE=redhat-centos-7-2018-3-py2
+    - env: INSTANCE=suse-opensuse-leap-151-2018-3-py2
+    # - env: INSTANCE=redhat-amazonlinux-2-2018-3-py2
+    # - env: INSTANCE=debian-debian-8-2017-7-py2
+    # - env: INSTANCE=ubuntu-ubuntu-1604-2017-7-py2
+    - env: INSTANCE=redhat-centos-6-2017-7-py2
+    # - env: INSTANCE=redhat-fedora-30-2017-7-py2
+    # - env: INSTANCE=suse-opensuse-leap-151-2017-7-py2
+    # - env: INSTANCE=redhat-amazonlinux-2-2017-7-py2
+
+    ## Define the release stage that runs `semantic-release`
+    - stage: 'release'
+      language: 'node_js'
+      node_js: 'lts/*'
+      env: 'Release'
+      name: 'Run semantic-release inc. file updates to AUTHORS, CHANGELOG & FORMULA'
+      before_install: 'skip'
+      script:
+        # Update `AUTHORS.md`
+        - export MAINTAINER_TOKEN=${GH_TOKEN}
+        - go get github.com/myii/maintainer
+        - maintainer contributor
+
+        # Install all dependencies required for `semantic-release`
+        - npm i -D @semantic-release/changelog@3
+                   @semantic-release/exec@3
+                   @semantic-release/git@7
+      deploy:
+        provider: 'script'
+        # Opt-in to `dpl v2` to complete the Travis build config validation (beta)
+        # * https://docs.travis-ci.com/user/build-config-validation
+        # Deprecated `skip_cleanup` can now be avoided, `cleanup: false` is by default
+        edge: true
+        # Run `semantic-release`
+        script: 'npx semantic-release@15'

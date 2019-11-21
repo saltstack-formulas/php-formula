@@ -1,2 +1,2 @@
-{% set state = 'pspell' %}
-{% include "php/ng/installed.jinja" %}
+include:
+  - php.deprecated
