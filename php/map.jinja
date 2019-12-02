@@ -2679,7 +2679,7 @@
                 },
     }, merge=True) %}
 {%- else %}
-    {%- set useversion = php_version | replace(".", "-") -%}
+    {%- set useversion = php_version | replace('.', '-') -%}
     {#- Red Hat Softwarecollection prefix lookup belongs to the Red Hat part
        further down but has to go here due to Jinja parsing rules. -#}
     {%- if salt['pillar.get']('php:use_scl_repo', False) -%}
@@ -2823,7 +2823,7 @@
                     'adodb': 'dev-php/adodb',
                     'apache2': [{'name': 'dev-lang/php','version': ':' + php_version + '[apache2]'}],
                     'apc': [{'name': 'dev-php/pecl-apcu_bc','uses': '[php_targets_php' + useversion + ']'}],
-                    'apcu': [{'name': 'dev-php/pecl-apcu', 'uses': "[php_targets_php" + useversion + "]"}],
+                    'apcu': [{'name': 'dev-php/pecl-apcu', 'uses': '[php_targets_php' + useversion + ']'}],
                     'bcmath': [{'name': 'dev-lang/php','version': ':' + php_version + '[bcmath]'}],
                     'bz2': [{'name': 'dev-lang/php','version': ':' + php_version + '[bzip2]'}],
                     'cache-lite': 'dev-php/PEAR-Cache_Lite',
