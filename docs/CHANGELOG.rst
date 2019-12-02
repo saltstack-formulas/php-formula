@@ -2,6 +2,44 @@
 Changelog
 =========
 
+`1.2.3 <https://github.com/saltstack-formulas/php-formula/compare/v1.2.2...v1.2.3>`_ (2019-12-02)
+-----------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **map.jinja:** fix useflags regex (gentoo) (\ `39b1307 <https://github.com/saltstack-formulas/php-formula/commit/39b130767104a5486c99f14df593669ee3705f01>`_\ )
+* **release.config.js:** use full commit hash in commit link [skip ci] (\ `d8f279f <https://github.com/saltstack-formulas/php-formula/commit/d8f279f9cd75e30f1276c7f5dae6b48827670421>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen:** use ``debian-10-master-py3`` instead of ``develop`` [skip ci] (\ `fc9ad29 <https://github.com/saltstack-formulas/php-formula/commit/fc9ad298747d2df6714c3bcc3f4c166a0fae6630>`_\ )
+* **kitchen:** use ``develop`` image until ``master`` is ready (\ ``amazonlinux``\ ) [skip ci] (\ `97b7a36 <https://github.com/saltstack-formulas/php-formula/commit/97b7a36aa7a22278c86ea81853d32a6a0172a481>`_\ )
+* **kitchen+travis:** upgrade matrix after ``2019.2.2`` release [skip ci] (\ `85e1f0e <https://github.com/saltstack-formulas/php-formula/commit/85e1f0ec25fe3ec0b99271a053f41ea7657f4d15>`_\ )
+* **travis:** apply changes from build config validation [skip ci] (\ `3862c37 <https://github.com/saltstack-formulas/php-formula/commit/3862c37d06f3a57202d7b5b42a572aa6bbfaa839>`_\ )
+* **travis:** opt-in to ``dpl v2`` to complete build config validation [skip ci] (\ `0bb68c5 <https://github.com/saltstack-formulas/php-formula/commit/0bb68c5b1796087215c254afde7b63fbed893fb2>`_\ )
+* **travis:** quote pathspecs used with ``git ls-files`` [skip ci] (\ `0090c91 <https://github.com/saltstack-formulas/php-formula/commit/0090c91b606f6d4ed5926d1b1985f2a1867b49af>`_\ )
+* **travis:** run ``shellcheck`` during lint job [skip ci] (\ `298a7d6 <https://github.com/saltstack-formulas/php-formula/commit/298a7d61c26902c0193c887705e290158e866d23>`_\ )
+* **travis:** update ``salt-lint`` config for ``v0.0.10`` [skip ci] (\ `5c7d1aa <https://github.com/saltstack-formulas/php-formula/commit/5c7d1aa5016705da9645161e96e6be676866bc41>`_\ )
+* **travis:** use build config validation (beta) [skip ci] (\ `bcc0690 <https://github.com/saltstack-formulas/php-formula/commit/bcc0690c8ac5f462d1dd5fb28d4f563987126a28>`_\ )
+* merge travis matrix, add ``salt-lint`` & ``rubocop`` to ``lint`` job (\ `75f8d4d <https://github.com/saltstack-formulas/php-formula/commit/75f8d4dcb8cc6431f9bbc43dab97ece141d16d74>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **contributing:** remove to use org-level file instead [skip ci] (\ `8aee949 <https://github.com/saltstack-formulas/php-formula/commit/8aee949cab703e4d989c20c000a628bfbf1c6fcb>`_\ )
+* **readme:** update link to ``CONTRIBUTING`` [skip ci] (\ `05d112f <https://github.com/saltstack-formulas/php-formula/commit/05d112f63b5ebf0e117d2c181fdc02cf8ea6dbac>`_\ )
+
+Performance Improvements
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **travis:** improve ``salt-lint`` invocation [skip ci] (\ `56d7314 <https://github.com/saltstack-formulas/php-formula/commit/56d73148b31bb2f81adedb023748cd8a461ee0e3>`_\ )
+
 `1.2.2 <https://github.com/saltstack-formulas/php-formula/compare/v1.2.1...v1.2.2>`_ (2019-10-10)
 -----------------------------------------------------------------------------------------------------
 
