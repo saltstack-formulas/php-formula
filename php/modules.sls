@@ -18,6 +18,7 @@
 
 include: {{ includes|json }}
 
-{% for state in install %}
+{% for module_with_no_state in install %}
+{%   set state = module_with_no_state %}
 {%   include "php/installed.jinja" %}
 {% endfor %}
