@@ -280,7 +280,7 @@ Manages the php-hhvm config files
 Installs the php-hhvm package
 
 ``php.hhvm.repo``
-^^^^^^^^^.REPO^^^^^^
+^^^^^^^^^^^^^^^^^
 
 Configures the hhvm repo for debian/ubuntu
 
