@@ -26,7 +26,7 @@
         {%- do conf_settings.update({key: value.replace(first_version, version)}) %}
       {%- endif %}
     {%- endfor %}
-    {%- do conf_settings.global.update({'pid': '/var/run/php' + version + '-fpm.pid' }) %}
+    {%- do conf_settings.global.update({'pid': '/run/php/php' + version + '-fpm.pid' }) %}
     {%- do conf_settings.global.update({'error_log': '/var/log/php' + version + '-fpm.log' }) %}
 
 php_fpm_ini_config_{{ version }}:
