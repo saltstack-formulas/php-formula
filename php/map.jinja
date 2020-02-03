@@ -2417,7 +2417,7 @@
                             'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
-                                    ('pid', '/var/run/php' + php_version + '-fpm.pid'),
+                                    ('pid', '/run/php/php' + php_version + '-fpm.pid'),
                                     ('error_log', '/var/log/php' + php_version + '-fpm.log'),
                                 ])),
                                 ('include', confdir + '/fpm/pool.d/*.conf'),
