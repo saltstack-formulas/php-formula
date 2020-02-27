@@ -1,5 +1,30 @@
 # Changelog
 
+# [1.3.0](https://github.com/saltstack-formulas/php-formula/compare/v1.2.3...v1.3.0) (2020-02-27)
+
+
+### Bug Fixes
+
+* **libtofs:** “files_switch” mess up the variable exported by “map.jinja” [skip ci] ([dca51de](https://github.com/saltstack-formulas/php-formula/commit/dca51de154d8dcbe5e141673322d39c4e1b6f7a6))
+* **map.jinja:** fix pid file location for debian ([393d69e](https://github.com/saltstack-formulas/php-formula/commit/393d69eb0fda49f3598d5f9040be5d3bad59b5dd))
+
+
+### Continuous Integration
+
+* **gemfile:** restrict `train` gem version until upstream fix [skip ci] ([d7c188e](https://github.com/saltstack-formulas/php-formula/commit/d7c188e73c0fd9a109f997c52aa84e5c30a0bbf6))
+* **kitchen:** avoid using bootstrap for `master` instances [skip ci] ([dd796b0](https://github.com/saltstack-formulas/php-formula/commit/dd796b070c3922f043078b181922d8a4ba0c33b2))
+* **travis:** use `major.minor` for `semantic-release` version [skip ci] ([109df07](https://github.com/saltstack-formulas/php-formula/commit/109df0781d6832d46cd48162280ead4976ec403d))
+
+
+### Documentation
+
+* **readme:** fix broken sub-heading [skip ci] ([51dd6e9](https://github.com/saltstack-formulas/php-formula/commit/51dd6e9bf292e7b13e19a7aa81df21045ebeb99b))
+
+
+### Features
+
+* **odbc:** add odbc module support ([8b69034](https://github.com/saltstack-formulas/php-formula/commit/8b69034c5b59dda60ac1ef128e4d381eec2db52b))
+
 ## [1.2.3](https://github.com/saltstack-formulas/php-formula/compare/v1.2.2...v1.2.3) (2019-12-02)
 
 
