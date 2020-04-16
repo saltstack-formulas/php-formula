@@ -139,6 +139,9 @@ php:
         opts:
           replace: false
 
+        # If using multiple php versions, force the pool to use a specific one
+        phpversion: "7.2"
+
         # pool file contents. See php.ini.defaults for ini-style
         # syntax guidelines.
         settings:
