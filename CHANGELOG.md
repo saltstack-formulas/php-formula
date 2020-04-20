@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/saltstack-formulas/php-formula/compare/v1.3.0...v1.3.1) (2020-04-20)
+
+
+### Documentation
+
+* add example to use a specific php version when using multiple ones ([53068f7](https://github.com/saltstack-formulas/php-formula/commit/53068f73b0bc0e40ce80fea4eac1e8fb0f159808))
+
 # [1.3.0](https://github.com/saltstack-formulas/php-formula/compare/v1.2.3...v1.3.0) (2020-02-27)
 
 
