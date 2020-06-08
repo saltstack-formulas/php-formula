@@ -1,0 +1,5 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+php:
+  pillar_php_version: "7.0"
