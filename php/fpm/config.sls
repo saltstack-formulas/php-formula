@@ -3,6 +3,8 @@
 {%- from tplroot ~ "/map.jinja" import php with context %}
 {%- from tplroot ~ "/ini.jinja" import php_ini %}
 
+{%- do salt.log.debug('[php.fpm.config] php var is set as: ' ~ php) %}
+
 {%- set ini_settings = php.ini.defaults %}
 {%- for key, value in php.fpm.config.ini.settings.items() %}
   {%- if ini_settings[key] is defined %}
@@ -12,7 +14,7 @@
   {%- endif %}
 {%- endfor %}
 
-{%- set pillar_php_version = salt['pillar.get']('php:version', '7.0') %}
+{%- set pillar_php_version = php.pillar_php_version %}
 {%- if pillar_php_version is iterable and pillar_php_version is not string %}
   {%- for version in pillar_php_version %}
     {%- set conf_settings = odict(php.lookup.fpm.defaults) %}
