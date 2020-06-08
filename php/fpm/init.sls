@@ -6,6 +6,8 @@ include:
   - php.fpm.pools
 
 extend:
+{%- set pillar_php_version = salt['pillar.get']('php:version', '7.0') %}
+
 {% if pillar_php_version is iterable and pillar_php_version is not string %}
   {% for version in pillar_php_version %}
 

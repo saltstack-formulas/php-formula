@@ -768,7 +768,7 @@
         {%- endif %}
     {%- else %}
         {%- if salt['grains.get']('osrelease')|string >= '18.04' %}
-            {%- merge = php, salt['pillar.get']('php', {
+            {%- set php = salt['pillar.get']('php', {
                 'lookup': salt['grains.filter_by']({
                     'Ubuntu': {
                         'pkgs': {
