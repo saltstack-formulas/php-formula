@@ -3102,6 +3102,15 @@
                 'cli': {
                     'ini': '/usr/local/etc/php.ini'
                 },
+                'composer': {
+                    'required_modules': [
+                      'filter',
+                      'json',
+                      'mbstring',
+                      'openssl',
+                      'phar',
+                    ],
+                },
                 'pkgs': {
                     'apache2': 'mod_php' + freebsd_php_version,
                     'composer_bin': 'composer',

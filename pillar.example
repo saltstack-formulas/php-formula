@@ -74,6 +74,16 @@ php:
     cli:
       ini: /location/of/php-cli/php.ini
 
+    # php.composer
+    # Some OS need modules to be installed
+    composer:
+      required_modules:
+        - filter
+        - json
+        - mbstring
+        - openssl
+        - phar
+
   # php-fpm settings
   fpm:
 
