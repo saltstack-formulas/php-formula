@@ -2,6 +2,29 @@
 Changelog
 =========
 
+`1.3.2 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.1...v1.3.2>`_ (2020-12-16)
+-----------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **gemfile.lock:** add to repo with updated ``Gemfile`` [skip ci] (\ `8720cc1 <https://github.com/saltstack-formulas/php-formula/commit/8720cc1708d4b24e532290e61da8aea8a593a8d4>`_\ )
+* **gitlab-ci:** use GitLab CI as Travis CI replacement (\ `15ed749 <https://github.com/saltstack-formulas/php-formula/commit/15ed749de43b1a24b4f86a71cf9272a46b71042e>`_\ )
+* **kitchen:** use ``saltimages`` Docker Hub where available [skip ci] (\ `4cd9a3a <https://github.com/saltstack-formulas/php-formula/commit/4cd9a3a2137f02e1e9234512959491d421cb1e24>`_\ )
+* **kitchen+travis:** remove ``master-py2-arch-base-latest`` [skip ci] (\ `8dd9c54 <https://github.com/saltstack-formulas/php-formula/commit/8dd9c545dba022c06778c1b9a802bb40b9101c66>`_\ )
+* **pre-commit:** add to formula [skip ci] (\ `5d71e0b <https://github.com/saltstack-formulas/php-formula/commit/5d71e0b24e376393d89b9c6d0439de1de4ef1b0d>`_\ )
+* **pre-commit:** enable/disable ``rstcheck`` as relevant [skip ci] (\ `7f73dbb <https://github.com/saltstack-formulas/php-formula/commit/7f73dbbf31dc8a6208c73ec583a3bed7161ae04c>`_\ )
+* **pre-commit:** finalise ``rstcheck`` configuration [skip ci] (\ `ab6338e <https://github.com/saltstack-formulas/php-formula/commit/ab6338e6d49c0882e856a27db12738efa0fe2abf>`_\ )
+* **travis:** add notifications => zulip [skip ci] (\ `b64b1c2 <https://github.com/saltstack-formulas/php-formula/commit/b64b1c2b08a2ac853f40d7c0d9d7991a92396f74>`_\ )
+* **workflows/commitlint:** add to repo [skip ci] (\ `b30a6bd <https://github.com/saltstack-formulas/php-formula/commit/b30a6bd8a70c2e0a5ef32382f08f475d95fdcf1a>`_\ )
+
+Styles
+^^^^^^
+
+
+* **libtofs.jinja:** use Black-inspired Jinja formatting [skip ci] (\ `1def34c <https://github.com/saltstack-formulas/php-formula/commit/1def34c36847174a0fbfad6da679dcc2c4df5fcb>`_\ )
+
 `1.3.1 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.0...v1.3.1>`_ (2020-04-20)
 -----------------------------------------------------------------------------------------------------
 
