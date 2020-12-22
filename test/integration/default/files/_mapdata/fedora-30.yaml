@@ -1,0 +1,323 @@
+# yamllint disable rule:indentation rule:line-length
+# Fedora-30
+---
+apache2:
+  ini:
+    opts: {}
+    settings: {}
+cli:
+  ini:
+    opts: {}
+    settings: {}
+fpm:
+  config:
+    conf:
+      opts: {}
+      settings: {}
+    ini:
+      opts: {}
+      settings: {}
+  pools:
+    default.conf:
+      enabled: false
+      opts: {}
+  service:
+    enabled: true
+    opts: {}
+hhvm:
+  config:
+    php:
+      opts: {}
+      settings: {}
+    server:
+      opts: {}
+      settings: {}
+  service:
+    enabled: true
+    opts: {}
+ini:
+  defaults:
+    CLI Server:
+      cli_server.color: 'On'
+    Date:
+      date.timezone: America/New_York
+    Interbase:
+      ibase.allow_persistent: 1
+      ibase.dateformat: '"%Y-%m-%d"'
+      ibase.max_links: -1
+      ibase.max_persistent: -1
+      ibase.timeformat: '"%H:%M:%S"'
+      ibase.timestampformat: '"%Y-%m-%d %H:%M:%S"'
+    MSSQL:
+      mssql.allow_persistent: 'On'
+      mssql.compatibility_mode: 'Off'
+      mssql.max_links: -1
+      mssql.max_persistent: -1
+      mssql.min_error_severity: 10
+      mssql.min_message_severity: 10
+      mssql.secure_connection: 'Off'
+    MySQL:
+      mysql.allow_local_infile: 'On'
+      mysql.allow_persistent: 'On'
+      mysql.cache_size: '2000'
+      mysql.connect_timeout: 60
+      mysql.max_links: -1
+      mysql.max_persistent: -1
+      mysql.trace_mode: 'Off'
+    MySQLi:
+      mysqli.allow_persistent: 'On'
+      mysqli.cache_size: 2000
+      mysqli.default_port: 3306
+      mysqli.max_links: -1
+      mysqli.max_persistent: -1
+      mysqli.reconnect: 'Off'
+    ODBC:
+      odbc.allow_persistent: 'On'
+      odbc.check_persistent: 'On'
+      odbc.defaultbinmode: 1
+      odbc.defaultlrl: 4096
+      odbc.max_links: '-1'
+      odbc.max_persistent: '-1'
+    PHP:
+      allow_url_fopen: 'On'
+      allow_url_include: 'Off'
+      asp_tags: 'Off'
+      auto_globals_jit: 'On'
+      default_mimetype: '"text/html"'
+      default_socket_timeout: 60
+      disable_functions:
+      - pcntl_alarm
+      - pcntl_fork
+      - pcntl_waitpid
+      - pcntl_wait
+      - pcntl_wifexited
+      - pcntl_wifstopped
+      - pcntl_wifsignaled
+      - pcntl_wexitstatus
+      - pcntl_wtermsig
+      - pcntl_wstopsig
+      - pcntl_signal
+      - pcntl_signal_dispatch
+      - pcntl_get_last_error
+      - pcntl_strerror
+      - pcntl_sigprocmask
+      - pcntl_sigwaitinfo
+      - pcntl_sigtimedwait
+      - pcntl_exec
+      - pcntl_getpriority
+      - pcntl_setpriority
+      display_errors: 'Off'
+      display_startup_errors: 'Off'
+      enable_dl: 'Off'
+      engine: 'On'
+      error_reporting:
+      - E_ALL
+      - ~E_DEPRECATED
+      - ~E_STRICT
+      expose_php: 'On'
+      file_uploads: 'On'
+      html_errors: 'On'
+      ignore_repeated_errors: 'Off'
+      ignore_repeated_source: 'Off'
+      implicit_flush: 'Off'
+      log_errors: 'On'
+      log_errors_max_len: 1024
+      max_execution_time: 30
+      max_file_uploads: 20
+      max_input_nesting_level: 64
+      max_input_time: 60
+      max_input_vars: 1000
+      memory_limit: 128M
+      output_buffering: 4096
+      post_max_size: 8M
+      precision: 14
+      register_argc_argv: 'Off'
+      report_memleaks: 'On'
+      request_order: GP
+      serialize_precision: 17
+      short_open_tag: 'Off'
+      track_errors: 'Off'
+      upload_max_filesize: 2M
+      variables_order: GPCS
+      zend.enable_gc: 'On'
+      zlib.output_compression: 'Off'
+    Pdo_mysql:
+      pdo_mysql.cache_size: 2000
+    PostgreSQL:
+      pgsql.allow_persistent: 'On'
+      pgsql.auto_reset_persistent: 'Off'
+      pgsql.ignore_notice: 0
+      pgsql.log_notice: 0
+      pgsql.max_links: -1
+      pgsql.max_persistent: -1
+    SQL:
+      sql.safe_mode: 'Off'
+    Session:
+      session.auto_start: 0
+      session.bug_compat_42: 'Off'
+      session.bug_compat_warn: 'Off'
+      session.cache_expire: '180'
+      session.cache_limiter: nocache
+      session.cookie_lifetime: 0
+      session.cookie_path: /
+      session.gc_divisor: 1000
+      session.gc_maxlifetime: 1440
+      session.gc_probability: 0
+      session.hash_bits_per_character: 5
+      session.hash_function: 0
+      session.name: PHPSESSID
+      session.save_handler: files
+      session.serialize_handler: php
+      session.use_cookies: 1
+      session.use_only_cookies: 1
+      session.use_strict_mode: 0
+      session.use_trans_sid: 0
+      url_rewriter.tags: '"a=href,area=href,frame=src,input=src,form=fakeentry"'
+    Sybase-CT:
+      sybct.allow_persistent: 'On'
+      sybct.max_links: -1
+      sybct.max_persistent: -1
+      sybct.min_client_severity: 10
+      sybct.min_server_severity: 10
+    Tidy:
+      tidy.clean_output: 'Off'
+    bcmath:
+      bcmath.scale: 0
+    ldap:
+      ldap.max_links: -1
+    mail function:
+      SMTP: localhost
+      mail.add_x_header: 'On'
+    mysqlnd:
+      mysqlnd.collect_memory_statistics: 'Off'
+      mysqlnd.collect_statistics: 'On'
+    soap:
+      soap.wsdl_cache_dir: '"/tmp"'
+      soap.wsdl_cache_enabled: 1
+      soap.wsdl_cache_limit: 5
+      soap.wsdl_cache_ttl: 86400
+lookup:
+  cli:
+    ini: /etc/php.ini
+  fpm:
+    conf: /etc/php-fpm.conf
+    defaults:
+      global:
+        error_log: /var/log/php-fpm/error.log
+        pid: /var/run/php-fpm/php-fpm.pid
+      include: /etc/php-fpm.d/*.conf
+    group: root
+    ini: /etc/php.ini
+    pools: /etc/php-fpm.d
+    service: php-fpm
+    user: root
+  pkgs:
+    adodb: php-adodb
+    apc: php-pecl-apc
+    apcu: php-pecl-apcu
+    auth-sasl: php-pear-Auth-SASL
+    bcmath: php-bcmath
+    build_pkgs:
+    - openssl-devel
+    - gcc
+    cache-lite: php-pear-Cache-Lite
+    cgi: php-cgi
+    cli: php-cli
+    composer: composer
+    composer_bin: composer
+    console-table: php-pear-Console-Table
+    curl:
+    - php-common
+    - curl
+    dba:
+    - php-dba
+    - dba
+    dev: php-devel
+    ext_conf_path: /etc/php.d
+    fpm: php-fpm
+    gd: php-gd
+    geoip: php-pecl-geoip
+    geshi: php-geshi
+    gettext: php-php-gettext
+    http: php-pecl-http
+    imagick: php-pecl-imagick
+    imap: php-imap
+    intl: php-intl
+    json: php-common
+    ldap: php-ldap
+    local_bin: /usr/local/bin
+    mail: php-pear-Mail
+    mbstring: php-mbstring
+    mcrypt: php-mcrypt
+    memcache: php-pecl-memcache
+    memcached: php-pecl-memcached
+    mysql: php-mysql
+    mysqlnd: php-mysqlnd
+    net-smtp: php-pear-Net-SMTP
+    net4: php-pear-Net-IPv4
+    oauth: php-pecl-oauth
+    opcache: php-pecl-zendopcache
+    pear: php-pear
+    pgsql: php-pgsql
+    php: php
+    pspell: php-pspell
+    redis: php-pecl-redis
+    seclib: php-phpseclib
+    snmp: php-snmp
+    soap: php-soap
+    sqlite: php-pdo
+    ssh2: php-pecl-ssh2
+    suhosin5_ext: suhosin.so
+    suhosin5_repo: https://github.com/sektioneins/suhosin
+    suhosin7_ext: suhosin7.so
+    suhosin7_repo: https://github.com/sektioneins/suhosin7
+    tcpdf: php-tcpdf
+    temp_dir: /tmp
+    tidy: php-tidy
+    uuid: php-pecl-uuid
+    xcache: php-xcache
+    xdebug: php-pecl-xdebug
+    xml:
+    - php-xml
+    - php-xmlrpc
+    xsl: php-xml
+    zip: php
+  xcache:
+    ini: /etc/php.d/xcache.ini
+xcache:
+  ini:
+    defaults:
+      xcache:
+        xcache.cacher: 'On'
+        xcache.coredump_directory: '""'
+        xcache.coredump_type: '0'
+        xcache.count: '1'
+        xcache.disable_on_crash: 'Off'
+        xcache.experimental: 'Off'
+        xcache.gc_interval: '0'
+        xcache.mmap_path: '"/dev/zero"'
+        xcache.optimizer: 'Off'
+        xcache.readonly_protection: 'Off'
+        xcache.shm_scheme: '"mmap"'
+        xcache.size: 60M
+        xcache.slots: 8K
+        xcache.stat: 'On'
+        xcache.ttl: '0'
+        xcache.var_count: '1'
+        xcache.var_gc_interval: '300'
+        xcache.var_maxttl: '0'
+        xcache.var_namespace: '""'
+        xcache.var_namespace_mode: '0'
+        xcache.var_size: 4M
+        xcache.var_slots: 8K
+        xcache.var_ttl: '0'
+      xcache-common:
+        extension: xcache.so
+      xcache.admin:
+        xcache.admin.enable_auth: 'On'
+      xcache.coverager:
+        xcache.coveragedump_directory: '""'
+        xcache.coverager: 'Off'
+        xcache.coverager_autostart: 'On'
+    opts: {}
+    settings: {}
