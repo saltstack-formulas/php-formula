@@ -162,6 +162,7 @@ suites:
       state_top:
         base:
           '*':
+            - php._mapdata
             - php.repo
             - php.fpm.install
             - php.fpm.config
@@ -188,6 +189,7 @@ suites:
       state_top:
         base:
           '*':
+            - php._mapdata
             - php.repo
             - php.fpm.install
             - php.fpm.config
@@ -225,6 +227,7 @@ suites:
       state_top:
         base:
           '*':
+            - php._mapdata
             - php
       pillars:
         top.sls:
@@ -246,6 +249,7 @@ suites:
       state_top:
         base:
           '*':
+            - php._mapdata
             - php
       pillars:
         top.sls:

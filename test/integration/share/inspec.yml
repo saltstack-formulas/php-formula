@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-name: default
-title: php formula
+name: share
+title: InSpec shared resources
 maintainer: SaltStack Formulas
 license: Apache-2.0
-summary: Verify that the php formula is setup and configured correctly
-depends:
-  - name: share
-    path: test/integration/share
+summary: shared resources
 supports:
   - platform-name: debian
   - platform-name: ubuntu
@@ -18,4 +15,7 @@ supports:
   - platform-name: suse
   - platform-name: freebsd
   - platform-name: amazon
+  - platform-name: oracle
   - platform-name: arch
+  - platform-name: gentoo
+  - platform: windows
