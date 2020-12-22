@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.3](https://github.com/saltstack-formulas/php-formula/compare/v1.3.2...v1.3.3) (2020-12-22)
+
+
+### Continuous Integration
+
+* **commitlint:** ensure `upstream/master` uses main repo URL [skip ci] ([6ea8950](https://github.com/saltstack-formulas/php-formula/commit/6ea8950307db990b93f6e92dc19108c392a11bea))
+* **gitlab-ci:** add `rubocop` linter (with `allow_failure`) [skip ci] ([992e934](https://github.com/saltstack-formulas/php-formula/commit/992e9348c71ff02ada8443751c8423eb7eb83576))
+
+
+### Tests
+
+* fix rubocop violations ([1a4d208](https://github.com/saltstack-formulas/php-formula/commit/1a4d20877ce9ff7e5c09ba38ff4ea4b2502e0665))
+* **_mapdata:** generate verification files ([f88fdf7](https://github.com/saltstack-formulas/php-formula/commit/f88fdf784ab67ff5083f2e06ee6f5f5aa90b42fb))
+* **map:** verify `map.jinja` dump using `_mapdata` state ([e9591db](https://github.com/saltstack-formulas/php-formula/commit/e9591db3551073ad9b7a747b848702dc4f75a22c))
+
 ## [1.3.2](https://github.com/saltstack-formulas/php-formula/compare/v1.3.1...v1.3.2) (2020-12-16)
 
 
