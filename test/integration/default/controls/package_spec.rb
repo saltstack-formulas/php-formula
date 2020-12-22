@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 control 'Php package' do
   title 'should be installed'
 
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def test_debian
     describe package('php-imagick') do
       it { should be_installed }
@@ -18,7 +21,6 @@ control 'Php package' do
       bz2 cli curl fpm gd imap intl mbstring
       mysql readline xml zip
     ].each do |pkg|
-
       describe package("php5.6-#{pkg}") do
         it { should be_installed }
       end
@@ -28,6 +30,7 @@ control 'Php package' do
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
   def test_redhat
     describe package('php') do

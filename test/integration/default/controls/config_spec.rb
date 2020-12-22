@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 control 'Php configuration' do
   title 'should match desired lines'
 
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def test_debian
     describe file('/etc/php/5.6/fpm/pool.d/radius-admin.conf') do
       its('content') { should include '[radius-admin]' }
@@ -20,12 +23,11 @@ control 'Php configuration' do
       its('content') { should include 'date.timezone = Europe/Paris' }
     end
   end
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
-  def test_redhat
-  end
+  def test_redhat; end
 
-  def test_suse
-  end
+  def test_suse; end
 
   case os[:family]
   when 'debian'

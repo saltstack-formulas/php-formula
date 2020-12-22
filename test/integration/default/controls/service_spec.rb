@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'Php service' do
   title 'should be running and enabled'
 
@@ -13,11 +15,9 @@ control 'Php service' do
     end
   end
 
-  def test_redhat
-  end
+  def test_redhat; end
 
-  def test_suse
-  end
+  def test_suse; end
 
   case os[:family]
   when 'debian'
