@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`1.3.4 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.3...v1.3.4>`_ (2020-12-23)
+-----------------------------------------------------------------------------------------------------
+
+Code Refactoring
+^^^^^^^^^^^^^^^^
+
+
+* **map:** use top-level ``values:`` key in ``map.jinja`` dumps (\ `46ad65e <https://github.com/saltstack-formulas/php-formula/commit/46ad65e39eff11eba8bd8dfbfb0a0b52e4e79cfb>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **pre-commit:** enable ``rubocop`` linter after fix (\ `71dbf34 <https://github.com/saltstack-formulas/php-formula/commit/71dbf345d6a5d1701c6012277ae8215d2f7c1dc5>`_\ )
+
 `1.3.3 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.2...v1.3.3>`_ (2020-12-22)
 -----------------------------------------------------------------------------------------------------
 
