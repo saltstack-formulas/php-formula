@@ -6,9 +6,7 @@
 {%- from tplroot ~ "/map.jinja" import php with context %}
 
 {%- set _mapdata = {
-      "values": {
-        "php": php,
-      }
+      "values": php,
     } %}
 {%- do salt["log.debug"]("### MAP.JINJA DUMP ###\n" ~ _mapdata | yaml(False)) %}
 
