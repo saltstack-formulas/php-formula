@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.5](https://github.com/saltstack-formulas/php-formula/compare/v1.3.4...v1.3.5) (2021-01-14)
+
+
+### Bug Fixes
+
+* **_mapdata:** ensure map data is directly under `values` ([579a613](https://github.com/saltstack-formulas/php-formula/commit/579a61371a59db75971ecd6e0526125e7388198d))
+
+
+### Tests
+
+* **_mapdata:** update for `_mapdata/init.sls` change ([b30f514](https://github.com/saltstack-formulas/php-formula/commit/b30f5146d0dcf546d6ce26dcb9eafbc462a00fe0))
+
 ## [1.3.4](https://github.com/saltstack-formulas/php-formula/compare/v1.3.3...v1.3.4) (2020-12-23)
 
 
