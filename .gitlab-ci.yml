@@ -123,32 +123,70 @@ rubocop:
 ## Define the rest of the matrix based on Kitchen testing
 # Make sure the instances listed below match up with
 # the `platforms` defined in `kitchen.yml`
+# debian-debian-10-tiamat-py3: {extends: '.test_instance'}
+# debian-debian-9-tiamat-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-tiamat-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-tiamat-py3: {extends: '.test_instance'}
+# redhat-centos-8-tiamat-py3: {extends: '.test_instance'}
+# redhat-centos-7-tiamat-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-tiamat-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-tiamat-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-tiamat-py3: {extends: '.test_instance'}
 debian-debian-10-master-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1804-master-py3: {extends: '.test_instance'}
-# redhat-centos-8-master-py3: {extends: '.test_instance'}
-# redhat-fedora-31-master-py3: {extends: '.test_instance'}
-# suse-opensuse-leap-151-master-py3: {extends: '.test_instance'}
-# redhat-amazonlinux-2-master-py3: {extends: '.test_instance'}
-# debian-debian-10-2019-2-py3: {extends: '.test_instance'}
-# debian-debian-9-2019-2-py3: {extends: '.test_instance'}
-ubuntu-ubuntu-1804-2019-2-py3: {extends: '.test_instance'}
-# redhat-centos-8-2019-2-py3: {extends: '.test_instance'}
-# redhat-fedora-31-2019-2-py3: {extends: '.test_instance'}
-# suse-opensuse-leap-151-2019-2-py3: {extends: '.test_instance'}
-# redhat-centos-7-2019-2-py2: {extends: '.test_instance'}
-redhat-amazonlinux-2-2019-2-py3: {extends: '.test_instance'}
-redhat-fedora-30-2018-3-py3: {extends: '.test_instance'}
-# debian-debian-9-2018-3-py2: {extends: '.test_instance'}
-# ubuntu-ubuntu-1604-2018-3-py2: {extends: '.test_instance'}
-# redhat-centos-7-2018-3-py2: {extends: '.test_instance'}
-suse-opensuse-leap-151-2018-3-py2: {extends: '.test_instance'}
-# redhat-amazonlinux-1-2018-3-py2: {extends: '.test_instance'}
-# debian-debian-8-2017-7-py2: {extends: '.test_instance'}
-# ubuntu-ubuntu-1604-2017-7-py2: {extends: '.test_instance'}
-# redhat-centos-6-2017-7-py2: {extends: '.test_instance'}
-# redhat-fedora-30-2017-7-py2: {extends: '.test_instance'}
-# suse-opensuse-leap-151-2017-7-py2: {extends: '.test_instance'}
-# redhat-amazonlinux-1-2017-7-py2: {extends: '.test_instance'}
+debian-debian-9-master-py3: {extends: '.test_instance'}
+ubuntu-ubuntu-2004-master-py3: {extends: '.test_instance'}
+ubuntu-ubuntu-1804-master-py3: {extends: '.test_instance'}
+ubuntu-ubuntu-1604-master-py3: {extends: '.test_instance'}
+redhat-centos-8-master-py3: {extends: '.test_instance'}
+redhat-centos-7-master-py3: {extends: '.test_instance'}
+redhat-fedora-33-master-py3: {extends: '.test_instance'}
+redhat-fedora-32-master-py3: {extends: '.test_instance'}
+suse-opensuse-leap-152-master-py3: {extends: '.test_instance'}
+suse-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
+redhat-amazonlinux-2-master-py3: {extends: '.test_instance'}
+redhat-oraclelinux-8-master-py3: {extends: '.test_instance'}
+redhat-oraclelinux-7-master-py3: {extends: '.test_instance'}
+# debian-debian-10-3002-2-py3: {extends: '.test_instance'}
+# debian-debian-9-3002-2-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-2004-3002-2-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3002-2-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3002-2-py3: {extends: '.test_instance'}
+# redhat-centos-8-3002-2-py3: {extends: '.test_instance'}
+# redhat-centos-7-3002-2-py3: {extends: '.test_instance'}
+# redhat-fedora-33-3002-2-py3: {extends: '.test_instance'}
+# redhat-fedora-32-3002-2-py3: {extends: '.test_instance'}
+# suse-opensuse-leap-152-3002-2-py3: {extends: '.test_instance'}
+# suse-opensuse-tmbl-latest-3002-2-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-3002-2-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-3002-2-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-3002-2-py3: {extends: '.test_instance'}
+# debian-debian-10-3001-4-py3: {extends: '.test_instance'}
+# debian-debian-9-3001-4-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-2004-3001-4-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3001-4-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3001-4-py3: {extends: '.test_instance'}
+# redhat-centos-8-3001-4-py3: {extends: '.test_instance'}
+# redhat-centos-7-3001-4-py3: {extends: '.test_instance'}
+# redhat-fedora-33-3001-4-py3: {extends: '.test_instance'}
+# redhat-fedora-32-3001-4-py3: {extends: '.test_instance'}
+# suse-opensuse-leap-152-3001-4-py3: {extends: '.test_instance'}
+# suse-opensuse-tmbl-latest-3001-4-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-3001-4-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-3001-4-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-3001-4-py3: {extends: '.test_instance'}
+# debian-debian-10-3000-6-py3: {extends: '.test_instance'}
+# debian-debian-9-3000-6-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3000-6-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3000-6-py3: {extends: '.test_instance'}
+# redhat-centos-8-3000-6-py3: {extends: '.test_instance'}
+# redhat-centos-7-3000-6-py3: {extends: '.test_instance'}
+# suse-opensuse-leap-152-3000-6-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-3000-6-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-3000-6-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-3000-6-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3000-6-py2: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3000-6-py2: {extends: '.test_instance'}
 
 ###############################################################################
 # `release` stage: `semantic-release`
