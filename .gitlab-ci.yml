@@ -46,7 +46,7 @@ variables:
   DOCKER_DRIVER: 'overlay2'
 
 ###############################################################################
-# `lint` stage: `commitlint` & `pre-commit`
+# `lint` stage: `commitlint`, `pre-commit` & `rubocop` (latest, failure allowed)
 ###############################################################################
 commitlint:
   stage: *stage_lint
@@ -147,46 +147,46 @@ suse-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
 redhat-amazonlinux-2-master-py3: {extends: '.test_instance'}
 redhat-oraclelinux-8-master-py3: {extends: '.test_instance'}
 redhat-oraclelinux-7-master-py3: {extends: '.test_instance'}
-# debian-debian-10-3002-2-py3: {extends: '.test_instance'}
-# debian-debian-9-3002-2-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-2004-3002-2-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1804-3002-2-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1604-3002-2-py3: {extends: '.test_instance'}
-# redhat-centos-8-3002-2-py3: {extends: '.test_instance'}
-# redhat-centos-7-3002-2-py3: {extends: '.test_instance'}
-# redhat-fedora-33-3002-2-py3: {extends: '.test_instance'}
-# redhat-fedora-32-3002-2-py3: {extends: '.test_instance'}
+# debian-debian-10-3002-5-py3: {extends: '.test_instance'}
+# debian-debian-9-3002-5-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-2004-3002-5-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3002-5-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3002-5-py3: {extends: '.test_instance'}
+# redhat-centos-8-3002-5-py3: {extends: '.test_instance'}
+# redhat-centos-7-3002-5-py3: {extends: '.test_instance'}
+# redhat-fedora-33-3002-5-py3: {extends: '.test_instance'}
+# redhat-fedora-32-3002-5-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-3002-5-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-3002-5-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-3002-5-py3: {extends: '.test_instance'}
 # suse-opensuse-leap-152-3002-2-py3: {extends: '.test_instance'}
 # suse-opensuse-tmbl-latest-3002-2-py3: {extends: '.test_instance'}
-# redhat-amazonlinux-2-3002-2-py3: {extends: '.test_instance'}
-# redhat-oraclelinux-8-3002-2-py3: {extends: '.test_instance'}
-# redhat-oraclelinux-7-3002-2-py3: {extends: '.test_instance'}
-# debian-debian-10-3001-4-py3: {extends: '.test_instance'}
-# debian-debian-9-3001-4-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-2004-3001-4-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1804-3001-4-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1604-3001-4-py3: {extends: '.test_instance'}
-# redhat-centos-8-3001-4-py3: {extends: '.test_instance'}
-# redhat-centos-7-3001-4-py3: {extends: '.test_instance'}
-# redhat-fedora-33-3001-4-py3: {extends: '.test_instance'}
-# redhat-fedora-32-3001-4-py3: {extends: '.test_instance'}
-# suse-opensuse-leap-152-3001-4-py3: {extends: '.test_instance'}
-# suse-opensuse-tmbl-latest-3001-4-py3: {extends: '.test_instance'}
-# redhat-amazonlinux-2-3001-4-py3: {extends: '.test_instance'}
-# redhat-oraclelinux-8-3001-4-py3: {extends: '.test_instance'}
-# redhat-oraclelinux-7-3001-4-py3: {extends: '.test_instance'}
-# debian-debian-10-3000-6-py3: {extends: '.test_instance'}
-# debian-debian-9-3000-6-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1804-3000-6-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1604-3000-6-py3: {extends: '.test_instance'}
-# redhat-centos-8-3000-6-py3: {extends: '.test_instance'}
-# redhat-centos-7-3000-6-py3: {extends: '.test_instance'}
-# suse-opensuse-leap-152-3000-6-py3: {extends: '.test_instance'}
-# redhat-amazonlinux-2-3000-6-py3: {extends: '.test_instance'}
-# redhat-oraclelinux-8-3000-6-py3: {extends: '.test_instance'}
-# redhat-oraclelinux-7-3000-6-py3: {extends: '.test_instance'}
-# ubuntu-ubuntu-1804-3000-6-py2: {extends: '.test_instance'}
-# ubuntu-ubuntu-1604-3000-6-py2: {extends: '.test_instance'}
+# debian-debian-10-3001-6-py3: {extends: '.test_instance'}
+# debian-debian-9-3001-6-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-2004-3001-6-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3001-6-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3001-6-py3: {extends: '.test_instance'}
+# redhat-centos-8-3001-6-py3: {extends: '.test_instance'}
+# redhat-centos-7-3001-6-py3: {extends: '.test_instance'}
+# redhat-fedora-33-3001-6-py3: {extends: '.test_instance'}
+# redhat-fedora-32-3001-6-py3: {extends: '.test_instance'}
+# suse-opensuse-leap-152-3001-6-py3: {extends: '.test_instance'}
+# suse-opensuse-tmbl-latest-3001-6-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-3001-6-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-3001-6-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-3001-6-py3: {extends: '.test_instance'}
+# debian-debian-10-3000-8-py3: {extends: '.test_instance'}
+# debian-debian-9-3000-8-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3000-8-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3000-8-py3: {extends: '.test_instance'}
+# redhat-centos-8-3000-8-py3: {extends: '.test_instance'}
+# redhat-centos-7-3000-8-py3: {extends: '.test_instance'}
+# suse-opensuse-leap-152-3000-8-py3: {extends: '.test_instance'}
+# redhat-amazonlinux-2-3000-8-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-8-3000-8-py3: {extends: '.test_instance'}
+# redhat-oraclelinux-7-3000-8-py3: {extends: '.test_instance'}
+# ubuntu-ubuntu-1804-3000-8-py2: {extends: '.test_instance'}
+# ubuntu-ubuntu-1604-3000-8-py2: {extends: '.test_instance'}
 
 ###############################################################################
 # `release` stage: `semantic-release`
