@@ -19,6 +19,8 @@ control 'Php service' do
 
   def test_suse; end
 
+  def test_bsd; end
+
   case os[:family]
   when 'debian'
     test_debian
@@ -26,5 +28,7 @@ control 'Php service' do
     test_redhat
   when 'suse'
     test_suse
+  when 'bsd'
+    test_bsd
   end
 end

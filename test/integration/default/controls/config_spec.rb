@@ -29,6 +29,15 @@ control 'Php configuration' do
 
   def test_suse; end
 
+  def test_bsd
+    describe file('/usr/local/bin/composer') do
+      it { should be_file }
+      it { should be_owned_by 'root' }
+      it { should be_grouped_into 'wheel' }
+      its('mode') { should cmp '0755' }
+    end
+  end
+
   case os[:family]
   when 'debian'
     test_debian
@@ -36,5 +45,7 @@ control 'Php configuration' do
     test_redhat
   when 'suse'
     test_suse
+  when 'bsd'
+    test_bsd
   end
 end
