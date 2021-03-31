@@ -2,6 +2,35 @@
 Changelog
 =========
 
+`1.4.0 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.5...v1.4.0>`_ (2021-03-31)
+-----------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* enable Vagrant-based testing using GitHub Actions (\ `a0306ce <https://github.com/saltstack-formulas/php-formula/commit/a0306cee31439cbbe34cdbdef2e26fc597306592>`_\ )
+* **gemfile+lock:** use ``ssf`` customised ``kitchen-docker`` repo [skip ci] (\ `009dab4 <https://github.com/saltstack-formulas/php-formula/commit/009dab4dee008259ca5643da6496bb21d28a13f5>`_\ )
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] (\ `e762a51 <https://github.com/saltstack-formulas/php-formula/commit/e762a51387660694b53e5340f808446a6f9d28b7>`_\ )
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] (\ `daa4c9e <https://github.com/saltstack-formulas/php-formula/commit/daa4c9ef43da8bbe45d5068c280dbd85cad17809>`_\ )
+* **pre-commit:** update hook for ``rubocop`` [skip ci] (\ `08332f5 <https://github.com/saltstack-formulas/php-formula/commit/08332f5b6f4f69bf4a612289e50772ce93a73e04>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **composer:** make dependencies configurable (\ `d727b15 <https://github.com/saltstack-formulas/php-formula/commit/d727b15557e2223cd82fe5fde0bc16365e20ebb8>`_\ )
+
+Tests
+^^^^^
+
+
+* **freebsd:** add specific tests for FreeBSD (\ `cb2758d <https://github.com/saltstack-formulas/php-formula/commit/cb2758d86e181356c1fbb9a6c5450d22a011418b>`_\ )
+* **pillar:** list PHP versions for FreeBSD 11.4/12.2 (using ``7.4``\ ) (\ `b876d6b <https://github.com/saltstack-formulas/php-formula/commit/b876d6b1f0d1002712dc33c8525bee4622142947>`_\ )
+* standardise use of ``share`` suite & ``_mapdata`` state [skip ci] (\ `bf6a758 <https://github.com/saltstack-formulas/php-formula/commit/bf6a7582b74369935e4a9e1a7291119587eca4ba>`_\ )
+* **_mapdata:** add verification files for new platforms (\ `610cfee <https://github.com/saltstack-formulas/php-formula/commit/610cfee03119cf29958b59edd4880d9200837f67>`_\ )
+* **share:** standardise with latest changes [skip ci] (\ `147c996 <https://github.com/saltstack-formulas/php-formula/commit/147c996a696d8d9ceb409e8497e97a49cbc18d7e>`_\ )
+
 `1.3.5 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.4...v1.3.5>`_ (2021-01-14)
 -----------------------------------------------------------------------------------------------------
 
