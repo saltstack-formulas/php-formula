@@ -44,6 +44,16 @@ control 'Php package' do
     end
   end
 
+  def test_bsd
+    %w[
+      php74 php74-filter php74-json php74-mbstring php74-openssl php74-phar
+    ].each do |pkg|
+      describe package(pkg) do
+        it { should be_installed }
+      end
+    end
+  end
+
   case os[:family]
   when 'debian'
     test_debian
@@ -51,5 +61,7 @@ control 'Php package' do
     test_redhat
   when 'suse'
     test_suse
+  when 'bsd'
+    test_bsd
   end
 end

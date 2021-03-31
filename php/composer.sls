@@ -12,14 +12,9 @@
 
 include:
   - php
-{% if grains['os_family'] == 'FreeBSD' %}
-  - php.filter
-  - php.hash
-  - php.json
-  - php.mbstring
-  - php.openssl
-  - php.phar
-{% endif %}
+{%- for module in php.lookup.get('composer', {}).get('required_modules', []) %}
+  - php.{{ module }}
+{%- endfor %}
 
 get-composer:
   file.managed:
