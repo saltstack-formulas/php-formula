@@ -14,8 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         instance:
+          - freebsd-freebsd-130-master-py3
           - freebsd-freebsd-122-master-py3
           - freebsd-freebsd-114-master-py3
+          # - freebsd-freebsd-130-3002-6-py3
           # - freebsd-freebsd-122-3002-6-py3
           # - freebsd-freebsd-114-3002-6-py3
     steps:
