@@ -2,6 +2,40 @@
 Changelog
 =========
 
+`1.5.0 <https://github.com/saltstack-formulas/php-formula/compare/v1.4.0...v1.5.0>`_ (2021-06-17)
+-----------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* add ``arch-master`` to matrix and update ``.travis.yml`` [skip ci] (\ `6dc94ca <https://github.com/saltstack-formulas/php-formula/commit/6dc94cae109a98e3d317b890bc86c9353a9e6fbe>`_\ )
+* **kitchen+gitlab:** adjust matrix to add ``3003`` [skip ci] (\ `ace2ca9 <https://github.com/saltstack-formulas/php-formula/commit/ace2ca9241698bb9035fbc9df9dc9ffe73a20bed>`_\ )
+* **vagrant:** add FreeBSD 13.0 [skip ci] (\ `378a66a <https://github.com/saltstack-formulas/php-formula/commit/378a66a4bd0e9ee1d50ec3986773d4be930aa822>`_\ )
+* **vagrant:** use pre-salted boxes & conditional local settings [skip ci] (\ `3173cc0 <https://github.com/saltstack-formulas/php-formula/commit/3173cc08511aa99dd645571c9961f097db283e53>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** add ``Testing with Vagrant`` section [skip ci] (\ `48a0f1f <https://github.com/saltstack-formulas/php-formula/commit/48a0f1f95ca2fad6bb6c88520642e6815a50357a>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **mods:** add ``bcmath`` module for FreeBSD (\ `6381ad4 <https://github.com/saltstack-formulas/php-formula/commit/6381ad46347862cd3ab78cbedc7cf3b85572d513>`_\ )
+* **mods:** add ``soap`` module for FreeBSD (\ `7eef994 <https://github.com/saltstack-formulas/php-formula/commit/7eef994582ca9ea894368eb37826d9fd3d9cc878>`_\ )
+* **mods:** add ``xsl`` module for FreeBSD (\ `4c9ed02 <https://github.com/saltstack-formulas/php-formula/commit/4c9ed0295ce039ef32a4f881f944f0ac82c108df>`_\ )
+
+Tests
+^^^^^
+
+
+* **_mapdata:** add verification file for ``fedora-34`` [skip ci] (\ `cfa76bd <https://github.com/saltstack-formulas/php-formula/commit/cfa76bdf0442be31ff681dc135fd9b3788232a45>`_\ )
+* **freebsd:** add ``map.jinja`` verification file (for 13.0) (\ `8510473 <https://github.com/saltstack-formulas/php-formula/commit/8510473f36fc8101cb43bf2a2f29fd79a39158f2>`_\ )
+* **mods:** update integration tests accordingly (\ `b776b00 <https://github.com/saltstack-formulas/php-formula/commit/b776b00168497f23f9afd843a442d44773ea19d0>`_\ )
+
 `1.4.0 <https://github.com/saltstack-formulas/php-formula/compare/v1.3.5...v1.4.0>`_ (2021-03-31)
 -----------------------------------------------------------------------------------------------------
 
