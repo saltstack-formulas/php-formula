@@ -225,6 +225,7 @@ values:
       user: root
     pkgs:
       apache2: mod_php74
+      bcmath: php74-bcmath
       cli: php74
       composer_bin: composer
       ctype: php74-ctype
@@ -254,11 +255,13 @@ values:
       session: php74-session
       simplexml: php74-simplexml
       snmp: php74-snmp
+      soap: php74-soap
       temp_dir: /tmp
       tokenizer: php74-tokenizer
       xdebug: php74-pecl-xdebug
       xml: php74-xml
       xmlwriter: php74-xmlwriter
+      xsl: php74-xsl
       zip: php74-zip
   version:
   - '7.4'
