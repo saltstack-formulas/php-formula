@@ -601,9 +601,9 @@ suites:
       - freebsd-130-master-py3
       - freebsd-122-master-py3
       - freebsd-114-master-py3
-      - freebsd-130-3002-6-py3
-      - freebsd-122-3002-6-py3
-      - freebsd-114-3002-6-py3
+      - freebsd-130-3003-1-py3
+      - freebsd-122-3003-1-py3
+      - freebsd-114-3003-1-py3
     provisioner:
       state_top:
         base:
