@@ -344,7 +344,7 @@ values:
       phpenmod_command: phpenmod -v5.6
       pspell: php5.6-pspell
       readline: php5.6-readline
-      redis: php-redis
+      redis: php5.6-redis
       seclib:
       - php-phpseclib
       - php-seclib

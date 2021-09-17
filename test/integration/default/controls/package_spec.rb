@@ -9,17 +9,13 @@ control 'Php package' do
       it { should be_installed }
     end
 
-    describe package('php-redis') do
-      it { should be_installed }
-    end
-
     describe package('php-xdebug') do
       it { should be_installed }
     end
 
     %w[
       bz2 cli curl fpm gd imap intl mbstring
-      mysql readline xml zip
+      mysql readline redis xml zip
     ].each do |pkg|
       describe package("php5.6-#{pkg}") do
         it { should be_installed }
