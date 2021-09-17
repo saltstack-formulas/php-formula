@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.5.1](https://github.com/saltstack-formulas/php-formula/compare/v1.5.0...v1.5.1) (2021-09-17)
+
+
+### Bug Fixes
+
+* **module:** include php version in redis module package name ([2f62f6f](https://github.com/saltstack-formulas/php-formula/commit/2f62f6fa4edcd660dc6247d11b99e871d963adcb))
+* **module:** include php version in redis module package name ([55939d5](https://github.com/saltstack-formulas/php-formula/commit/55939d5cd12cc8e91b5502e7181f8d826464e82d))
+
+
+### Continuous Integration
+
+* **3003.1:** update inc. AlmaLinux, Rocky & `rst-lint` [skip ci] ([c7a0c3c](https://github.com/saltstack-formulas/php-formula/commit/c7a0c3c3ea73a42a9e4682c204a620a3f7f2f2ee))
+* **freebsd:** update with latest pre-salted Vagrant boxes [skip ci] ([368ca34](https://github.com/saltstack-formulas/php-formula/commit/368ca34fabc10d7baffb1ea2c047cfe118f0569c))
+* **gemfile+lock:** use `ssf` customised `inspec` repo [skip ci] ([fbf2518](https://github.com/saltstack-formulas/php-formula/commit/fbf25184558f07766b06b946f8af5b742ac7665a))
+* **kitchen:** move `provisioner` block & update `run_command` [skip ci] ([9964b38](https://github.com/saltstack-formulas/php-formula/commit/9964b38aa31fc44742a856bda5cdffd6aeb91a2a))
+* **kitchen+ci:** update with latest `3003.2` pre-salted images [skip ci] ([f8e4ba0](https://github.com/saltstack-formulas/php-formula/commit/f8e4ba0e88e58c72ed14b8e7cf4143a446fda74b))
+* add Debian 11 Bullseye & update `yamllint` configuration [skip ci] ([c22aba7](https://github.com/saltstack-formulas/php-formula/commit/c22aba797e7bd02200a7a9d3b13ba95bd2195fca))
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] ([4891bf6](https://github.com/saltstack-formulas/php-formula/commit/4891bf6e77b90e6ec1a80160f48f86869aa46b88))
+
+
+### Tests
+
+* **_mapdata:** add verification file for `debian-11` [skip ci] ([9b05109](https://github.com/saltstack-formulas/php-formula/commit/9b05109c28d05ebc11c253eabbd6bb219e7726ff))
+* **alma+rocky:** add platforms (based on CentOS 8) [skip ci] ([f55d512](https://github.com/saltstack-formulas/php-formula/commit/f55d5128ab10e9b21bbe315f4588ff13c74de68a))
+
 # [1.5.0](https://github.com/saltstack-formulas/php-formula/compare/v1.4.0...v1.5.0) (2021-06-17)
 
 
