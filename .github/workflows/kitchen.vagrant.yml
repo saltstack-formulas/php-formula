@@ -16,10 +16,8 @@ jobs:
         instance:
           - freebsd-freebsd-130-master-py3
           - freebsd-freebsd-122-master-py3
-          - freebsd-freebsd-114-master-py3
           # - freebsd-freebsd-130-3003-1-py3
           # - freebsd-freebsd-122-3003-1-py3
-          # - freebsd-freebsd-114-3003-1-py3
     steps:
       - name: 'Check out code'
         uses: 'actions/checkout@v2'
