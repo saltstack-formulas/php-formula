@@ -2,6 +2,32 @@
 Changelog
 =========
 
+`1.6.0 <https://github.com/saltstack-formulas/php-formula/compare/v1.5.1...v1.6.0>`_ (2022-03-14)
+-----------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* update linters to latest versions [skip ci] (\ `8befefc <https://github.com/saltstack-formulas/php-formula/commit/8befefcfbe50378691cf199f900cf2ca8ba4339f>`_\ )
+* **gemfile:** allow rubygems proxy to be provided as an env var [skip ci] (\ `4f54474 <https://github.com/saltstack-formulas/php-formula/commit/4f5447451d28137f488bcb20313d6c30fe3e9dd8>`_\ )
+* **kitchen+ci:** update with ``3004`` pre-salted images/boxes [skip ci] (\ `def6993 <https://github.com/saltstack-formulas/php-formula/commit/def69936b47bfd0e65e521a3b2629b591e2a11ca>`_\ )
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] (\ `ded03de <https://github.com/saltstack-formulas/php-formula/commit/ded03de05e777a4c3b0a1aad8de650470c244d6a>`_\ )
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] (\ `2e98aed <https://github.com/saltstack-formulas/php-formula/commit/2e98aed831e0adcfdc7f34df7c29529614a4ce0e>`_\ )
+* **vagrant:** replace FreeBSD 12.2 with 12.3 [skip ci] (\ `4e5af98 <https://github.com/saltstack-formulas/php-formula/commit/4e5af9875abd9e4149db2d3e10c9f6dfcca435f2>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **modules:** add ``xmlrpc`` and ``xmlreader`` as FreeBSD ``xml`` module (\ `67e565f <https://github.com/saltstack-formulas/php-formula/commit/67e565f5e2ce83c26a79267f25317e6e4340a73e>`_\ )
+
+Tests
+^^^^^
+
+
+* **system:** add ``build_platform_codename`` [skip ci] (\ `f159202 <https://github.com/saltstack-formulas/php-formula/commit/f1592024d507873415debcdc03aa2c885af2e4cf>`_\ )
+
 `1.5.1 <https://github.com/saltstack-formulas/php-formula/compare/v1.5.0...v1.5.1>`_ (2021-09-17)
 -----------------------------------------------------------------------------------------------------
 
