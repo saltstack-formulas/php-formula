@@ -259,7 +259,10 @@ values:
       temp_dir: /tmp
       tokenizer: php74-tokenizer
       xdebug: php74-pecl-xdebug
-      xml: php74-xml
+      xml:
+      - php74-xml
+      - php74-xmlreader
+      - php74-xmlrpc
       xmlwriter: php74-xmlwriter
       xsl: php74-xsl
       zip: php74-zip
