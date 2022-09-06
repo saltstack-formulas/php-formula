@@ -235,10 +235,14 @@ values:
       filter: php74-filter
       fpm: php74
       gd: php74-gd
+      gettext: php74-gettext
       hash: php74-hash
       iconv: php74-iconv
+      imagick: php74-pecl-imagick
+      imap: php74-imap
       intl: php74-intl
       json: php74-json
+      ldap: php74-ldap
       local_bin: /usr/local/bin
       mbstring: php74-mbstring
       mcrypt: php74-mcrypt
@@ -266,6 +270,7 @@ values:
       xmlwriter: php74-xmlwriter
       xsl: php74-xsl
       zip: php74-zip
+      zlib: php74-zlib
   version:
   - '7.4'
   - '8.0'
