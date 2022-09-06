@@ -557,6 +557,11 @@ Installs the php-xsl package.
 
 Installs the php-zip package.
 
+``php.zlib``
+^^^^^^^^^^^^^^
+
+Installs the php-zlib package.
+
 Testing
 -------
 
