@@ -17,11 +17,26 @@
   {%- for version in pillar_php_version %}
     {%- set first_version = pillar_php_version[0]|string %}
     {%- set ini = php.lookup.cli.ini|replace(first_version, version) %}
+
+    {%- if version in php.cli.ini %}
+      {%- set settings_versioned = {} %}
+      {%- for key, value in settings.items() %}
+        {%- do settings_versioned.update({key: value.copy()}) %}
+      {%- endfor %}
+      {%- for key, value in php.cli.ini[version].items() %}
+        {%- if settings_versioned[key] is defined %}
+          {%- do settings_versioned[key].update(value) %}
+        {%- else %}
+          {%- do settings_versioned.update({key: value}) %}
+        {%- endif %}
+      {%- endfor %}
+    {%- endif %}
+
 php_cli_ini_{{ version }}:
   {{ php_ini(ini,
              'php_cli_ini_' ~ version,
              php.cli.ini.opts,
-             settings
+             settings_versioned | default(settings)
   ) }}
   {%- endfor %}
 {%- else %}

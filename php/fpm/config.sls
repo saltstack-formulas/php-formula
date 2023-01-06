@@ -21,19 +21,33 @@
     {%- set conf = php.lookup.fpm.conf|replace(first_version, version) %}
     {%- set pools = php.lookup.fpm.pools|replace(first_version, version) %}
 
+    {%- if version in php.fpm.config.ini %}
+      {%- set ini_settings_versioned = {} %}
+      {%- for key, value in ini_settings.items() %}
+        {%- do ini_settings_versioned.update({key: value.copy()}) %}
+      {%- endfor %}
+      {%- for key, value in php.fpm.config.ini[version].items() %}
+        {%- if ini_settings_versioned[key] is defined %}
+          {%- do ini_settings_versioned[key].update(value) %}
+        {%- else %}
+          {%- do ini_settings_versioned.update({key: value}) %}
+        {%- endif %}
+      {%- endfor %}
+    {%- endif %}
+
     {%- for key, value in conf_settings.items() %}
       {%- if value is string %}
         {%- do conf_settings.update({key: value.replace(first_version, version)}) %}
       {%- endif %}
     {%- endfor %}
-    {%- do conf_settings.global.update({'pid': '/var/run/php' + version + '-fpm.pid' }) %}
+    {%- do conf_settings.global.update({'pid': '/run/php/php' + version + '-fpm.pid' }) %}
     {%- do conf_settings.global.update({'error_log': '/var/log/php' + version + '-fpm.log' }) %}
 
 php_fpm_ini_config_{{ version }}:
   {{ php_ini(ini,
              'php_fpm_ini_config_' ~ version,
              php.fpm.config.ini.opts,
-             ini_settings
+             ini_settings_versioned | default(ini_settings)
   ) }}
 
 php_fpm_conf_config_{{ version }}:
