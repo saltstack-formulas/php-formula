@@ -103,9 +103,9 @@ platforms:
   - name: fedora-35-master-py3
     driver:
       image: saltimages/salt-master-py3:fedora-35
-  - name: opensuse-leap-153-master-py3
+  - name: opensuse-leap-154-master-py3
     driver:
-      image: saltimages/salt-master-py3:opensuse-leap-15.3
+      image: saltimages/salt-master-py3:opensuse-leap-15.4
     # Workaround to avoid intermittent failures on `opensuse-leap-15.3`:
     # => SCP did not finish successfully (255):  (Net::SCP::Error)
     transport:
@@ -207,7 +207,7 @@ platforms:
       image: saltimages/salt-3004.1-py3:rockylinux-8
 
   ## SALT `3004.0`
-  - name: opensuse-leap-153-3004-0-py3
+  - name: opensuse-leap-154-3004-0-py3
     driver:
       image: saltimages/salt-3004.0-py3:opensuse-leap-15.3
     # Workaround to avoid intermittent failures on `opensuse-leap-15.3`:
@@ -388,9 +388,9 @@ suites:
         - path: test/integration/default
   - name: suse
     includes:
-      - opensuse-leap-153-master-py3
+      - opensuse-leap-154-master-py3
       - opensuse-tmbl-latest-master-py3
-      - opensuse-leap-153-3004-0-py3
+      - opensuse-leap-154-3004-0-py3
       - opensuse-tmbl-latest-3004-0-py3
     provisioner:
       state_top:

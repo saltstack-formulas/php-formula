@@ -140,7 +140,7 @@ Installs the php-cache-lite package.
 ^^^^^^^^^^^^^^
 
 Installs the php-cgi package.
-Disabled on opensuse only php5-fastcgi available.
+Disabled on openSUSE, as there is only php-fastcgi available.
 
 ``php.cli``
 ^^^^^^^^^^^^^^

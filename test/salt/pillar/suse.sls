@@ -4,4 +4,4 @@
 php:
   lookup:
     pkgs:
-      php: php7
+      php: php8

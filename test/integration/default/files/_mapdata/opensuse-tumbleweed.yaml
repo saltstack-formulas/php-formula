@@ -199,46 +199,43 @@ values:
         soap.wsdl_cache_ttl: 86400
   lookup:
     cli:
-      ini: /etc/php.ini
+      ini: /etc/php8/cli/php.ini
     fpm:
-      conf: /etc/php-fpm.conf
+      conf: /etc/php8/fpm/php-fpm.conf
       defaults:
-        global:
-          error_log: /var/log/php-fpm/error.log
-          pid: /var/run/php-fpm/php-fpm.pid
-        include: /etc/php-fpm.d/*.conf
+        include: /etc/php8/fpm/php-fpm.d/*.conf
       group: root
-      ini: /etc/php.ini
-      pools: /etc/php-fpm.d
+      ini: /etc/php8/conf.d/salt.ini
+      pools: /etc/php8/fpm/php-fpm.d
       service: php-fpm
       user: root
     pkgs:
-      adodb: php5-dba
-      apache2: apache2-mod_php5
-      cli: php5
-      curl: php5-curl
-      fpm: php5-fpm
-      gd: php5-gd
-      imap: php5-imap
-      intl: php5-intl
-      json: php5-json
-      ldap: php5-ldap
-      mbstring: php5-mbstring
-      mcrypt: php5-mcrypt
-      mysql: php5-mysql
-      oauth: php5-oauth
-      pear: php5-pear
-      pgsql: php5-pgsql
-      php: php7
-      snmp: php5-snmp
-      soap: php5-soap
-      sqlite: php5-sqlite
-      suhosin: php5-suhosin
+      adodb: php8-dba
+      apache2: apache2-mod_php8
+      cli: php8
+      curl: php8-curl
+      fpm: php8-fpm
+      gd: php8-gd
+      imap: php8-imap
+      intl: php8-intl
+      json: php8-json
+      ldap: php8-ldap
+      mbstring: php8-mbstring
+      mcrypt: php8-mcrypt
+      mysql: php8-mysql
+      oauth: php8-oauth
+      pear: php8-pear
+      pgsql: php8-pgsql
+      php: php8
+      snmp: php8-snmp
+      soap: php8-soap
+      sqlite: php8-sqlite
+      suhosin: php8-suhosin
       xml:
-      - php5-xmlreader
-      - php5-xmlwriter
-      - php5-xmlrpc
-      zip: php5-zip
+      - php8-xmlreader
+      - php8-xmlwriter
+      - php8-xmlrpc
+      zip: php8-zip
   xcache:
     ini:
       defaults:
