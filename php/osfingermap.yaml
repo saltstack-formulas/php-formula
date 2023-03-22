@@ -16,6 +16,8 @@ Debian-9: {}
 Debian-8: {}
 
 # os: Ubuntu
+Ubuntu-22.04:
+  pillar_php_version: "8.1"
 Ubuntu-20.04:
   pillar_php_version: "7.4"
 Ubuntu-19.10:
