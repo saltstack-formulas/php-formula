@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Setup variables using grains['os'] based logic.
+# You just need to add the key:values for an `os` that differ
+# from `defaults.yaml` + `osarch.yaml` + `os_family.yaml`.
+# Only add an `os` which is/will be supported by the formula.
+#
+# If you do not need to provide defaults via the `os` grain,
+# you will need to provide at least an empty dict in this file, e.g.
+# osmap: {}
+---
+# os_family: Debian
+Ubuntu: {}
+Raspbian: {}
+
+# os_family: RedHat
+Fedora: {}
+CentOS: {}
+Amazon: {}
+
+# os_family: Suse
+SUSE: {}
+openSUSE: {}
+
+# os_family: Gentoo
+Funtoo: {}
+
+# os_family: Arch
+Manjaro: {}
+
+# os_family: Solaris
+SmartOS: {}

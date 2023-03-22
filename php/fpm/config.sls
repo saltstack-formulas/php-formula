@@ -3,6 +3,8 @@
 {%- from tplroot ~ "/map.jinja" import php with context %}
 {%- from tplroot ~ "/ini.jinja" import php_ini %}
 
+{%- do salt.log.debug('[php.fpm.config] php var is set as: ' ~ php) %}
+
 {%- set ini_settings = php.ini.defaults %}
 {%- for key, value in php.fpm.config.ini.settings.items() %}
   {%- if ini_settings[key] is defined %}

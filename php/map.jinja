@@ -1,11 +1,57 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
+{%- set tplroot = tpldir.split('/')[0] %}
+{#- Start imports as #}
+{%- import_yaml tplroot ~ "/defaults.yaml" as default_settings %}
+{%- import_yaml tplroot ~ "/osarchmap.yaml" as osarchmap %}
+{%- import_yaml tplroot ~ "/osfamilymap.yaml" as osfamilymap %}
+{%- import_yaml tplroot ~ "/osmap.yaml" as osmap %}
+{%- import_yaml tplroot ~ "/osfingermap.yaml" as osfingermap %}
 
-{% set pillar_php_version = salt['pillar.get']('php:version', '7.0') %}
-{%- if pillar_php_version is iterable and pillar_php_version is not string %}
-    {%- set php_version = pillar_php_version[0]|string %}
+{#- Retrieve the config dict only once #}
+{%- set _config = salt['config.get'](tplroot, default={}) %}
+
+{%- set defaults = salt['grains.filter_by'](
+      default_settings,
+      default=tplroot,
+      merge=salt['grains.filter_by'](
+        osarchmap,
+        grain='osarch',
+        merge=salt['grains.filter_by'](
+          osfamilymap,
+          grain='os_family',
+          merge=salt['grains.filter_by'](
+            osmap,
+            grain='os',
+            merge=salt['grains.filter_by'](
+              osfingermap,
+              grain='osfinger',
+              merge=salt['grains.filter_by'](
+                _config,
+                default='php'
+              )
+            )
+          )
+        )
+      )
+    )
+%}
+
+{%- set config = salt['grains.filter_by'](
+      {'defaults': defaults},
+      default='defaults',
+      merge=_config
+    )
+%}
+
+{% set php = config %}
+
+{%- do salt.log.debug('[map.jinja] php var is set as: ' ~ php) %}
+
+{%- if php['pillar_php_version'] is iterable and php['pillar_php_version'] is not string %}
+    {%- set php_version = php['pillar_php_version'][0]|string %}
 {% else %}
-    {%- set php_version = pillar_php_version|string %}
+    {%- set php_version = php['pillar_php_version']|string %}
 {% endif %}
 {%- set freebsd_php_version = php_version.replace('.', '') %}
 
@@ -730,16 +776,16 @@
                             'apache2': 'libapache2-mod-php',
                             'apc': 'php',
                             'apcu': 'php-apcu',
-                            'bcmath': 'php7.2-bcmath',
-                            'bz2': 'php7.2-bz2',
+                            'bcmath': 'php' + php_version + '-bcmath',
+                            'bz2': 'php' + php_version + '-bz2',
                             'cache-lite': 'php-cache-lite',
                             'cgi': 'php-cgi',
                             'cli': 'php-cli',
                             'console-table': 'php-console-table',
                             'composer_bin': 'composer',
                             'curl': 'php-curl',
-                            'dev': 'php7.2-dev',
-                            'dba': 'php7.2-dba',
+                            'dev': 'php' + php_version + '-dev',
+                            'dba': 'php' + php_version + '-dba',
                             'fpm': 'php-fpm',
                             'gd': 'php-gd',
                             'geoip': 'php-geoip',
@@ -766,7 +812,7 @@
                             'net6': 'php-net-ipv6',
                             'oauth': 'php-oauth',
                             'odbc': 'php-odbc',
-                            'opcache': 'php7.2-opcache',
+                            'opcache': 'php' + php_version + '-opcache',
                             'pear': 'php-pear',
                             'pgsql': 'php-pgsql',
                             'php': 'php',
@@ -782,26 +828,26 @@
                             'sybase': 'php-sybase',
                             'tcpdf': 'php-tcpdf',
                             'temp_dir': '/tmp',
-                            'tidy': 'php7.2-tidy',
+                            'tidy': 'php' + php_version + '-tidy',
                             'xcache': 'php',
                             'xdebug': 'php-xdebug',
                             'xml': ['php-xml', 'php-xmlrpc'],
-                            'xsl': 'php7.2-xsl',
+                            'xsl': 'php' + php_version + '-xsl',
                             'zip': 'php-zip',
                         },
                         'fpm': {
-                            'conf': '/etc/php/7.2/fpm/php-fpm.conf',
-                            'ini': '/etc/php/7.2/fpm/php.ini',
-                            'pools': '/etc/php/7.2/fpm/pool.d',
-                            'service': 'php7.2-fpm',
+                            'conf': '/etc/php/' + php_version + '/fpm/php-fpm.conf',
+                            'ini': '/etc/php/' + php_version + '/fpm/php.ini',
+                            'pools': '/etc/php/' + php_version + '/fpm/pool.d',
+                            'service': 'php' + php_version + '-fpm',
                             'user': 'root',
                             'group': 'root',
                             'defaults': odict([
                                 ('global', odict([
-                                    ('pid', '/var/run/php7.2-fpm.pid'),
-                                    ('error_log', '/var/log/php7.2-fpm.log'),
+                                    ('pid', '/var/run/php' + php_version + '-fpm.pid'),
+                                    ('error_log', '/var/log/php' + php_version + '-fpm.log'),
                                 ])),
-                                ('include', '/etc/php/7.2/fpm/pool.d/*.conf'),
+                                ('include', '/etc/php/' + php_version + '/fpm/pool.d/*.conf'),
                             ]),
                         },
                         'hhvm': {
