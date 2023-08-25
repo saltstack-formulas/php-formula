@@ -18,6 +18,6 @@
     - require_in:
       - sls: apache
     - watch_in:
-      - module: apache-restart
+      - module: apache-service-running-restart
 {%- endif %} #END: use apache formula
 {%- endif %} #END: os = debian
